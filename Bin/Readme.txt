@@ -1,6 +1,6 @@
 If you don't know how to do, simply follow the step below.
 
-1. download "aria.zip", 
+1. download "aria2.zip", 
 2. unzip "aria" folder to your download folder
 3. run "add_Aria2-uriScheme.bat" as administrator
 
