@@ -1,0 +1,267 @@
+{
+	"extensionName": {
+		"message": "Aria2 下载器集成组件",
+		"description": "扩展的名称"
+	},
+
+	"extensionDescription": {
+		"message": "取代内置的下载器。当开启时侦测下载连结，导引到本扩展并传送到Aria2",
+		"description": "扩展的简介"
+	},
+	
+	"direction": {
+		"message": "ltr",
+		"description": "语言方向"
+	},
+	
+	"enabled": {
+		"message": "已启用",
+		"description": ""
+	},
+	
+	"disabled": {
+		"message": "已禁用",
+		"description": ""
+	},
+	
+	"error_setConfig": {
+		"message": "你必须先进行设置"
+	},
+	
+	"error_connect": {
+		"message": "出错啦! 你可以检查输入、设置或Aria2的状态然后再试一次",
+		"description": "当对Aria2的请求超时或回复不成功时，告知用户"
+	},
+	
+	"error_notSupported": {
+		"message": "不支持",
+		"description": ""
+	},
+	
+	"success_connect": {
+		"message": "正在下载 $NAME$",
+		"description": "当请求成功时，告知用户",
+		"placeholders": {
+		  "name" : {
+				"content" : "$1"
+			}
+		}
+	},
+	
+	"UI_detail": {
+		"message": "详情",
+		"description": ""
+	},
+	
+	"UI_download": {
+		"message": "下载",
+		"description": ""
+	},
+	
+	"UI_save": {
+		"message": "保存",
+		"description": ""
+	},
+	
+	"UI_saveas": {
+		"message": "另存为",
+		"description": "下载窗口"
+	},
+	
+	"UI_open": {
+		"message": "开启",
+		"description": ""
+	},
+	
+	"UI_fileName": {
+		"message": "文件名",
+		"description": ""
+	},
+	
+	"UI_filePath": {
+		"message": "文件路径",
+		"description": ""
+	},
+	
+	"UI_from": {
+		"message": "从",
+		"description": ""
+	},
+	
+	"OP_message1": {
+		"message": "你需要自行下载Aria2，完成以下的选项(协议、地址、端口、接口)并保存才能开始使用",
+		"description": ""
+	},
+	
+	"OP_message2": {
+		"message": "如果你不想要手动启动Aria2, 你可以自己写一个在后台启动Aria2的程序并注册到系统中的 'autostart' 或 'uri scheme'",
+		"description": ""
+	},
+	
+	
+	"OP_message3": {
+		"message": "你可以在这里找到示例文件",
+		"description": ""
+	},
+	
+	"OP_defaultPath": {
+		"message": "默认下载路径:",
+		"description": ""
+	},
+	
+	
+	"OPN_defaultPath": {
+		"message": "只适用于Aria2，可不填。",
+		"description": ""
+	},
+	
+	"OP_protocol": {
+		"message": "协议:",
+		"description": ""
+	},
+	
+	"OPN_protocol": {
+		"message": "Aria2的RPC通讯协议。现在你只能用 http, https。",
+		"description": ""
+	},
+	
+	"OP_host": {
+		"message": "地址:",
+		"description": ""
+	},
+	
+	"OPN_host": {
+		"message": "Aria2的RPC地址。你可以使用ip或域名。",
+		"description": ""
+	},
+	
+	"OP_port": {
+		"message": "端口:",
+		"description": ""
+	},
+	
+	"OPN_port": {
+		"message": "Aria2的RPC端口。",
+		"description": ""
+	},
+	
+	"OP_interface": {
+		"message": "接口:",
+		"description": ""
+	},
+	
+	"OPN_interface": {
+		"message": "Aria2的RPC接口. 默认值是 'jsonrpc'。",
+		"description": ""
+	},
+	
+	"OP_token": {
+		"message": "密钥:",
+		"description": ""
+	},
+	
+	"OPN_token": {
+		"message": "Aria2的RPC密钥, 可不填。",
+		"description": ""
+	},
+	
+	"OP_zoom": {
+		"message": "缩放倍数:",
+		"description": ""
+	},
+	
+	"OPN_zoom": {
+		"message": "用于下载窗口的缩放倍数. 默认值是 1。",
+		"description": ""
+	},
+	
+	"OP_advanced": {
+		"message": "进阶选项:",
+		"description": ""
+	},
+	
+	"OP_contextMenu": {
+		"message": "新增右键菜单",
+		"description": ""
+	},
+	
+	"OPN_contextMenu": {
+		"message": "在链接、影片、音乐新增右键菜单。",
+		"description": ""
+	},
+	
+	"OP_shutdown": {
+		"message": "当浏览器关闭时关闭 Aria2c",
+		"description": ""
+	},
+	
+	"OPN_shutdown": {
+		"message": "传送 '--stop-with-process=<PID>' 命令到 aria2c。",
+		"description": ""
+	},
+	
+	"OP_aggressive": {
+		"message": "偏执模式",
+		"description": ""
+	},
+	
+	"OPN_aggressive": {
+		"message": "疯狂的侦测下载连结。可能会造成问题。",
+		"description": ""
+	},
+	
+	"OP_winLoc": {
+		"message": "记住窗口位置",
+		"description": ""
+	},
+	
+	"OPN_winLoc": {
+		"message": "下载窗口的位置会被记录 (但是Firefox有问题，无法在指定位置产生窗口)。",
+		"description": ""
+	},
+	
+	"OP_auto": {
+		"message": "自动启动 Aria2",
+		"description": ""
+	},
+	
+	"OPN_auto": {
+		"message": "按下下载按钮后自动启动 Aria2",
+		"description": ""
+	},
+		
+	"OP_winWidth": {
+		"message": "下载窗口宽度改变量",
+		"description": ""
+	},
+
+	"OPN_winWidth": {
+		"message": "微调下载窗口宽度。",
+		"description": ""
+	},
+	
+	"OP_winHeight": {
+		"message": "下载窗口高度改变量",
+		"description": ""
+	},
+
+	"OPN_winHeight": {
+		"message": "微调下载窗口高度。",
+		"description": ""
+	},
+	
+	"OP_save": {
+		"message": "保存",
+		"description": "保存按钮"
+	},
+	
+	"OP_saveComplete": {
+		"message": "保存成功",
+		"description": ""
+	},
+	
+	"CM_title": {
+		"message": "使用 Aria2 下载",
+		"description": "右键菜单"
+	}
+}

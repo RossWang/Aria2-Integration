@@ -1,0 +1,267 @@
+{
+	"extensionName": {
+		"message": "Aria2 下載器整合元件",
+		"description": "擴充套件的名稱"
+	},
+
+	"extensionDescription": {
+		"message": "取代內建的下載器。當開啟時偵測下載連結，導引到本擴充套件並傳送到Aria2",
+		"description": "擴充套件的簡介"
+	},
+	
+	"direction": {
+		"message": "ltr",
+		"description": "語言方向"
+	},
+	
+	"enabled": {
+		"message": "已啟用",
+		"description": ""
+	},
+	
+	"disabled": {
+		"message": "已停用",
+		"description": ""
+	},
+	
+	"error_setConfig": {
+		"message": "你必須先進行設定"
+	},
+	
+	"error_connect": {
+		"message": "出錯啦! 你可以檢查輸入、設定或Aria2的狀態然後再試一次",
+		"description": "當對Aria2的請求超時或回覆不成功時，告知使用者"
+	},
+	
+	"error_notSupported": {
+		"message": "不支持",
+		"description": ""
+	},
+	
+	"success_connect": {
+		"message": "正在下載 $NAME$",
+		"description": "當請求成功時，告知使用者",
+		"placeholders": {
+		  "name" : {
+				"content" : "$1"
+			}
+		}
+	},
+	
+	"UI_detail": {
+		"message": "詳細",
+		"description": ""
+	},
+	
+	"UI_download": {
+		"message": "下載",
+		"description": ""
+	},
+	
+	"UI_save": {
+		"message": "儲存",
+		"description": ""
+	},
+	
+	"UI_saveas": {
+		"message": "另存新檔",
+		"description": "下載視窗"
+	},
+	
+	"UI_open": {
+		"message": "開啟",
+		"description": ""
+	},
+	
+	"UI_fileName": {
+		"message": "檔案名稱",
+		"description": ""
+	},
+	
+	"UI_filePath": {
+		"message": "檔案路徑",
+		"description": ""
+	},
+	
+	"UI_from": {
+		"message": "從",
+		"description": ""
+	},
+	
+	"OP_message1": {
+		"message": "你需要自行下載Aria2，完成以下的選項(協議、地址、連接埠、接口)並儲存才能開始使用",
+		"description": ""
+	},
+	
+	"OP_message2": {
+		"message": "如果你不想要手動啟動Aria2, 你可以自己寫一個在背景啟動Aria2的程式並註冊到系統中的 'autostart' 或 'uri scheme'",
+		"description": ""
+	},
+	
+	
+	"OP_message3": {
+		"message": "你可以在這裡找到範例檔",
+		"description": ""
+	},
+	
+	"OP_defaultPath": {
+		"message": "預設下載路徑:",
+		"description": ""
+	},
+	
+	
+	"OPN_defaultPath": {
+		"message": "只適用於Aria2，可不填。",
+		"description": ""
+	},
+	
+	"OP_protocol": {
+		"message": "協定:",
+		"description": ""
+	},
+	
+	"OPN_protocol": {
+		"message": "Aria2的RPC通訊協定。現在你只能用 http, https。",
+		"description": ""
+	},
+	
+	"OP_host": {
+		"message": "地址:",
+		"description": ""
+	},
+	
+	"OPN_host": {
+		"message": "Aria2的RPC地址。你可以使用ip或域名。",
+		"description": ""
+	},
+	
+	"OP_port": {
+		"message": "連接埠:",
+		"description": ""
+	},
+	
+	"OPN_port": {
+		"message": "Aria2的RPC連接埠。",
+		"description": ""
+	},
+	
+	"OP_interface": {
+		"message": "接口:",
+		"description": ""
+	},
+	
+	"OPN_interface": {
+		"message": "Aria2的RPC接口. 預設值是 'jsonrpc'。",
+		"description": ""
+	},
+	
+	"OP_token": {
+		"message": "金鑰:",
+		"description": ""
+	},
+	
+	"OPN_token": {
+		"message": "Aria2的RPC金鑰, 可不填。",
+		"description": ""
+	},
+	
+	"OP_zoom": {
+		"message": "縮放倍數:",
+		"description": ""
+	},
+	
+	"OPN_zoom": {
+		"message": "用於下載視窗的縮放倍數. 預設值是 1。",
+		"description": ""
+	},
+	
+	"OP_advanced": {
+		"message": "進階選項:",
+		"description": ""
+	},
+	
+	"OP_contextMenu": {
+		"message": "新增右鍵選單",
+		"description": ""
+	},
+	
+	"OPN_contextMenu": {
+		"message": "在連結、影片、音樂新增右鍵選單。",
+		"description": ""
+	},
+	
+	"OP_shutdown": {
+		"message": "當瀏覽器關閉時關閉 Aria2c",
+		"description": ""
+	},
+	
+	"OPN_shutdown": {
+		"message": "傳送 '--stop-with-process=<PID>' 指令到 aria2c。",
+		"description": ""
+	},
+	
+	"OP_aggressive": {
+		"message": "偏執模式",
+		"description": ""
+	},
+	
+	"OPN_aggressive": {
+		"message": "瘋狂的偵測下載連結。可能會造成問題。",
+		"description": ""
+	},
+	
+	"OP_winLoc": {
+		"message": "記住視窗位置",
+		"description": ""
+	},
+	
+	"OPN_winLoc": {
+		"message": "下載視窗的位置會被記錄 (但是Firefox有問題，無法在指定位置產生視窗)。",
+		"description": ""
+	},
+	
+	"OP_auto": {
+		"message": "自動啟動 Aria2",
+		"description": ""
+	},
+	
+	"OPN_auto": {
+		"message": "按下下載按鈕後自動啟動 Aria2",
+		"description": ""
+	},
+		
+	"OP_winWidth": {
+		"message": "下載視窗寬度改變量",
+		"description": ""
+	},
+
+	"OPN_winWidth": {
+		"message": "微調下載視窗寬度。",
+		"description": ""
+	},
+	
+	"OP_winHeight": {
+		"message": "下載視窗高度改變量",
+		"description": ""
+	},
+
+	"OPN_winHeight": {
+		"message": "微調下載視窗高度。",
+		"description": ""
+	},
+	
+	"OP_save": {
+		"message": "儲存",
+		"description": "儲存按鈕"
+	},
+	
+	"OP_saveComplete": {
+		"message": "儲存成功",
+		"description": ""
+	},
+	
+	"CM_title": {
+		"message": "使用 Aria2 下載",
+		"description": "右鍵選單"
+	}
+}

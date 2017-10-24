@@ -1,0 +1,267 @@
+{
+	"extensionName": {
+		"message": "Aria2 Download Manager Integration",
+		"description": "Name of the extension."
+	},
+
+	"extensionDescription": {
+		"message": "Replace built-in download manager. When activated, detects the download links to direct links to this add-on and send to Aria2",
+		"description": "Description of the extension."
+	},
+	
+	"direction": {
+		"message": "ltr",
+		"description": "Language direction"
+	},
+	
+	"enabled": {
+		"message": "ENABLED",
+		"description": ""
+	},
+	
+	"disabled": {
+		"message": "DISABLED",
+		"description": ""
+	},
+  
+	"error_setConfig": {
+		"message": "You need to set the config first"
+	},
+	
+	"error_connect": {
+		"message": "Something went wrong. Check the input, options or the state of Aria2 and retry.",
+		"description": "If the request to Aria2 timeout or if it doesn't response success message, notify the user"
+	},
+	
+	"error_notSupported": {
+		"message": "Not Supported",
+		"description": ""
+	},
+	
+	"success_connect": {
+		"message": "Downloading $NAME$",
+		"description": "If the request to Aria2 success, notify the user",
+		"placeholders": {
+		  "name" : {
+				"content" : "$1"
+			}
+		}
+	},
+	
+	"UI_detail": {
+		"message": "Details",
+		"description": ""
+	},
+	
+	"UI_download": {
+		"message": "Download",
+		"description": ""
+	},
+	
+	"UI_save": {
+		"message": "Save",
+		"description": "for download pannel"
+	},
+	
+	"UI_saveas": {
+		"message": "Save As",
+		"description": ""
+	},
+	
+	"UI_open": {
+		"message": "Open",
+		"description": ""
+	},
+	
+	"UI_fileName": {
+		"message": "File Name",
+		"description": ""
+	},
+	
+	"UI_filePath": {
+		"message": "File Path",
+		"description": ""
+	},
+	
+	"UI_from": {
+		"message": "From",
+		"description": ""
+	},
+	
+	"OP_message1": {
+		"message": "You need to download and start Aria2 by yourself, complete at least 'Protocol,' 'Host,' 'Port' and 'Interface' below and then click the 'Save' button.",
+		"description": ""
+	},
+	
+	"OP_message2": {
+		"message": "If you don't want to start Aria2 manually, just write a program to start Aria2 in the background and register it to the system's 'autostart' or 'uri scheme.'",
+		"description": ""
+	},
+	
+	
+	"OP_message3": {
+		"message": "You can find the sample files here.",
+		"description": ""
+	},
+	
+	"OP_defaultPath": {
+		"message": "Default Download Path:",
+		"description": ""
+	},
+	
+	
+	"OPN_defaultPath": {
+		"message": "Download path of Aria2(only), optional",
+		"description": ""
+	},
+	
+	"OP_protocol": {
+		"message": "Protocol:",
+		"description": ""
+	},
+	
+	"OPN_protocol": {
+		"message": "RPC connection protocol of Aria2. Now you can only use http, https",
+		"description": ""
+	},
+	
+	"OP_host": {
+		"message": "Host:",
+		"description": ""
+	},
+	
+	"OPN_host": {
+		"message": "RPC host of Aria2. You can use ip or domain name.",
+		"description": ""
+	},
+	
+	"OP_port": {
+		"message": "Port:",
+		"description": ""
+	},
+	
+	"OPN_port": {
+		"message": "Aria2 RPC port",
+		"description": ""
+	},
+	
+	"OP_interface": {
+		"message": "Interface:",
+		"description": ""
+	},
+	
+	"OPN_interface": {
+		"message": "Aria2 RPC address. Default value is 'jsonrpc'",
+		"description": ""
+	},
+	
+	"OP_token": {
+		"message": "Token:",
+		"description": ""
+	},
+	
+	"OPN_token": {
+		"message": "Aria2 RPC secret, optional.",
+		"description": ""
+	},
+	
+	"OP_zoom": {
+		"message": "Zoom Level:",
+		"description": ""
+	},
+	
+	"OPN_zoom": {
+		"message": "Zoom Level of Download Panel. Default value is 1.",
+		"description": ""
+	},
+	
+	"OP_advanced": {
+		"message": "Advanced:",
+		"description": ""
+	},
+	
+	"OP_contextMenu": {
+		"message": "Add Context Menus",
+		"description": ""
+	},
+	
+	"OPN_contextMenu": {
+		"message": "Add Context Menus to links, videos and audios ",
+		"description": ""
+	},
+	
+	"OP_shutdown": {
+		"message": "Shutdown Aria2c when the browser closed",
+		"description": ""
+	},
+	
+	"OPN_shutdown": {
+		"message": "Send '--stop-with-process=<PID>' command to aria2c",
+		"description": ""
+	},
+	
+	"OP_aggressive": {
+		"message": "Aggressive Mode",
+		"description": ""
+	},
+	
+	"OPN_aggressive": {
+		"message": "Detect download links aggressively. May cause some problems.",
+		"description": ""
+	},
+	
+	"OP_winLoc": {
+		"message": "Remember window location",
+		"description": ""
+	},
+
+	"OPN_winLoc": {
+		"message": "The location of Download Panel will be saved (but firefox has bug. It cannot create window in the specific place)",
+		"description": ""
+	},
+	
+	"OP_auto": {
+		"message": "Aria2 Auto Start",
+		"description": ""
+	},
+	
+	"OPN_auto": {
+		"message": "Start Aria2 automatically when the download start",
+		"description": ""
+	},
+	
+	"OP_winWidth": {
+		"message": "Download Panel width offset",
+		"description": ""
+	},
+
+	"OPN_winWidth": {
+		"message": "Fine Tune Download Window width",
+		"description": ""
+	},
+	
+	"OP_winHeight": {
+		"message": "Download Panel height offset",
+		"description": ""
+	},
+
+	"OPN_winHeight": {
+		"message": "Fine Tune Download Window height",
+		"description": ""
+	},
+	
+	"OP_save": {
+		"message": "Save",
+		"description": "save button"
+	},
+	
+	"OP_saveComplete": {
+		"message": "Options saved",
+		"description": ""
+	},
+	
+	"CM_title": {
+		"message": "Download with Aria2",
+		"description": "Context Menu"
+	}
+}
