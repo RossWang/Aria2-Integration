@@ -69,8 +69,8 @@ function sendTo(url, fileName, filePath, header) {
 				
 				// Send TO Aria2
 				var xhr = new XMLHttpRequest();
-				filePath = filePath.replace('\\', '\\\\');
-				item.path = item.path.replace('\\', '\\\\');
+				filePath = filePath.replace(/\\/g, '\\\\');
+				item.path = item.path.replace(/\\/g, '\\\\');
 				if (filePath != "") {
 					// file path from download panel
 					var params =
@@ -177,7 +177,6 @@ function handleMessage(request, sender, sendResponse) {
 	switch (request.get) {
 		case "all":
 			var d = globalD.pop();
-			var headers = d.requestHeaders;
 			//var tmp = d.responseHeaders.find(x => x.name === 'Content-Type').value;
 			sendResponse({
 				response: "all",
@@ -185,7 +184,7 @@ function handleMessage(request, sender, sendResponse) {
 				fileName: d.fileName,
 				fileSize: d.fileSize,
 				//fileType: tmp,
-				header: headers,
+				header: d.requestHeaders,
 			});
 			break;
 		case "download":
@@ -342,7 +341,7 @@ function getRequestHeaders(id) {
 	for (var i = 0; i < 3; i++) {
 		id1 = request[id].requestHeaders.findIndex(x => x.name === getheader[i]);
 		if (id1 >= 0) {
-			if (i > 0) requestHeaders += ",";
+			if (requestHeaders != "[") requestHeaders += ",";
 			requestHeaders += ("\"" + request[id].requestHeaders[id1].name + ": " +
 				request[id].requestHeaders[id1].value + "\"");
 		}
@@ -529,7 +528,14 @@ function cmCallback (info, tab) {
 		var requestHeaders = "[";
 		requestHeaders += ("\"referer: " + info.pageUrl + "\"");
 		requestHeaders += "]";
-		sendTo(url,"","",requestHeaders);
+		var d = {
+			url: url,
+			fileName: "",
+			fileSize: "",
+			requestHeaders: requestHeaders
+		}
+		//sendTo(url,"","",requestHeaders);
+		downloadPanel(d);
 		console.log(info);
 	}
 }
