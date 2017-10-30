@@ -416,6 +416,7 @@ function observeResponse(d) {
 				.toLowerCase();
 			if (contentType.slice(0, 11) == "application" 
 				&& contentType.slice(12, 15) != "pdf" 
+				&& contentType.slice(12, 17) != "xhtml" 
 				&& contentType.slice(12, 29) != "x-shockwave-flash" 
 				&& contentType.slice(12, 16) != "json" ) {
 				//console.log(contentType);
