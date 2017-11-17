@@ -27,15 +27,24 @@ function detail() {
 	browser.storage.local.get("initialize", item => {
 		if (!item.initialize || (item.initialize == undefined)) {
 			browser.runtime.openOptionsPage();
-			browser.notifications.create({
+				browser.notifications.create({
 				type: 'basic',
-				iconUrl: '../../data/icons/48.png',
-				title: "Aria2 Integration",
-				message: "you need to set(save) the config first"
+				iconUrl: '/data/icons/48.png',
+				title: browser.i18n.getMessage("extensionName"),
+				message: message.message || message
 			});
-		} else {
-			browser.tabs.create({
-				url: "../../data/ariang/index.html"
+		} 
+		else {
+			browser.storage.local.get(config.command.guess, function(item) {
+				var ariangUrl = "../../data/ariang/index.html"
+				if (item.autoSet) {
+					ariangUrl += "#!/settings/rpc/set/";
+					ariangUrl += (item.protocol + "/" + item.host + "/" + item.port + "/" + 
+					item.interf + "/" + btoa(item.token));
+				}
+				browser.tabs.create({
+					url: ariangUrl
+				});
 			});
 		}
 	});

@@ -14,6 +14,7 @@ function save() {
 	const aggresive = document.getElementById('aggre').checked;
 	const windowLoc = document.getElementById('winLoc').checked;
 	const auto = document.getElementById('auto').checked;
+	const autoSet = document.getElementById('autoSet').checked;
 	const dpHeight = document.getElementById('dpHeight').value;
 	const dpWidth = document.getElementById('dpWidth').value;
 	if (!windowLoc){
@@ -40,6 +41,7 @@ function save() {
 		aggresive,
 		windowLoc,
 		auto,
+		autoSet,
 		dpHeight,
 		dpWidth
 	}, () => {
@@ -47,12 +49,6 @@ function save() {
 		status.textContent = browser.i18n.getMessage("OP_saveComplete");
 		setTimeout(() => {
 			status.textContent = '';
-			var ariangUrl = "../../data/ariang/index.html#!/settings/rpc/set/"
-			ariangUrl += (protocol + "/" + host + "/" + port + "/" + interf + "/" +
-				btoa(token));
-			browser.tabs.create({
-				url: ariangUrl
-			});
 		}, 750);
 		browser.storage.local.set({
 			initialize: true
@@ -77,6 +73,7 @@ function restore() {
 		document.getElementById('aggre').checked = prefs.aggressive;
 		document.getElementById('winLoc').checked = prefs.windowLoc;
 		document.getElementById('auto').checked = prefs.auto;
+		document.getElementById('autoSet').checked = prefs.autoSet;
 	});
 	browser.storage.local.get(['dpWidth', 'dpHeight'], prefs => {
 		document.getElementById('dpWidth').value = prefs.dpWidth;

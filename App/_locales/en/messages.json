@@ -235,6 +235,16 @@
 		"description": ""
 	},
 	
+	"OP_autoSet": {
+		"message": "AriaNg Auto Set",
+		"description": ""
+	},
+	
+	"OPN_autoSet": {
+		"message": "Set AriaNg automatically when the user click 'details'",
+		"description": ""
+	},
+	
 	"OP_winWidth": {
 		"message": "Download Panel width offset",
 		"description": ""

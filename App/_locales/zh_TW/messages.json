@@ -230,6 +230,16 @@
 		"description": ""
 	},
 		
+	"OP_autoSet": {
+		"message": "自動設定 AriaNg",
+		"description": ""
+	},
+	
+	"OPN_autoSet": {
+		"message": "按下詳細按鈕後自動設定 AriaNg",
+		"description": ""
+	},
+		
 	"OP_winWidth": {
 		"message": "下載視窗寬度改變量",
 		"description": ""

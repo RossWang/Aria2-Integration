@@ -17,6 +17,7 @@ config.command = {
 			aggressive: false,
 			windowLoc: false,
 			auto: true,
+			autoSet: true,
 		};
 	}
 };

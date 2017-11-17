@@ -234,6 +234,16 @@
 		"message": "按下下载按钮后自动启动 Aria2",
 		"description": ""
 	},
+	
+	"OP_autoSet": {
+		"message": "自动设置 AriaNg",
+		"description": ""
+	},
+	
+	"OPN_autoSet": {
+		"message": "按下详细按钮后自动设置 AriaNg",
+		"description": ""
+	},
 		
 	"OP_winWidth": {
 		"message": "下载窗口宽度改变量",
