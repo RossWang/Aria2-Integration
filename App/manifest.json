@@ -13,6 +13,7 @@
     "contextMenus",
 	"webRequest",
 	"webRequestBlocking",
+	"cookies",
 	"<all_urls>"
   ],
   "background": {

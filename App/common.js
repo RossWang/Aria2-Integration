@@ -379,17 +379,15 @@ function getFileSize(d){
 function getRequestHeaders(id) {
 	// create header
 	var id1;
-	var requestHeaders = "[";
+	var requestHeaders = [];
 	var getheader = ['Referer', 'Cookie', 'Cookie2'];
 	for (var i = 0; i < 3; i++) {
 		id1 = request[id].requestHeaders.findIndex(x => x.name === getheader[i]);
 		if (id1 >= 0) {
-			if (requestHeaders != "[") requestHeaders += ",";
-			requestHeaders += ("\"" + request[id].requestHeaders[id1].name + ": " +
-				request[id].requestHeaders[id1].value + "\"");
+			requestHeaders[i] = request[id].requestHeaders[id1].name + ": " +
+				request[id].requestHeaders[id1].value;
 		}
 	}
-	requestHeaders += "]";
 	return requestHeaders;
 }
 
@@ -570,18 +568,41 @@ function cmCallback (info, tab) {
 		notify(browser.i18n.getMessage("error_notSupported"))
 	}
 	else {
-		var requestHeaders = "[";
-		requestHeaders += ("\"referer: " + info.pageUrl + "\"");
-		requestHeaders += "]";
-		var d = {
-			url: url,
-			fileName: "",
-			fileSize: "",
-			requestHeaders: requestHeaders
-		}
-		//sendTo(url,"","",requestHeaders);
-		downloadPanel(d);
-		console.log(info);
+		browser.cookies.getAll({url:url}).then((cookies) => {
+			var requestHeaders = [];
+			requestHeaders[0] = ("Referer: " + info.pageUrl + "\"");
+			requestHeaders[1] = ("Cookie: ");
+			var cookie = {};
+			for (cookie of cookies) {
+				requestHeaders[1] += cookie.name;
+				requestHeaders[1] += "="
+				requestHeaders[1] += cookie.value;
+				requestHeaders[1] += "; "
+			}
+			var d = {
+				url: url,
+				fileName: "",
+				fileSize: "",
+				requestHeaders: requestHeaders
+			}
+			//sendTo(url,"","",requestHeaders);
+			downloadPanel(d);
+			console.log(info);
+		}, (e) => {
+			console.log("Error:", e);
+			var requestHeaders = "[";
+			requestHeaders += ("\"Referer: " + info.pageUrl + "\"");
+			requestHeaders += "]";
+			var d = {
+				url: url,
+				fileName: "",
+				fileSize: "",
+				requestHeaders: requestHeaders
+			}
+			//sendTo(url,"","",requestHeaders);
+			downloadPanel(d);
+			console.log(info);
+		} );;
 	}
 }
 function contextMenus (enabled){
