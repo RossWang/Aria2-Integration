@@ -120,8 +120,13 @@
 		"description": ""
 	},
 	
+	"OP_secure": {
+		"message": "安全",
+		"description": ""
+	},
+	
 	"OPN_protocol": {
-		"message": "Aria2的RPC通讯协议。现在你只能用 http, https。",
+		"message": "Aria2的RPC通讯协议。",
 		"description": ""
 	},
 	

@@ -30,29 +30,52 @@ function humanFileSize(bytes, si) {
     return bytes.toFixed(1)+' '+units[u];
 }
 
-function isRunning(item) {
+function isRunning(item, aria2) {
 	//check whether aria2 is runnning
 	var xhttp = new XMLHttpRequest();
 	var url = "aria2://"
 	if (item.shutdown)
 		url += "stop-with-process";
-	xhttp.ontimeout = function() {
-		if (item.auto) {
-			var creating = browser.windows.create({
-				url: url,
-				type: "popup",
-				width: 50,
-				height: 50,
-			});
-			creating.then(windowInfo => {
-				browser.windows.remove(windowInfo.id);
-			}, () => {});
-		}
-	};
-	xhttp.timeout = 400;
-	xhttp.open("GET", item.protocol + "://" + item.host + ":" + item.port +
-		"/", true);
-	xhttp.send();
+	if (item.protocol.toLowerCase() == "ws" || item.protocol.toLowerCase() == "wss") {
+		aria2.open().then(
+			function (res) {
+				aria2.close();
+			},
+			function (err) {
+				if (item.auto) {
+					var creating = browser.windows.create({
+						url: url,
+						type: "popup",
+						width: 50,
+						height: 50,
+					});
+					creating.then(windowInfo => {
+						browser.windows.remove(windowInfo.id);
+					}, () => {});
+				}
+			}
+		);
+	}
+	else {
+		aria2.getVersion().then(
+			function (res) {
+				console.log('result', res);
+			},
+			function (err) {
+				if (item.auto) {
+					var creating = browser.windows.create({
+						url: url,
+						type: "popup",
+						width: 50,
+						height: 50,
+					});
+					creating.then(windowInfo => {
+						browser.windows.remove(windowInfo.id);
+					}, () => {});
+				}
+			}
+		);
+	}
 }
 
 function sendTo(url, fileName, filePath, header) {
@@ -64,63 +87,83 @@ function sendTo(url, fileName, filePath, header) {
 		}
 		else {
 			browser.storage.local.get(config.command.guess, function(item) {
+				var secure = false;
+				if (item.protocol.toLowerCase == "https" || item.protocol.toLowerCase == "wss")
+					secure = true;
+				var options = {
+					host: item.host,
+					port: item.port,
+					secure: secure,
+					secret: item.token,
+					path: "/" + item.interf
+				};
+				
+				var aria2 = new Aria2(options);
 				// check whether aria2 is runnning
-				isRunning(item);
+				isRunning(item, aria2);
 				
 				// Send TO Aria2
-				var xhr = new XMLHttpRequest();
 				filePath = filePath.replace(/\\/g, '\\\\');
 				item.path = item.path.replace(/\\/g, '\\\\');
+				var params = {};
+				if (header != "[]")
+					params.header = header;
+				params.out = fileName;
 				if (filePath != "") {
 					// file path from download panel
-					var params =
-						`{"jsonrpc":"2.0","method":"aria2.addUri","id":"ext","params":["token:` +
-						item.token + `",["` + url + `"],{"header":` + header + `,"out":"` +
-						fileName + `","dir":"` + filePath + `"}]}`;
+					params.dir = filePath;
 				}
 				else if (item.path != "") {
 					// file path from setting
-					var params =
-						`{"jsonrpc":"2.0","method":"aria2.addUri","id":"ext","params":["token:` +
-						item.token + `",["` + url + `"],{"header":` + header + `,"out":"` +
-						fileName + `","dir":"` + item.path + `"}]}`;
+					params.dir = item.path;
+				}
+				if (item.protocol.toLowerCase() == "ws" || item.protocol.toLowerCase() == "wss") {
+					aria2.open().then(
+						function (res) {
+							aria2.addUri([url], params).then(
+								function (res) {
+									notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
+								},
+								function (err) {
+									// retry again after 3 seconds
+									setTimeout( () => {aria2.addUri([url], params).then(
+										function (res) {
+											notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
+										},
+										function (err) {
+											notify(browser.i18n.getMessage("error_connect"));
+										}
+									);}, 3000);
+								}
+							);
+							aria2.close();
+						},
+						function (err) {
+							console.log('error', err);
+							notify(browser.i18n.getMessage("error_connect"));
+						}
+					);
 				}
 				else {
-					// default file path 
-					var params =
-						`{"jsonrpc":"2.0","method":"aria2.addUri","id":"ext","params":["token:` +
-						item.token + `",["` + url + `"],{"header":` + header + `,"out":"` +
-						fileName + `"}]}`;
+					aria2.addUri([url], params).then(
+						function (res) {
+							notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
+						},
+						function (err) {
+							// retry again after 3 seconds
+							setTimeout( () => {aria2.addUri([url], params).then(
+								function (res) {
+									notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
+								},
+								function (err) {
+									console.log('error', err);
+									notify(browser.i18n.getMessage("error_connect"));
+								}
+							);}, 3000);
+						}
+					);
 				}
-				
-				console.log(params);
-				
-				// callback
-				xhr.onreadystatechange = function() {
-					if (xhr.readyState == 4 && xhr.status == 200) {
-						notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-					} else if (xhr.readyState == 4 && xhr.status != 0) {
-						notify(browser.i18n.getMessage("error_connect"));
-					}
-				};
-				
-				// retry again after 5 seconds
-				xhr.onerror = function() {
-					setTimeout( () => {
-						xhr.open("POST", item.protocol + "://" + item.host + ":" + item.port +
-							"/" + item.interf, true);
-						xhr.setRequestHeader("Content-type", "application/json;charset=utf-8");
-						xhr.onerror = function() {notify(browser.i18n.getMessage("error_connect"));};
-						//console.log(xhr);
-						xhr.send(params)
-					}, 5000);
-				};
-				
-				xhr.timeout = 4000;
-				xhr.open("POST", item.protocol + "://" + item.host + ":" + item.port +
-					"/" + item.interf, true);
-				xhr.setRequestHeader("Content-type", "application/json;charset=utf-8");
-				xhr.send(params);
+				console.log(url, params);
 			});
 		}
 	});

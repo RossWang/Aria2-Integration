@@ -121,7 +121,7 @@
 	},
 	
 	"OPN_protocol": {
-		"message": "Aria2的RPC通訊協定。現在你只能用 http, https。",
+		"message": "Aria2的RPC通訊協定。",
 		"description": ""
 	},
 	

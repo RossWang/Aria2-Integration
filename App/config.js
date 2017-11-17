@@ -6,7 +6,7 @@ config.command = {
 	get guess() {
 		return {
 			path: "",
-			protocol: "http",
+			protocol: "ws",
 			host: "127.0.0.1",
 			port: "6800",
 			interf: "jsonrpc",

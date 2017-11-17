@@ -120,8 +120,13 @@
 		"description": ""
 	},
 	
+	"OP_secure": {
+		"message": "Secure",
+		"description": ""
+	},
+	
 	"OPN_protocol": {
-		"message": "RPC connection protocol of Aria2. Now you can only use http, https",
+		"message": "RPC connection protocol of Aria2.",
 		"description": ""
 	},
 	
