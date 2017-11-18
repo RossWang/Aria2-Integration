@@ -245,6 +245,16 @@
 		"description": ""
 	},
 	
+	"OP_chgLog": {
+		"message": "Display Changelog",
+		"description": ""
+	},
+	
+	"OPN_chgLog": {
+		"message": "Display Changelog After Update",
+		"description": ""
+	},
+	
 	"OP_winWidth": {
 		"message": "Download Panel width offset",
 		"description": ""

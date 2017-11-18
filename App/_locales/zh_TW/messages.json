@@ -240,6 +240,16 @@
 		"description": ""
 	},
 		
+	"OP_chgLog": {
+		"message": "顯示更新日誌",
+		"description": ""
+	},
+	
+	"OPN_chgLog": {
+		"message": "更新後自動顯示更新日誌",
+		"description": ""
+	},
+		
 	"OP_winWidth": {
 		"message": "下載視窗寬度改變量",
 		"description": ""

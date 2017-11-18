@@ -241,7 +241,17 @@
 	},
 	
 	"OPN_autoSet": {
-		"message": "按下详细按钮后自动设置 AriaNg",
+		"message": "按下详情按钮后自动设置 AriaNg",
+		"description": ""
+	},
+	
+	"OP_chgLog": {
+		"message": "显示更新日誌",
+		"description": ""
+	},
+	
+	"OPN_chgLog": {
+		"message": "更新后自动显示更新日誌",
 		"description": ""
 	},
 		

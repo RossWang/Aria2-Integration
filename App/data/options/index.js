@@ -15,6 +15,7 @@ function save() {
 	const windowLoc = document.getElementById('winLoc').checked;
 	const auto = document.getElementById('auto').checked;
 	const autoSet = document.getElementById('autoSet').checked;
+	const chgLog = document.getElementById('chgLog').checked;
 	const dpHeight = document.getElementById('dpHeight').value;
 	const dpWidth = document.getElementById('dpWidth').value;
 	if (!windowLoc){
@@ -42,6 +43,7 @@ function save() {
 		windowLoc,
 		auto,
 		autoSet,
+		chgLog,
 		dpHeight,
 		dpWidth
 	}, () => {
@@ -74,6 +76,7 @@ function restore() {
 		document.getElementById('winLoc').checked = prefs.windowLoc;
 		document.getElementById('auto').checked = prefs.auto;
 		document.getElementById('autoSet').checked = prefs.autoSet;
+		document.getElementById('chgLog').checked = prefs.chgLog;
 	});
 	browser.storage.local.get(['dpWidth', 'dpHeight'], prefs => {
 		document.getElementById('dpWidth').value = prefs.dpWidth;

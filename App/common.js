@@ -637,7 +637,7 @@ function contextMenus (enabled){
 (function(callback) {
 	browser.runtime.onInstalled.addListener(callback);
 	//browser.runtime.onStartup.addListener(callback);
-})(function() {
+})(function(d) {
 	browser.storage.local.get("initialize", item => {
 		if(item.initialize == undefined) {
 			browser.runtime.openOptionsPage();
@@ -645,8 +645,18 @@ function contextMenus (enabled){
 			browser.storage.local.set({
 				initialize: false
 			});
-		}	
+		}
+		else {
+			browser.storage.local.get(config.command.guess, item => {
+				if (d.reason == "update" && item.chgLog == true){
+					browser.tabs.create({
+						url: "https://github.com/RossWang/Aria2-Integration/blob/master/CHANGELOG.md"
+					});
+				}
+			});
+		}
 	});
+	
 });
 
 (function() {

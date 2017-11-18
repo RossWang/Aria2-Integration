@@ -18,6 +18,7 @@ config.command = {
 			windowLoc: false,
 			auto: true,
 			autoSet: true,
+			chgLog: true,
 		};
 	}
 };
