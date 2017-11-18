@@ -11,6 +11,10 @@ function notify(message) {
 		iconUrl: '/data/icons/48.png',
 		title: browser.i18n.getMessage("extensionName"),
 		message: message.message || message
+	}).then((id) => { 
+		setTimeout(() => {
+			browser.notifications.clear(id.toString());
+		}, 2000);
 	});
 }
 
