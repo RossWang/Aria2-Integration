@@ -413,6 +413,7 @@ function prepareDownload(d) {
 	d.fileName = decodeURIComponent(d.fileName);
 	
 	// file name cannot have ""
+	d.fileName = d.fileName.replace('\";', '');
 	d.fileName = d.fileName.replace('\"', '');
 	d.fileName = d.fileName.replace('\"', '');
 	
