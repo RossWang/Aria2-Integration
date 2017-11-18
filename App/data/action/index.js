@@ -31,7 +31,7 @@ function detail() {
 				type: 'basic',
 				iconUrl: '/data/icons/48.png',
 				title: browser.i18n.getMessage("extensionName"),
-				message: message.message || message
+				message: browser.i18n.getMessage("error_setConfig")
 			});
 		} 
 		else {
