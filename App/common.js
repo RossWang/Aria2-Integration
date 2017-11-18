@@ -380,8 +380,8 @@ function getRequestHeaders(id) {
 	// create header
 	var id1;
 	var requestHeaders = [];
-	var getheader = ['Referer', 'Cookie', 'Cookie2'];
-	for (var i = 0; i < 3; i++) {
+	var getheader = ['Referer', 'Cookie', 'Cookie2', 'Authorization'];
+	for (var i = 0; i < 4; i++) {
 		id1 = request[id].requestHeaders.findIndex(x => x.name === getheader[i]);
 		if (id1 >= 0) {
 			requestHeaders[i] = request[id].requestHeaders[id1].name + ": " +
