@@ -9,6 +9,14 @@ function save() {
 	const interf = document.getElementById('interf').value;
 	const token = document.getElementById('token').value;
 	const zoom = document.getElementById('zoom').value;
+	if (document.getElementById('sound0').checked)
+		var sound = "0";
+	if (document.getElementById('sound1').checked)
+		var sound = "1";
+	if (document.getElementById('sound2').checked)
+		var sound = "2";
+	if (document.getElementById('sound3').checked)
+		var sound = "3";
 	const menu = document.getElementById('cm').checked;
 	const shutdown = document.getElementById('shut').checked;
 	const aggresive = document.getElementById('aggre').checked;
@@ -16,6 +24,7 @@ function save() {
 	const auto = document.getElementById('auto').checked;
 	const autoSet = document.getElementById('autoSet').checked;
 	const chgLog = document.getElementById('chgLog').checked;
+	const badge = document.getElementById('badge').checked;
 	const dpHeight = document.getElementById('dpHeight').value;
 	const dpWidth = document.getElementById('dpWidth').value;
 	if (!windowLoc){
@@ -37,6 +46,7 @@ function save() {
 		interf,
 		token,
 		zoom,
+		sound,
 		menu,
 		shutdown,
 		aggresive,
@@ -44,6 +54,7 @@ function save() {
 		auto,
 		autoSet,
 		chgLog,
+		badge,
 		dpHeight,
 		dpWidth
 	}, () => {
@@ -70,6 +81,14 @@ function restore() {
 		document.getElementById('interf').value = prefs.interf;
 		document.getElementById('token').value = prefs.token;
 		document.getElementById('zoom').value = prefs.zoom;
+		if (prefs.sound == "0")
+			document.getElementById('sound0').checked = true;
+		if (prefs.sound == "1")
+			document.getElementById('sound1').checked = true;
+		if (prefs.sound == "2")
+			document.getElementById('sound2').checked = true;
+		if (prefs.sound == "3")
+			document.getElementById('sound3').checked = true;
 		document.getElementById('cm').checked = prefs.menu;
 		document.getElementById('shut').checked = prefs.shutdown;
 		document.getElementById('aggre').checked = prefs.aggressive;
@@ -77,6 +96,7 @@ function restore() {
 		document.getElementById('auto').checked = prefs.auto;
 		document.getElementById('autoSet').checked = prefs.autoSet;
 		document.getElementById('chgLog').checked = prefs.chgLog;
+		document.getElementById('badge').checked = prefs.badge;
 	});
 	browser.storage.local.get(['dpWidth', 'dpHeight'], prefs => {
 		document.getElementById('dpWidth').value = prefs.dpWidth;

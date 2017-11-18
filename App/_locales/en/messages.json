@@ -48,6 +48,26 @@
 		}
 	},
 	
+	"download_complete": {
+		"message": "Download Complete \n\n $NAME$",
+		"description": "notify the user when download complete",
+		"placeholders": {
+		  "name" : {
+				"content" : "$1"
+			}
+		}
+	},
+	
+	"download_error": {
+		"message": "Download Faild \n\n $NAME$",
+		"description": "notify the user when download failed",
+		"placeholders": {
+		  "name" : {
+				"content" : "$1"
+			}
+		}
+	},
+	
 	"UI_detail": {
 		"message": "Details",
 		"description": ""
@@ -180,6 +200,36 @@
 		"description": ""
 	},
 	
+	"OP_sound": {
+		"message": "Downlod Complete Sound:",
+		"description": ""
+	},
+	
+	"OP_sound0": {
+		"message": "None",
+		"description": ""
+	},
+	
+	"OP_sound1": {
+		"message": "Sound 1",
+		"description": ""
+	},
+	
+	"OP_sound2": {
+		"message": "Sound 2",
+		"description": ""
+	},
+	
+	"OP_sound3": {
+		"message": "Sound 3",
+		"description": ""
+	},
+	
+	"OPN_sound": {
+		"message": "Select a sound for download compete",
+		"description": ""
+	},
+	
 	"OP_advanced": {
 		"message": "Advanced:",
 		"description": ""
@@ -252,6 +302,16 @@
 	
 	"OPN_chgLog": {
 		"message": "Display Changelog After Update",
+		"description": ""
+	},
+	
+	"OP_badge": {
+		"message": "Display Current Active Download Count",
+		"description": ""
+	},
+	
+	"OPN_badge": {
+		"message": "Display current active download count on top of the icon",
 		"description": ""
 	},
 	

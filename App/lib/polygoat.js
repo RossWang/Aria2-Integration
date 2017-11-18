@@ -23,6 +23,6 @@
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = polygoat
   } else {
-    window.polygoat = polygoat
+    global.polygoat = polygoat
   }
 }(typeof global !== 'undefined' ? global : this))

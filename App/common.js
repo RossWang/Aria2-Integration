@@ -4,6 +4,38 @@
 var request = [];
 var globalD = [];
 var aggressive = false;
+var mon;
+
+function monitor(options) {
+	if (mon == undefined) {
+		mon = new Worker("lib/worker.js");
+	}
+	browser.storage.local.get(config.command.guess, function(item) {
+		mon.postMessage([options]);
+		mon.onmessage = function(e) {
+			console.log(e.data);
+			if (e.data[0] == "complete") {
+				notify(browser.i18n.getMessage("download_complete", e.data[1] ));
+				if (item.sound != "0") {
+					var audio = new Audio('data/sound/complete' + item.sound + '.wav');
+					audio.play();
+				}
+			}	
+			else if (e.data[0] == "badge" && item.badge){
+				if(e.data[1] == 0){
+					browser.browserAction.setBadgeText({text: ""});
+					mon = null;
+				}
+				else {
+					browser.browserAction.setBadgeText({text: e.data[1].toString()});
+				}
+			}
+			else if (e.data[0] == "error"){
+				notify(browser.i18n.getMessage("download_error", e.data[1] ));
+			}
+		}
+	});
+}
 
 function notify(message) {
 	browser.notifications.create({
@@ -126,12 +158,14 @@ function sendTo(url, fileName, filePath, header) {
 						function (res) {
 							aria2.addUri([url], params).then(
 								function (res) {
+									monitor(options);
 									notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
 								},
 								function (err) {
 									// retry again after 3 seconds
 									setTimeout( () => {aria2.addUri([url], params).then(
 										function (res) {
+											monitor(options);
 											notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
 										},
 										function (err) {
@@ -143,7 +177,7 @@ function sendTo(url, fileName, filePath, header) {
 							aria2.close();
 						},
 						function (err) {
-							console.log('error', err);
+							console.log('Error', err);
 							notify(browser.i18n.getMessage("error_connect"));
 						}
 					);
@@ -160,7 +194,7 @@ function sendTo(url, fileName, filePath, header) {
 									notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
 								},
 								function (err) {
-									console.log('error', err);
+									console.log('Error', err);
 									notify(browser.i18n.getMessage("error_connect"));
 								}
 							);}, 3000);
@@ -594,7 +628,7 @@ function cmCallback (info, tab) {
 			downloadPanel(d);
 			console.log(info);
 		}, (e) => {
-			console.log("Error:", e);
+			console.log("Error", e);
 			var requestHeaders = "[";
 			requestHeaders += ("\"Referer: " + info.pageUrl + "\"");
 			requestHeaders += "]";
@@ -663,6 +697,7 @@ function contextMenus (enabled){
 	browser.storage.local.get("enabled", function(item) {
 		changeState(item.enabled);
 	});
+	browser.browserAction.setBadgeBackgroundColor({color: [0,0,0,100]});
 	browser.storage.local.get(config.command.guess, (item) => {
 		aggressive = item.aggressive;
 		contextMenus(item.menu);

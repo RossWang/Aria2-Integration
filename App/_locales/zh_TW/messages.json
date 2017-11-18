@@ -48,6 +48,26 @@
 		}
 	},
 	
+	"download_complete": {
+		"message": "下載完成 \n\n $NAME$",
+		"description": "當下載完成時，告知使用者",
+		"placeholders": {
+		  "name" : {
+				"content" : "$1"
+			}
+		}
+	},
+	
+	"download_error": {
+		"message": "下載失敗 \n\n $NAME$",
+		"description": "當下載失敗時，告知使用者",
+		"placeholders": {
+		  "name" : {
+				"content" : "$1"
+			}
+		}
+	},
+	
 	"UI_detail": {
 		"message": "詳細",
 		"description": ""
@@ -105,7 +125,7 @@
 	},
 	
 	"OP_defaultPath": {
-		"message": "預設下載路徑:",
+		"message": "預設下載路徑：",
 		"description": ""
 	},
 	
@@ -116,7 +136,7 @@
 	},
 	
 	"OP_protocol": {
-		"message": "協定:",
+		"message": "協定：",
 		"description": ""
 	},
 	
@@ -126,7 +146,7 @@
 	},
 	
 	"OP_host": {
-		"message": "地址:",
+		"message": "地址：",
 		"description": ""
 	},
 	
@@ -136,7 +156,7 @@
 	},
 	
 	"OP_port": {
-		"message": "連接埠:",
+		"message": "連接埠：",
 		"description": ""
 	},
 	
@@ -146,7 +166,7 @@
 	},
 	
 	"OP_interface": {
-		"message": "接口:",
+		"message": "接口：",
 		"description": ""
 	},
 	
@@ -156,7 +176,7 @@
 	},
 	
 	"OP_token": {
-		"message": "金鑰:",
+		"message": "金鑰：",
 		"description": ""
 	},
 	
@@ -166,7 +186,7 @@
 	},
 	
 	"OP_zoom": {
-		"message": "縮放倍數:",
+		"message": "縮放倍數：",
 		"description": ""
 	},
 	
@@ -175,8 +195,38 @@
 		"description": ""
 	},
 	
+	"OP_sound": {
+		"message": "下載完成音效：",
+		"description": ""
+	},
+	
+	"OP_sound0": {
+		"message": "無",
+		"description": ""
+	},
+	
+	"OP_sound1": {
+		"message": "音效1",
+		"description": ""
+	},
+	
+	"OP_sound2": {
+		"message": "音效2",
+		"description": ""
+	},
+	
+	"OP_sound3": {
+		"message": "音效3",
+		"description": ""
+	},
+	
+	"OPN_sound": {
+		"message": "選擇一個下載完成音效",
+		"description": ""
+	},
+	
 	"OP_advanced": {
-		"message": "進階選項:",
+		"message": "進階選項：",
 		"description": ""
 	},
 	
@@ -247,6 +297,16 @@
 	
 	"OPN_chgLog": {
 		"message": "更新後自動顯示更新日誌",
+		"description": ""
+	},
+	
+	"OP_badge": {
+		"message": "顯示目前正在下載的數量",
+		"description": ""
+	},
+	
+	"OPN_badge": {
+		"message": "在圖標上顯示目前正在下載的數量",
 		"description": ""
 	},
 		

@@ -48,6 +48,26 @@
 		}
 	},
 	
+	"download_complete": {
+		"message": "下载完成 \n\n $NAME$",
+		"description": "当下载完成时，告知使用者",
+		"placeholders": {
+		  "name" : {
+				"content" : "$1"
+			}
+		}
+	},
+	
+	"download_error": {
+		"message": "下载失败 \n\n $NAME$",
+		"description": "当下载失败时，告知使用者",
+		"placeholders": {
+		  "name" : {
+				"content" : "$1"
+			}
+		}
+	},
+	
 	"UI_detail": {
 		"message": "详情",
 		"description": ""
@@ -105,7 +125,7 @@
 	},
 	
 	"OP_defaultPath": {
-		"message": "默认下载路径:",
+		"message": "默认下载路径：",
 		"description": ""
 	},
 	
@@ -116,7 +136,7 @@
 	},
 	
 	"OP_protocol": {
-		"message": "协议:",
+		"message": "协议：",
 		"description": ""
 	},
 	
@@ -131,7 +151,7 @@
 	},
 	
 	"OP_host": {
-		"message": "地址:",
+		"message": "地址：",
 		"description": ""
 	},
 	
@@ -141,7 +161,7 @@
 	},
 	
 	"OP_port": {
-		"message": "端口:",
+		"message": "端口：",
 		"description": ""
 	},
 	
@@ -151,7 +171,7 @@
 	},
 	
 	"OP_interface": {
-		"message": "接口:",
+		"message": "接口：",
 		"description": ""
 	},
 	
@@ -161,7 +181,7 @@
 	},
 	
 	"OP_token": {
-		"message": "密钥:",
+		"message": "密钥：",
 		"description": ""
 	},
 	
@@ -171,7 +191,7 @@
 	},
 	
 	"OP_zoom": {
-		"message": "缩放倍数:",
+		"message": "缩放倍数：",
 		"description": ""
 	},
 	
@@ -180,8 +200,38 @@
 		"description": ""
 	},
 	
+	"OP_sound": {
+		"message": "下载完成音效：",
+		"description": ""
+	},
+	
+	"OP_sound0": {
+		"message": "无",
+		"description": ""
+	},
+	
+	"OP_sound1": {
+		"message": "音效1",
+		"description": ""
+	},
+	
+	"OP_sound2": {
+		"message": "音效2",
+		"description": ""
+	},
+	
+	"OP_sound3": {
+		"message": "音效3",
+		"description": ""
+	},
+	
+	"OPN_sound": {
+		"message": "选择一个下载完成音效",
+		"description": ""
+	},
+	
 	"OP_advanced": {
-		"message": "进阶选项:",
+		"message": "进阶选项：",
 		"description": ""
 	},
 	
@@ -252,6 +302,16 @@
 	
 	"OPN_chgLog": {
 		"message": "更新后自动显示更新日誌",
+		"description": ""
+	},
+	
+	"OP_badge": {
+		"message": "显示目前正在下载的数量",
+		"description": ""
+	},
+	
+	"OPN_badge": {
+		"message": "在图标上显示目前正在下载的数量",
 		"description": ""
 	},
 		

@@ -12,6 +12,7 @@ config.command = {
 			interf: "jsonrpc",
 			token: "",
 			zoom: "1",
+			sound: "3",
 			menu: false,
 			shutdown: false,
 			aggressive: false,
@@ -19,6 +20,7 @@ config.command = {
 			auto: true,
 			autoSet: true,
 			chgLog: true,
+			badge: true,
 		};
 	}
 };
