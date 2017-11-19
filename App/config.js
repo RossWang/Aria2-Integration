@@ -21,6 +21,7 @@ config.command = {
 			autoSet: true,
 			chgLog: true,
 			badge: true,
+			cmDownPanel: true,
 		};
 	}
 };

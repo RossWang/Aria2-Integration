@@ -25,6 +25,7 @@ function save() {
 	const autoSet = document.getElementById('autoSet').checked;
 	const chgLog = document.getElementById('chgLog').checked;
 	const badge = document.getElementById('badge').checked;
+	const cmDownPanel = document.getElementById('cmDownPanel').checked;
 	const dpHeight = document.getElementById('dpHeight').value;
 	const dpWidth = document.getElementById('dpWidth').value;
 	if (!windowLoc){
@@ -55,6 +56,7 @@ function save() {
 		autoSet,
 		chgLog,
 		badge,
+		cmDownPanel,
 		dpHeight,
 		dpWidth
 	}, () => {
@@ -97,6 +99,7 @@ function restore() {
 		document.getElementById('autoSet').checked = prefs.autoSet;
 		document.getElementById('chgLog').checked = prefs.chgLog;
 		document.getElementById('badge').checked = prefs.badge;
+		document.getElementById('cmDownPanel').checked = prefs.cmDownPanel;
 	});
 	browser.storage.local.get(['dpWidth', 'dpHeight'], prefs => {
 		document.getElementById('dpWidth').value = prefs.dpWidth;

@@ -309,6 +309,16 @@
 		"message": "在圖標上顯示目前正在下載的數量",
 		"description": ""
 	},
+	
+	"OP_cmDownPanel": {
+		"message": "顯示下載視窗",
+		"description": ""
+	},
+	
+	"OPN_cmDownPanel": {
+		"message": "從右鍵選單啟動的下載是否要下載視窗",
+		"description": ""
+	},
 		
 	"OP_winWidth": {
 		"message": "下載視窗寬度改變量",

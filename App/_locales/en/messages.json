@@ -140,11 +140,6 @@
 		"description": ""
 	},
 	
-	"OP_secure": {
-		"message": "Secure",
-		"description": ""
-	},
-	
 	"OPN_protocol": {
 		"message": "RPC connection protocol of Aria2.",
 		"description": ""
@@ -312,6 +307,16 @@
 	
 	"OPN_badge": {
 		"message": "Display current active download count on top of the icon",
+		"description": ""
+	},
+	
+	"OP_cmDownPanel": {
+		"message": "Display Download Panel",
+		"description": ""
+	},
+	
+	"OPN_cmDownPanel": {
+		"message": "Whether to display a download panel for the download event trigger from the context menu",
 		"description": ""
 	},
 	

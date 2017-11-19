@@ -624,8 +624,16 @@ function cmCallback (info, tab) {
 				fileSize: "",
 				requestHeaders: requestHeaders
 			}
+			browser.storage.local.get(config.command.guess, item => {
+				if (item.cmDownPanel) {
+					downloadPanel(d);
+				}
+				else {
+					sendTo(url,"","",requestHeaders);
+				}
+			});
 			//sendTo(url,"","",requestHeaders);
-			downloadPanel(d);
+			//downloadPanel(d);
 			console.log(info);
 		}, (e) => {
 			console.log("Error", e);
@@ -638,8 +646,16 @@ function cmCallback (info, tab) {
 				fileSize: "",
 				requestHeaders: requestHeaders
 			}
+			browser.storage.local.get(config.command.guess, item => {
+				if (item.cmDownPanel) {
+					downloadPanel(d);
+				}
+				else {
+					sendTo(url,"","",requestHeaders);
+				}
+			});
 			//sendTo(url,"","",requestHeaders);
-			downloadPanel(d);
+			//downloadPanel(d);
 			console.log(info);
 		} );;
 	}

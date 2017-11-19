@@ -140,11 +140,6 @@
 		"description": ""
 	},
 	
-	"OP_secure": {
-		"message": "安全",
-		"description": ""
-	},
-	
 	"OPN_protocol": {
 		"message": "Aria2的RPC通讯协议。",
 		"description": ""
@@ -312,6 +307,16 @@
 	
 	"OPN_badge": {
 		"message": "在图标上显示目前正在下载的数量",
+		"description": ""
+	},
+	
+	"OP_cmDownPanel": {
+		"message": "显示下载视窗",
+		"description": ""
+	},
+	
+	"OPN_cmDownPanel": {
+		"message": "从右键选单启动的下载是否要下载视窗",
 		"description": ""
 	},
 		
