@@ -141,11 +141,7 @@
 	},
 	
 	"OPN_protocol": {
-<<<<<<< HEAD
 		"message": "Aria2的RPC通訊協定。可使用ws,wss,http,https，使用WebSocket時功能較多",
-=======
-		"message": "Aria2的RPC通訊協定。可使用ws,wss,http,https，使用WebSocket時功能較多"",
->>>>>>> a87e9b0bb900224dec9037fe3cea640b4ca1f7d1
 		"description": ""
 	},
 	
