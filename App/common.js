@@ -163,22 +163,36 @@ function sendTo(url, fileName, filePath, header) {
 								},
 								function (err) {
 									// retry again after 3 seconds
-									setTimeout( () => {aria2.addUri([url], params).then(
-										function (res) {
-											monitor(options);
-											notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-										},
-										function (err) {
-											notify(browser.i18n.getMessage("error_connect"));
-										}
-									);}, 3000);
+									setTimeout( () => {
+										aria2.addUri([url], params).then(
+											function (res) {
+												monitor(options);
+												notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
+											},
+											function (err) {
+												console.log('Error', err);
+												notify(browser.i18n.getMessage("error_connect"));
+											}
+										);
+									}, 3000);
 								}
 							);
 							aria2.close();
 						},
 						function (err) {
-							console.log('Error', err);
-							notify(browser.i18n.getMessage("error_connect"));
+							// retry again after 3 seconds
+							setTimeout( () => {
+								aria2.addUri([url], params).then(
+									function (res) {
+										monitor(options);
+										notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
+									},
+									function (err) {
+										console.log('Error', err);
+										notify(browser.i18n.getMessage("error_connect"));
+									}
+								);
+							}, 3000);
 						}
 					);
 				}
@@ -189,15 +203,17 @@ function sendTo(url, fileName, filePath, header) {
 						},
 						function (err) {
 							// retry again after 3 seconds
-							setTimeout( () => {aria2.addUri([url], params).then(
-								function (res) {
-									notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-								},
-								function (err) {
-									console.log('Error', err);
-									notify(browser.i18n.getMessage("error_connect"));
-								}
-							);}, 3000);
+							setTimeout( () => {
+								aria2.addUri([url], params).then(
+									function (res) {
+										notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
+									},
+									function (err) {
+										console.log('Error', err);
+										notify(browser.i18n.getMessage("error_connect"));
+									}
+								);
+							}, 3000);
 						}
 					);
 				}
