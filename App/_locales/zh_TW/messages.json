@@ -141,7 +141,7 @@
 	},
 	
 	"OPN_protocol": {
-		"message": "Aria2的RPC通訊協定。",
+		"message": "Aria2的RPC通訊協定。可使用ws,wss,http,https，使用WebSocket時功能較多"",
 		"description": ""
 	},
 	
@@ -221,7 +221,7 @@
 	},
 	
 	"OPN_sound": {
-		"message": "選擇一個下載完成音效",
+		"message": "[Websocket]選擇一個下載完成音效",
 		"description": ""
 	},
 	
@@ -306,7 +306,7 @@
 	},
 	
 	"OPN_badge": {
-		"message": "在圖標上顯示目前正在下載的數量",
+		"message": "[Websocket]在圖標上顯示目前正在下載的數量",
 		"description": ""
 	},
 	

@@ -141,7 +141,7 @@
 	},
 	
 	"OPN_protocol": {
-		"message": "RPC connection protocol of Aria2.",
+		"message": "RPC connection protocol of Aria2. Support ws, wss, http and https. Using Websocket will have more function.",
 		"description": ""
 	},
 	
@@ -221,7 +221,7 @@
 	},
 	
 	"OPN_sound": {
-		"message": "Select a sound for download compete",
+		"message": "[Websocket]Select a sound for download compete",
 		"description": ""
 	},
 	
@@ -306,7 +306,7 @@
 	},
 	
 	"OPN_badge": {
-		"message": "Display current active download count on top of the icon",
+		"message": "[Websocket]Display current active download count on top of the icon",
 		"description": ""
 	},
 	
