@@ -1,3 +1,22 @@
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/RossWang/Aria2-Integration/compare/0.2.1...0.2.2) (2017-11-22)
+
+
+### Bug Fixes
+
+* Fix A File Name Parsing Issue ([98c07f5](https://github.com/RossWang/Aria2-Integration/commit/98c07f5))
+
+
+### Features
+
+* 'Authorization' Header Support For Auto Observer ([3cff2a2](https://github.com/RossWang/Aria2-Integration/commit/3cff2a2))
+* Add an option to disable Download Panel for the context menu downloads. ([b4e6a40](https://github.com/RossWang/Aria2-Integration/commit/b4e6a40)), closes [#7](https://github.com/RossWang/Aria2-Integration/issues/7)
+* Add download complete notification ([628bfc5](https://github.com/RossWang/Aria2-Integration/commit/628bfc5))
+* Close notifications after two seconds ([3acedbc](https://github.com/RossWang/Aria2-Integration/commit/3acedbc))
+* Display Changelog After Update ([71ffefd](https://github.com/RossWang/Aria2-Integration/commit/71ffefd))
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/RossWang/Aria2-Integration/compare/0.2.0...0.2.1) (2017-11-17)
 
