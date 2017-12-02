@@ -1,3 +1,13 @@
+<a name="0.2.3"></a>
+## [0.2.3](https://github.com/RossWang/Aria2-Integration/compare/0.2.2...0.2.3) (2017-12-02)
+
+
+### Bug Fixes
+
+* Fix a mistake about the download completed sound ([1f386ed](https://github.com/RossWang/Aria2-Integration/commit/1f386ed))
+
+
+
 <a name="0.2.2"></a>
 ## [0.2.2](https://github.com/RossWang/Aria2-Integration/compare/0.2.1...0.2.2) (2017-11-22)
 
