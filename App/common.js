@@ -17,7 +17,7 @@ function monitor(options) {
 			if (e.data[0] == "complete") {
 				notify(browser.i18n.getMessage("download_complete", e.data[1] ));
 				if (item.sound != "0") {
-					var audio = new Audio('data/sound/complete' + item.sound + '.wav');
+					var audio = new Audio('data/Sound/complete' + item.sound + '.wav');
 					audio.play();
 				}
 			}	
