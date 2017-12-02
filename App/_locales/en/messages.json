@@ -49,8 +49,8 @@
 	},
 	
 	"download_complete": {
-		"message": "Download Complete \n\n $NAME$",
-		"description": "notify the user when download complete",
+		"message": "Download Completed \n\n $NAME$",
+		"description": "notify the user when download completed",
 		"placeholders": {
 		  "name" : {
 				"content" : "$1"
