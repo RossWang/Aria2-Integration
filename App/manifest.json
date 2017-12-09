@@ -1,7 +1,7 @@
 {
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "0.2.3",
+  "version": "0.2.4b",
   "default_locale": "en",
   "manifest_version": 2,
   "permissions": [
@@ -20,7 +20,8 @@
     "scripts": [
       "config.js",
       "common.js",
-	  "/lib/tool.js",
+	  "/lib/aria.js",
+	  "/lib/tools.js",
 	  "/lib/polygoat.js"
     ]
   },

@@ -1,7 +1,5 @@
 'use strict';
 var config = {};
-config.name = browser.i18n.getMessage("extensionName");
-config.cookies = false;
 config.command = {
 	get guess() {
 		return {

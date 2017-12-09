@@ -1,8 +1,10 @@
-'strict'
-importScripts("tool.js");
-importScripts("polygoat.js");
+'use strict'
+
 postMessage("init");
-var aria2
+importScripts("aria.js");
+importScripts("polygoat.js");
+var aria2;
+
 onmessage = function(e) {
 	if (aria2 == undefined){
 		connect(e.data[0]);
@@ -71,12 +73,12 @@ function connect(options) {
 	};
 	aria2.open().then(() => {
 		aria2.tellActive(["gid"]).then((info) => {
-		postMessage(["badge", info.length]);
-		if(info.length == 0) {
-			aria2.close();
-			postMessage("close");
-			close();
-		}
+			postMessage(["badge", info.length]);
+			if(info.length == 0) {
+				aria2.close();
+				postMessage("close");
+				close();
+			}
 		});
 	});
 }

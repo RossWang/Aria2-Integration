@@ -73,9 +73,7 @@ function save() {
 
 function restore() {
 	// Use default value color = 'red' and likesColor = true.
-	browser.storage.local.get(Object.assign(config.command.guess, {
-		cookie: false
-	}), prefs => {
+	browser.storage.local.get(Object.assign(config.command.guess), prefs => {
 		document.getElementById('path').value = prefs.path;
 		document.getElementById('protocol').value = prefs.protocol;
 		document.getElementById('host').value = prefs.host;
