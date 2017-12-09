@@ -1,0 +1,357 @@
+{
+	"extensionName": {
+		"message": "Aria2-Download-Manager Integration",
+		"description": "Name der Erweiterung."
+	},
+
+	"extensionDescription": {
+		"message": "Ersetzt den integrierten Download-Manager. Wenn aktiviert, werden Download-Links erkannt, zu diesem Add-on umgeleiten und an Aria2 gesendet.",
+		"description": "Beschreibung der Erweiterung."
+	},
+	
+	"direction": {
+		"message": "ltr",
+		"description": "Schreibrichtung"
+	},
+	
+	"enabled": {
+		"message": "AKTIVIERT",
+		"description": ""
+	},
+	
+	"disabled": {
+		"message": "DEAKTIVIERT",
+		"description": ""
+	},
+  
+	"error_setConfig": {
+		"message": "Zuerst müssen die Einstellungen festgelegt werden."
+	},
+	
+	"error_connect": {
+		"message": "Irgendetwas ist schief gelaufen. Überprüfe die Eingabe, die Optionen und den Status von Aria2 und versuche es erneut.",
+		"description": "Benachrichtige den Benutzer, wenn die Anfrage an Aria2 zu einem Timeout führt oder wenn sie keine Erfolgsmeldung zurück gibt."
+	},
+	
+	"error_notSupported": {
+		"message": "Nicht unterstützt",
+		"description": ""
+	},
+	
+	"success_connect": {
+		"message": "Lädt $NAME$ herunter",
+		"description": "Benachrichtige den Benutzer, wenn die Anfrage an Aria2 erfolgreich ist.",
+		"placeholders": {
+		  "name" : {
+				"content" : "$1"
+			}
+		}
+	},
+	
+	"download_complete": {
+		"message": "Download abgeschlossen \n\n $NAME$",
+		"description": "Benachrichtige den Benutzer, wenn der Download abgeschlossen ist.",
+		"placeholders": {
+		  "name" : {
+				"content" : "$1"
+			}
+		}
+	},
+	
+	"download_error": {
+		"message": "Download fehlgeschlagen \n\n $NAME$",
+		"description": "Benachrichtige den Benutzer, wenn der Download fehlschlägt.",
+		"placeholders": {
+		  "name" : {
+				"content" : "$1"
+			}
+		}
+	},
+	
+	"UI_detail": {
+		"message": "Details",
+		"description": ""
+	},
+	
+	"UI_download": {
+		"message": "Download",
+		"description": ""
+	},
+	
+	"UI_save": {
+		"message": "Speichern",
+		"description": "für Download-Panel"
+	},
+	
+	"UI_saveas": {
+		"message": "Speichern unter",
+		"description": ""
+	},
+	
+	"UI_open": {
+		"message": "Öffnen",
+		"description": ""
+	},
+	
+	"UI_fileName": {
+		"message": "Dateiname",
+		"description": ""
+	},
+	
+	"UI_filePath": {
+		"message": "Dateipfad",
+		"description": ""
+	},
+	
+	"UI_from": {
+		"message": "Von",
+		"description": ""
+	},
+	
+	"OP_message1": {
+		"message": "Aria2 muss selbst heruntergeladen und gestartet werden. Fülle zumindest 'Protokoll', 'Host', 'Port' und 'Interface' aus und klicke dann auf Speichern.",
+		"description": ""
+	},
+	
+	"OP_message2": {
+		"message": "Wenn du Aria2 nicht manuell starten möchtest, kannst du ein Programm schreiben, dass Aria2 im Hintergrund startet und sich im System unter 'Autostart' oder als 'Uri-Schema' registriert.",
+		"description": ""
+	},
+	
+	
+	"OP_message3": {
+		"message": "Die Beispieldatei findest du hier.",
+		"description": ""
+	},
+	
+	"OP_defaultPath": {
+		"message": "Standard Downloadpfad:",
+		"description": ""
+	},
+	
+	
+	"OPN_defaultPath": {
+		"message": "Downloadpfad von Aria2 (exklusiv), optional.",
+		"description": ""
+	},
+	
+	"OP_protocol": {
+		"message": "Protokoll:",
+		"description": ""
+	},
+	
+	"OPN_protocol": {
+		"message": "RPC-Verbindungsprotokoll von Aria2. Unterstützt ws, wss, http und https. Websocket bietet mehr Funktionen.",
+		"description": ""
+	},
+	
+	"OP_host": {
+		"message": "Host:",
+		"description": ""
+	},
+	
+	"OPN_host": {
+		"message": "RPC-Host von Aria2. Es können IP oder Domainnamen verwendet werden.",
+		"description": ""
+	},
+	
+	"OP_port": {
+		"message": "Port:",
+		"description": ""
+	},
+	
+	"OPN_port": {
+		"message": "Aria2 RPC-Port.",
+		"description": ""
+	},
+	
+	"OP_interface": {
+		"message": "Schnittstelle:",
+		"description": ""
+	},
+	
+	"OPN_interface": {
+		"message": "Aria2 RPC-Adresse. Der Standardwert ist 'jsonrpc'.",
+		"description": ""
+	},
+	
+	"OP_token": {
+		"message": "Token:",
+		"description": ""
+	},
+	
+	"OPN_token": {
+		"message": "Aria2 RPC-Secret, optional.",
+		"description": ""
+	},
+	
+	"OP_zoom": {
+		"message": "Vergrößerung:",
+		"description": ""
+	},
+	
+	"OPN_zoom": {
+		"message": "Zoomfaktor des Download-Panels. Standardwert ist 1.",
+		"description": ""
+	},
+	
+	"OP_sound": {
+		"message": "Klang für abgeschlossenen Downlod:",
+		"description": ""
+	},
+	
+	"OP_sound0": {
+		"message": "Ohne",
+		"description": ""
+	},
+	
+	"OP_sound1": {
+		"message": "Klang 1",
+		"description": ""
+	},
+	
+	"OP_sound2": {
+		"message": "Klang 2",
+		"description": ""
+	},
+	
+	"OP_sound3": {
+		"message": "Klang 3",
+		"description": ""
+	},
+	
+	"OPN_sound": {
+		"message": "[Websocket] Wähle einen Klang für einen abgeschlossenen Download.",
+		"description": ""
+	},
+	
+	"OP_advanced": {
+		"message": "Erweitert:",
+		"description": ""
+	},
+	
+	"OP_contextMenu": {
+		"message": "Füge Kontextmenüs hinzu",
+		"description": ""
+	},
+	
+	"OPN_contextMenu": {
+		"message": "Füge Kontextmenüs für Links, Videos und Audiodateien hinzu.",
+		"description": ""
+	},
+	
+	"OP_shutdown": {
+		"message": "Beende Aria2c wenn der Browser geschlossen wird",
+		"description": ""
+	},
+	
+	"OPN_shutdown": {
+		"message": "Sende '--stop-with-process=<PID>'-Befehl zu Aria2c.",
+		"description": ""
+	},
+	
+	"OP_aggressive": {
+		"message": "Aggressiver Modus",
+		"description": ""
+	},
+	
+	"OPN_aggressive": {
+		"message": "Erkenne Download-Links aggressiv. Kann Probleme verursachen.",
+		"description": ""
+	},
+	
+	"OP_winLoc": {
+		"message": "Fensterposition speichern",
+		"description": ""
+	},
+
+	"OPN_winLoc": {
+		"message": "Die Position des Downloadfensters wird gespeichert (Firefox hat jedoch einen Fehler und kann die Position des Fensters nicht festlegen).",
+		"description": ""
+	},
+	
+	"OP_auto": {
+		"message": "Aria2 automatisch starten",
+		"description": ""
+	},
+	
+	"OPN_auto": {
+		"message": "Aria2 automatisch mit Download starten.",
+		"description": ""
+	},
+	
+	"OP_autoSet": {
+		"message": "AriaNg automatisch auswählen",
+		"description": ""
+	},
+	
+	"OPN_autoSet": {
+		"message": "AriaNg automatisch auswählen, wenn der Benutzer auf 'Details' klickt.",
+		"description": ""
+	},
+	
+	"OP_chgLog": {
+		"message": "Zeige Änderungsprotokoll",
+		"description": ""
+	},
+	
+	"OPN_chgLog": {
+		"message": "Zeige Änderungsprotokoll nach Update",
+		"description": ""
+	},
+	
+	"OP_badge": {
+		"message": "Zeige aktuelle Anzahl der aktiven Downloads",
+		"description": ""
+	},
+	
+	"OPN_badge": {
+		"message": "[Websocket] Zeige aktuelle Anzahl der aktiven Downloads oben auf dem Icon.",
+		"description": ""
+	},
+	
+	"OP_cmDownPanel": {
+		"message": "Zeige Download-Panel",
+		"description": ""
+	},
+	
+	"OPN_cmDownPanel": {
+		"message": "Zeige das Download-Panel für Downloads an, die mit dem Kontextmenü gestartet wurden.",
+		"description": ""
+	},
+	
+	"OP_winWidth": {
+		"message": "Fensterbreite des Download-Panels",
+		"description": ""
+	},
+
+	"OPN_winWidth": {
+		"message": "Feineinstellung der Download-Fenster-Breite.",
+		"description": ""
+	},
+	
+	"OP_winHeight": {
+		"message": "Fensterhöhe des Download-Panels",
+		"description": ""
+	},
+
+	"OPN_winHeight": {
+		"message": "Feineinstellung der Download-Fenster-Höhe.",
+		"description": ""
+	},
+	
+	"OP_save": {
+		"message": "Speichern",
+		"description": "Speichern-Button"
+	},
+	
+	"OP_saveComplete": {
+		"message": "Einstellungen gespeichert.",
+		"description": ""
+	},
+	
+	"CM_title": {
+		"message": "Download mit Aria2",
+		"description": "Kontextmenü"
+	}
+}
