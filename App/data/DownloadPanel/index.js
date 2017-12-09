@@ -71,54 +71,90 @@ function download() {
 	const url = document.getElementById('url').value;
 	const fn = document.getElementById('fn').value;
 	const fp = document.getElementById('fp').value;
-	var sending = browser.runtime.sendMessage({
-		get: "download",
-		url: url,
-		fileName: fn,
-		filePath: fp,
-		header: headers,
+	verifyFileName(fn).then((e) => {
+		if (e.length != 0) {
+			document.getElementById('fn').style = "border: 1px solid red;box-shadow: red 0px 0px 4px;";
+			document.getElementById('fn').onchange = function() {
+				console.log("123");
+				document.getElementById('fn').style = "";
+				document.getElementById('fn').onchange = null;
+			};
+		}
+		else {
+			var sending = browser.runtime.sendMessage({
+				get: "download",
+				url: url,
+				fileName: fn,
+				filePath: fp,
+				header: headers,
+			});
+			sending.then(handleResponse, handleError);
+			saveWinLoc();
+		}
 	});
-	sending.then(handleResponse, handleError);
-	saveWinLoc();
 }
 
 function save() {
 	const url = document.getElementById('url').value;
 	const fn = document.getElementById('fn').value;
 	const fp = document.getElementById('fp').value;
-	var getting = browser.windows.getCurrent();
-	getting.then((windowInfo) => {
-		var sending = browser.runtime.sendMessage({
-			get: "save",
-			url: url,
-			fileName: fn,
-			filePath: fp,
-			header: headers,
-			incognito: windowInfo.incognito,
-		});
-		sending.then(handleResponse, handleError);
-	}, (e) => console.log(e));
-	saveWinLoc();
+	verifyFileName(fn).then((e) => {
+		if (e.length != 0) {
+			document.getElementById('fn').style = "border: 1px solid red;box-shadow: red 0px 0px 4px;";
+			document.getElementById('fn').onchange = function() {
+				console.log("123");
+				document.getElementById('fn').style = "";
+				document.getElementById('fn').onchange = null;
+			};
+		}
+		else {
+			var getting = browser.windows.getCurrent();
+			getting.then((windowInfo) => {
+				var sending = browser.runtime.sendMessage({
+					get: "save",
+					url: url,
+					fileName: fn,
+					filePath: fp,
+					header: headers,
+					incognito: windowInfo.incognito,
+				});
+				sending.then(handleResponse, handleError);
+			}, (e) => console.log(e));
+			saveWinLoc();
+		}
+	});
 }
 
 function saveas() {
 	const url = document.getElementById('url').value;
 	const fn = document.getElementById('fn').value;
 	const fp = document.getElementById('fp').value;
-	var getting = browser.windows.getCurrent();
-	getting.then((windowInfo) => {
-		var sending = browser.runtime.sendMessage({
-			get: "saveas",
-			url: url,
-			fileName: fn,
-			filePath: fp,
-			header: headers,
-			wid: windowInfo.id,
-			incognito: windowInfo.incognito,
-		});
-		sending.then(handleResponse, handleError);
-	}, (e) => console.log(e));
-	saveWinLoc();
+	verifyFileName(fn).then((e) => {
+		if (e.length != 0) {
+			document.getElementById('fn').style = "border: 1px solid red;box-shadow: red 0px 0px 4px;";
+			document.getElementById('fn').onchange = function() {
+				console.log("123");
+				document.getElementById('fn').style = "";
+				document.getElementById('fn').onchange = null;
+			};
+		}
+		else {
+			var getting = browser.windows.getCurrent();
+			getting.then((windowInfo) => {
+				var sending = browser.runtime.sendMessage({
+					get: "saveas",
+					url: url,
+					fileName: fn,
+					filePath: fp,
+					header: headers,
+					wid: windowInfo.id,
+					incognito: windowInfo.incognito,
+				});
+				sending.then(handleResponse, handleError);
+			}, (e) => console.log(e));
+			saveWinLoc();
+		}
+	});
 }
 
 function tmpopen() {

@@ -304,7 +304,7 @@ function getRequestHeaders(id) {
 	return requestHeaders;
 }
 
-function prepareDownload(d) {
+async function prepareDownload(d) {
 	var details = {};
 	details.url = d.url;
 	
@@ -326,11 +326,18 @@ function prepareDownload(d) {
 	// decode URI Component
 	details.url = decodeURIComponent(details.url);
 	details.fileName = decodeURIComponent(details.fileName);
-	
+
 	// file name cannot have ""
 	details.fileName = details.fileName.replace('\";', '');
 	details.fileName = details.fileName.replace('\"', '');
 	details.fileName = details.fileName.replace('\"', '');
+	
+	// correct File Name
+	var getting = correctFileName(details.fileName);
+	await getting.then ((name) => {
+		details.fileName = name;
+		}
+	);
 	
 	// get file size
 	details.fileSize = getFileSize(d);

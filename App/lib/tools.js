@@ -1,5 +1,37 @@
 
 'use strict';
+async function verifyFileName(name) {
+	var tmp = [];
+	await browser.runtime.getPlatformInfo().then( (e) => {
+		if (name.match(/[<>:"\/\\|?*\x00-\x1F]/g) != null) {
+			tmp = name.match(/[<>:"\/\\|?*\x00-\x1F]/g);
+		}
+		if (e.os == "win") {
+			if (name.search(/^(con|prn|aux|nul|com[0-9]|lpt[0-9])$/i) != -1)
+				tmp = tmp.concat(name);
+			if (name[name.length - 1] == ' ' || name[name.length - 1] == '.')
+				tmp = tmp.concat("Filenames cannot end in a space or dot.");
+		}
+	});
+	console.log(tmp);
+	return tmp;
+}
+
+async function correctFileName(name) {
+	var tmp = name;
+	await browser.runtime.getPlatformInfo().then( (e) => {
+		tmp = tmp.replace(/[<>:"\/\\|?*\x00-\x1F]/g, '_');
+		if (e.os == "win") {
+			if (tmp.search(/^(con|prn|aux|nul|com[0-9]|lpt[0-9])$/i) != -1)
+				tmp = '_' + tmp;
+			if (tmp[tmp.length - 1] == ' ' || tmp[tmp.length - 1] == '.')
+				tmp = tmp.slice(0, tmp.length - 1);
+		}
+	});
+	console.log(tmp);
+	return tmp;
+}
+
 function monitor(options) {
 	if (mon == undefined) {
 		mon = new Worker("/lib/worker.js");
