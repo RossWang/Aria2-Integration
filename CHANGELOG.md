@@ -1,3 +1,14 @@
+<a name="0.2.4"></a>
+## [0.2.4](https://github.com/RossWang/Aria2-Integration/compare/0.2.3...0.2.4) (2017-12-13)
+
+
+### Bug Fixes
+
+* Fix a font-size issue on Linux ([feecd9b](https://github.com/RossWang/Aria2-Integration/commit/feecd9b)), closes [#9](https://github.com/RossWang/Aria2-Integration/issues/9)
+* Verify the file name before download. ([463db18](https://github.com/RossWang/Aria2-Integration/commit/463db18)), closes [#10](https://github.com/RossWang/Aria2-Integration/issues/10)
+
+
+
 <a name="0.2.3"></a>
 ## [0.2.3](https://github.com/RossWang/Aria2-Integration/compare/0.2.2...0.2.3) (2017-12-02)
 
