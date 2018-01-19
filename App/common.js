@@ -383,6 +383,7 @@ function observeResponse(d) {
 				&& contentType.slice(12, 17) != "xhtml" 
 				&& contentType.slice(12, 23) != "x-xpinstall"
 				&& contentType.slice(12, 29) != "x-shockwave-flash" 
+				&& contentType.slice(12, 15) != "rss"
 				&& contentType.slice(12, 16) != "json" ) {
 				//console.log(contentType);
 				prepareDownload(d);
