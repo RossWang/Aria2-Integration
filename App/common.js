@@ -289,12 +289,17 @@ function getFileSize(d){
 	return fileSize;
 }
 
-function getRequestHeaders(id) {
+function getRequestHeaders(id, ua) {
 	// create header
 	var id1;
 	var requestHeaders = [];
-	var getheader = ['Referer', 'Cookie', 'Cookie2', 'Authorization'];
-	for (var i = 0; i < 4; i++) {
+	if (ua){
+		var getheader = ['Referer', 'Cookie', 'Cookie2', 'Authorization', 'User-Agent'];
+	}
+	else {
+		var getheader = ['Referer', 'Cookie', 'Cookie2', 'Authorization'];
+	}
+	for (var i = 0; i < getheader.length; i++) {
 		id1 = request[id].requestHeaders.findIndex(x => x.name === getheader[i]);
 		if (id1 >= 0) {
 			requestHeaders[i] = request[id].requestHeaders[id1].name + ": " +
@@ -312,7 +317,11 @@ async function prepareDownload(d) {
 	var id = request.findIndex(x => x.requestId === d.requestId);
 	if (id >= 0) {
 		// create header
-		details.requestHeaders = getRequestHeaders(id);
+		//details.requestHeaders = getRequestHeaders(id);
+		var get = browser.storage.local.get(config.command.guess);
+		await get.then(item => {
+			details.requestHeaders = getRequestHeaders(id, item.ua);
+		});
 		// delete request item
 		request.splice(id, 1);
 	}
