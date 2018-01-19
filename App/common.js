@@ -128,7 +128,7 @@ function save(url, fileName, filePath, header, as, wid, incog) {
 		var downloading = browser.downloads.download({
 			//conflictAction: "prompt",  //not work
 			filename: fileName,
-			//incognito: incog,  //not work
+			incognito: incog,  //not work under 57
 			saveAs: as,
 			url: url,
 		});
@@ -136,7 +136,7 @@ function save(url, fileName, filePath, header, as, wid, incog) {
 	else {
 		var downloading = browser.downloads.download({
 			//conflictAction: "prompt",  //not work
-			//incognito: incog,  //not work
+			incognito: incog,  //not work under 57
 			saveAs: as,
 			url: url,
 		});
