@@ -400,7 +400,7 @@ function observeResponse(d) {
 					prepareDownload(d);
 					return {cancel: true};
 				} 
-				else if (contentType.slice(0, 4) == "vedio") {
+				else if (contentType.slice(0, 4) == "video") {
 					//console.log(contentType);
 					prepareDownload(d);
 					return {cancel: true};
