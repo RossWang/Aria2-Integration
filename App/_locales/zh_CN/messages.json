@@ -8,6 +8,16 @@
 		"message": "取代内置的下载器。当开启时侦测下载连结，导引到本扩展并传送到Aria2",
 		"description": "扩展的简介"
 	},
+		
+	"translator": {
+		"message": "",
+		"description": ""
+	},
+	
+	"translatorMessage": {
+		"message": "",
+		"description": "you can leave it blank if you have nothing to say"
+	},
 	
 	"direction": {
 		"message": "ltr",
@@ -339,6 +349,86 @@
 		"message": "微调下载窗口高度。",
 		"description": ""
 	},
+		
+	"OP_fileSizeLimit": {
+		"message": "文件大小限制:",
+		"description": ""
+	},
+
+	"OPN_fileSizeLimit": {
+		"message": "可以触发下载的最小文件大小(bytes)",
+		"description": ""
+	},
+	
+	"OP_typeFilter": {
+		"message": "文件格式过滤:",
+		"description": ""
+	},
+
+	"OPN_typeFilterA": {
+		"message": "正则表达式: 包含的文件格式",
+		"description": ""
+	},
+	
+	"OPN_typeFilterB": {
+		"message": "正则表达式: 除外的文件格式",
+		"description": ""
+	},
+	
+	"OP_urlFilter": {
+		"message": "第址过滤:",
+		"description": ""
+	},
+
+	"OPN_urlFilterA": {
+		"message": "正则表达式: 包含的 URL",
+		"description": ""
+	},
+	
+	"OPN_urlFilterB": {
+		"message": "正则表达式: 除外的 URL",
+		"description": ""
+	},
+	
+	"OP_title": {
+		"message": "Aria2 下载器整合元件 选项",
+		"description": ""
+	},
+	
+	"OP_general": {
+		"message": "一般",
+		"description": ""
+	},
+	
+	"OP_rpcServer": {
+		"message": "RPC 服务器",
+		"description": ""
+	},
+	
+	"OP_rpcDefault": {
+		"message": "默认服务器",
+		"description": ""
+	},
+	
+	"OP_rpc2": {
+		"message": "RPC 服务器 2",
+		"description": ""
+	},
+	
+	"OP_rpc3": {
+		"message": "RPC 服务器 3",
+		"description": ""
+	},
+	
+	"OP_exception": {
+		"message": "例外",
+		"description": ""
+	},
+	
+	"OP_about": {
+		"message": "关于",
+		"description": ""
+	},
 	
 	"OP_save": {
 		"message": "保存",
@@ -353,5 +443,40 @@
 	"CM_title": {
 		"message": "使用 Aria2 下载",
 		"description": "右键菜单"
+	},
+	
+	"about_M1": {
+		"message": "什么是 Aria2？",
+		"description": ""
+	},
+	
+	"about_M2": {
+		"message": "本扩展使用 Mayswind 的 AriaNg.",
+		"description": ""
+	},
+	
+	"about_L1": {
+		"message": "扩展主页",
+		"description": ""
+	},
+	
+	"about_L2": {
+		"message": "Aria2 设置范本",
+		"description": ""
+	},
+	
+	"about_L3": {
+		"message": "提交错误或反馈",
+		"description": ""
+	},
+	
+	"about_L4": {
+		"message": "发行说明",
+		"description": ""
+	},
+	
+	"about_L5": {
+		"message": "帮忙翻译",
+		"description": ""
 	}
 }

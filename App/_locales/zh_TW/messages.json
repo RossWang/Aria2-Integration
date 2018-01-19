@@ -8,6 +8,16 @@
 		"message": "取代內建的下載器。當開啟時偵測下載連結，導引到本擴充套件並傳送到Aria2",
 		"description": "擴充套件的簡介"
 	},
+		
+	"translator": {
+		"message": "",
+		"description": ""
+	},
+	
+	"translatorMessage": {
+		"message": "",
+		"description": "you can leave it blank if you have nothing to say"
+	},
 	
 	"direction": {
 		"message": "ltr",
@@ -340,6 +350,86 @@
 		"description": ""
 	},
 	
+	"OP_fileSizeLimit": {
+		"message": "檔案大小限制:",
+		"description": ""
+	},
+
+	"OPN_fileSizeLimit": {
+		"message": "可以觸發下載的最小檔案大小(bytes)",
+		"description": ""
+	},
+	
+	"OP_typeFilter": {
+		"message": "檔案格式過濾:",
+		"description": ""
+	},
+
+	"OPN_typeFilterA": {
+		"message": "正規表達式: 包含的檔案格式",
+		"description": ""
+	},
+	
+	"OPN_typeFilterB": {
+		"message": "正規表達式: 除外的檔案格式",
+		"description": ""
+	},
+	
+	"OP_urlFilter": {
+		"message": "網址過濾:",
+		"description": ""
+	},
+
+	"OPN_urlFilterA": {
+		"message": "正規表達式: 包含的 URL",
+		"description": ""
+	},
+	
+	"OPN_urlFilterB": {
+		"message": "正規表達式: 除外的 URL",
+		"description": ""
+	},
+	
+	"OP_title": {
+		"message": "Aria2 下載器整合元件 選項",
+		"description": ""
+	},
+	
+	"OP_general": {
+		"message": "一般",
+		"description": ""
+	},
+	
+	"OP_rpcServer": {
+		"message": "RPC 伺服器",
+		"description": ""
+	},
+	
+	"OP_rpcDefault": {
+		"message": "預設伺服器",
+		"description": ""
+	},
+	
+	"OP_rpc2": {
+		"message": "RPC 伺服器 2",
+		"description": ""
+	},
+	
+	"OP_rpc3": {
+		"message": "RPC 伺服器 3",
+		"description": ""
+	},
+	
+	"OP_exception": {
+		"message": "例外",
+		"description": ""
+	},
+	
+	"OP_about": {
+		"message": "關於",
+		"description": ""
+	},
+	
 	"OP_save": {
 		"message": "儲存",
 		"description": "儲存按鈕"
@@ -353,5 +443,40 @@
 	"CM_title": {
 		"message": "使用 Aria2 下載",
 		"description": "右鍵選單"
+	},
+	
+	"about_M1": {
+		"message": "什麼是 Aria2？",
+		"description": ""
+	},
+	
+	"about_M2": {
+		"message": "本附加元件使用 Mayswind 的 AriaNg.",
+		"description": ""
+	},
+	
+	"about_L1": {
+		"message": "附加元件首頁",
+		"description": ""
+	},
+	
+	"about_L2": {
+		"message": "Aria2 設定範例",
+		"description": ""
+	},
+	
+	"about_L3": {
+		"message": "提交錯誤或回饋",
+		"description": ""
+	},
+	
+	"about_L4": {
+		"message": "發行說明",
+		"description": ""
+	},
+	
+	"about_L5": {
+		"message": "幫忙翻譯",
+		"description": ""
 	}
 }

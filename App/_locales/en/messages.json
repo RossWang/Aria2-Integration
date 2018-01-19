@@ -9,6 +9,16 @@
 		"description": "Description of the extension."
 	},
 	
+	"translator": {
+		"message": "Translator: Ross Wang",
+		"description": ""
+	},
+	
+	"translatorMessage": {
+		"message": "English is not my native language, so there may have something wrong in the translation. Please help me correct the mistakes.",
+		"description": "you can leave it blank if you have nothing to say"
+	},
+	
 	"direction": {
 		"message": "ltr",
 		"description": "Language direction"
@@ -340,6 +350,86 @@
 		"description": ""
 	},
 	
+	"OP_fileSizeLimit": {
+		"message": "File Size Limit:",
+		"description": ""
+	},
+
+	"OPN_fileSizeLimit": {
+		"message": "Lower limit of the file size in bytes to trigger the download",
+		"description": ""
+	},
+	
+	"OP_typeFilter": {
+		"message": "File Type Filter:",
+		"description": ""
+	},
+
+	"OPN_typeFilterA": {
+		"message": "Regular Expressions: included file type",
+		"description": ""
+	},
+	
+	"OPN_typeFilterB": {
+		"message": "Regular Expressions: excluded file type",
+		"description": ""
+	},
+	
+	"OP_urlFilter": {
+		"message": "URL Filter:",
+		"description": ""
+	},
+
+	"OPN_urlFilterA": {
+		"message": "Regular Expressions: included URL",
+		"description": ""
+	},
+	
+	"OPN_urlFilterB": {
+		"message": "Regular Expressions: excluded URL",
+		"description": ""
+	},
+	
+	"OP_title": {
+		"message": "Aria2 Download Manager Integration Options",
+		"description": ""
+	},
+	
+	"OP_general": {
+		"message": "General",
+		"description": ""
+	},
+	
+	"OP_rpcServer": {
+		"message": "RPC Servers",
+		"description": ""
+	},
+	
+	"OP_rpcDefault": {
+		"message": "Default Server",
+		"description": ""
+	},
+	
+	"OP_rpc2": {
+		"message": "RPC Server 2",
+		"description": ""
+	},
+	
+	"OP_rpc3": {
+		"message": "RPC Server 3",
+		"description": ""
+	},
+	
+	"OP_exception": {
+		"message": "Exceptions",
+		"description": ""
+	},
+	
+	"OP_about": {
+		"message": "About",
+		"description": ""
+	},
+	
 	"OP_save": {
 		"message": "Save",
 		"description": "save button"
@@ -353,5 +443,40 @@
 	"CM_title": {
 		"message": "Download with Aria2",
 		"description": "Context Menu"
+	},
+	
+	"about_M1": {
+		"message": "What is Aria2?",
+		"description": ""
+	},
+	
+	"about_M2": {
+		"message": "This add-on uses Mayswind's AriaNg.",
+		"description": ""
+	},
+	
+	"about_L1": {
+		"message": "Add-on home page",
+		"description": ""
+	},
+	
+	"about_L2": {
+		"message": "Aria2 Settings Samples",
+		"description": ""
+	},
+	
+	"about_L3": {
+		"message": "Submit a Bug or Feedback",
+		"description": ""
+	},
+	
+	"about_L4": {
+		"message": "Release Notes",
+		"description": ""
+	},
+	
+	"about_L5": {
+		"message": "Help Translate",
+		"description": ""
 	}
 }

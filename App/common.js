@@ -3,6 +3,11 @@
 var request = [];
 var globalD = [];
 var aggressive = false;
+var minFileSize = 0;
+var fileTypeFilterA = "";
+var urlFilterA = "";
+var fileTypeFilterB = "";
+var urlFilterB = "";
 var mon;
 
 function sendTo(url, fileName, filePath, header) {
@@ -216,14 +221,8 @@ function handleMessage(request, sender, sendResponse) {
 				response: "send success"
 			});
 			break;
-		case "aggressive":
-			aggressive = request.aggressive;
-			sendResponse({
-				response: "send success"
-			});
-			break;
-		case "contextMenus":
-			contextMenus(request.contextMenus);
+		case "loadSettings":
+			loadSettings();
 			sendResponse({
 				response: "send success"
 			});
@@ -309,6 +308,28 @@ function getRequestHeaders(id, ua) {
 	return requestHeaders;
 }
 
+function isException(d) {
+	// check Exception
+	var id = d.responseHeaders.findIndex(x => x.name.toLowerCase() === "content-length");
+	if(d.responseHeaders[id].value < minFileSize){
+		return true;
+	}
+	id = d.responseHeaders.findIndex(x => x.name.toLowerCase() === 'content-type');
+	if(!RegExp(fileTypeFilterA).test(d.responseHeaders[id].value)){
+		return true;
+	}
+	if(!RegExp(urlFilterA).test(d.url)){
+		return true;
+	}
+	if(fileTypeFilterB != "" && RegExp(fileTypeFilterB).test(d.responseHeaders[id].value)){
+		return true;
+	}
+	if(urlFilterB != "" && RegExp(urlFilterB).test(d.url)){
+		return true;
+	}
+	return false;
+}
+
 async function prepareDownload(d) {
 	var details = {};
 	details.url = d.url;
@@ -317,7 +338,6 @@ async function prepareDownload(d) {
 	var id = request.findIndex(x => x.requestId === d.requestId);
 	if (id >= 0) {
 		// create header
-		//details.requestHeaders = getRequestHeaders(id);
 		var get = browser.storage.local.get(config.command.guess);
 		await get.then(item => {
 			details.requestHeaders = getRequestHeaders(id, item.ua);
@@ -380,6 +400,8 @@ function observeResponse(d) {
 				'content-disposition').value.toLowerCase();
 			if (contentDisposition.slice(0, 10) == "attachment") {
 				//console.log(contentDisposition);
+				if (isException(d))
+					return {cancel: false};
 				prepareDownload(d);
 				return {cancel: true};
 			}
@@ -395,27 +417,37 @@ function observeResponse(d) {
 				&& contentType.slice(12, 15) != "rss"
 				&& contentType.slice(12, 16) != "json" ) {
 				//console.log(contentType);
+				if (isException(d))
+					return {cancel: false};
 				prepareDownload(d);
 				return {cancel: true};
 			}
 			else if (aggressive) {
 				if (contentType.slice(0, 5) == "image" ) {
 					//console.log(contentType);
+					if (isException(d))
+						return {cancel: false};
 					prepareDownload(d);
 					return {cancel: true};
 				}
 				else if (contentType.slice(0, 4) == "text" && contentType.slice(5, 9) != "html") {
 					//console.log(contentType);
+					if (isException(d))
+						return {cancel: false};
 					prepareDownload(d);
 					return {cancel: true};
 				} 
 				else if (contentType.slice(0, 4) == "video") {
 					//console.log(contentType);
+					if (isException(d))
+						return {cancel: false};
 					prepareDownload(d);
 					return {cancel: true};
 				}
 				else if (contentType.slice(0, 4) == "audio") {
 					//console.log(contentType);
+					if (isException(d))
+						return {cancel: false};
 					prepareDownload(d);
 					return {cancel: true};
 				}
@@ -603,15 +635,24 @@ function contextMenus (enabled){
 	
 });
 
+function loadSettings() {
+	browser.storage.local.get(config.command.guess, (item) => {
+		aggressive = item.aggressive;
+		contextMenus(item.menu);
+		minFileSize = item.minFileSize;
+		fileTypeFilterA = item.typeFilterA;
+		urlFilterA = item.urlFilterA;
+		fileTypeFilterB = item.typeFilterB;
+		urlFilterB = item.urlFilterB;
+	});
+}
+
 (function() {
 	browser.storage.local.get("enabled", function(item) {
 		changeState(item.enabled);
 	});
 	browser.browserAction.setBadgeBackgroundColor({color: [0,0,0,100]});
-	browser.storage.local.get(config.command.guess, (item) => {
-		aggressive = item.aggressive;
-		contextMenus(item.menu);
-	});
+	loadSettings();
 	browser.runtime.onMessage.addListener(handleMessage);
 })();
 

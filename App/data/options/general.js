@@ -1,25 +1,10 @@
-/* globals config */
-'use strict';
 
+'use strict';
 function save() {
-	const path = document.getElementById('path').value;
-	const protocol = document.getElementById('protocol').value;
-	const host = document.getElementById('host').value;
-	const port = document.getElementById('port').value;
-	const interf = document.getElementById('interf').value;
-	const token = document.getElementById('token').value;
 	const zoom = document.getElementById('zoom').value;
-	if (document.getElementById('sound0').checked)
-		var sound = "0";
-	if (document.getElementById('sound1').checked)
-		var sound = "1";
-	if (document.getElementById('sound2').checked)
-		var sound = "2";
-	if (document.getElementById('sound3').checked)
-		var sound = "3";
 	const menu = document.getElementById('cm').checked;
 	const shutdown = document.getElementById('shut').checked;
-	const aggresive = document.getElementById('aggre').checked;
+	const aggressive = document.getElementById('aggre').checked;
 	const windowLoc = document.getElementById('winLoc').checked;
 	const auto = document.getElementById('auto').checked;
 	const autoSet = document.getElementById('autoSet').checked;
@@ -31,26 +16,11 @@ function save() {
 	if (!windowLoc){
 		browser.storage.local.remove(['dpLeft','dpTop']);
 	}
-	browser.runtime.sendMessage({
-		get: "aggressive",
-		aggressive: aggresive,
-	});
-	browser.runtime.sendMessage({
-		get: "contextMenus",
-		contextMenus: menu,
-	});
 	browser.storage.local.set({
-		path,
-		protocol,
-		host,
-		port,
-		interf,
-		token,
 		zoom,
-		sound,
 		menu,
 		shutdown,
-		aggresive,
+		aggressive,
 		windowLoc,
 		auto,
 		autoSet,
@@ -65,30 +35,15 @@ function save() {
 		setTimeout(() => {
 			status.textContent = '';
 		}, 750);
-		browser.storage.local.set({
-			initialize: true
+		browser.runtime.sendMessage({
+			get: "loadSettings",
 		});
 	});
 }
 
 function restore() {
-	// Use default value color = 'red' and likesColor = true.
 	browser.storage.local.get(Object.assign(config.command.guess), prefs => {
-		document.getElementById('path').value = prefs.path;
-		document.getElementById('protocol').value = prefs.protocol;
-		document.getElementById('host').value = prefs.host;
-		document.getElementById('port').value = prefs.port;
-		document.getElementById('interf').value = prefs.interf;
-		document.getElementById('token').value = prefs.token;
 		document.getElementById('zoom').value = prefs.zoom;
-		if (prefs.sound == "0")
-			document.getElementById('sound0').checked = true;
-		if (prefs.sound == "1")
-			document.getElementById('sound1').checked = true;
-		if (prefs.sound == "2")
-			document.getElementById('sound2').checked = true;
-		if (prefs.sound == "3")
-			document.getElementById('sound3').checked = true;
 		document.getElementById('cm').checked = prefs.menu;
 		document.getElementById('shut').checked = prefs.shutdown;
 		document.getElementById('aggre').checked = prefs.aggressive;

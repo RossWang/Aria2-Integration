@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Options Page</title>
+</head>
+<body>
+	<style type="text/css">
+	       body {
+	         font-family: "sans-serif;
+	         font-size: 16px;
+	         background: #f9f9fa;
+	       }
+	       p {
+	         margin: 3px;
+	       }
+	       table {
+	         width: 100%;
+			 padding-right: 20px;
+	       }
+	       .note {
+	         font-size: 80%;
+			 color: rgb(127, 127, 127);
+	       }
+	       .highlight {
+	         font-size: 80%;
+			 border: solid 2px #D22222;
+			 padding: 7px;
+			 margin-bottom: 10px;
+	       }
+	       #save {
+	         position: relative;
+	         width: 80px;
+	         height: 30px;
+	         margin-top: 30px;
+	         font-size: 18px;
+	         text-align: center;
+	         background-image: none;
+	         background-color: rgb(44, 173, 255);
+	         border-style: none;
+	         border-radius: 2px;
+	         text-shadow: rgb(0, 64, 91) 0px 0px 0.5px;
+	         color: rgb(255, 255, 255);
+	      }
+		  .slider {
+				width: 85%; 
+				opacity: 1;
+
+			}
+	</style>
+	<div class="highlight">
+		<p data-message="OP_message1">You need to download and start Aria2 by youself, complete at least
+		"Protocol," "Host," "Port" and "Interface" below and then click the "Save"
+		button.</p>
+		<p data-message="OP_message2">If you don't want to start Aria2 manually, just write a program to start
+		Aria2 in the background and register it to the system's "autostart" or "uri
+		scheme."</p>
+		<a data-message="OP_message3" href=
+		"https://github.com/RossWang/Aria2-Integration/tree/master/Bin">You can find the sample files here.</a>
+	</div>
+	<table>
+		<tr>
+			<td data-message="OP_defaultPath" style="width: 30%">Default Download Path:</td>
+			<td><input id="path" style="width: 100%; margin-top: 5px;" type="text"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td data-message="OPN_defaultPath" class="note">Download path of Aria2(only)</td>
+		</tr>
+		<tr>
+			<td data-message="OP_protocol">Protocol:</td>
+			<td><input id="protocol" style="width: 100%; margin-top: 5px;" type=
+			"text"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td data-message="OPN_protocol" class="note">RPC connection protocol of Aria2</td>
+		</tr>
+		<tr>
+			<td data-message="OP_host">Host:</td>
+			<td><input id="host" style="width: 100%; margin-top: 5px;" type="text"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td data-message="OPN_host" class="note">RPC host of Aria2. You can use ip or domain name.</td>
+		</tr>
+		<tr>
+			<td data-message="OP_port">Port:</td>
+			<td><input id="port" style="width: 100%; margin-top: 5px;" type="text"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td data-message="OPN_port" class="note">Aria2 RPC port</td>
+		</tr>
+		<tr>
+			<td data-message="OP_interface">Interface:</td>
+			<td><input id="interf" style="width: 100%; margin-top: 5px;" type=
+			"text"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td data-message="OPN_interface" class="note">Aria2 RPC path. Default value is "jsonrpc"</td>
+		</tr>
+		<tr>
+			<td data-message="OP_token">Token:</td>
+			<td><input id="token" style="width: 100%; margin-top: 5px;" type=
+			"text"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td data-message="OPN_token" class="note">Aria2 RPC secret, optional.</td>
+		</tr>
+		<tr>
+			<td data-message="OP_sound">Downlod Completed Sound:</td>
+			<td>
+				<input id="sound0" style="margin-top: 5px;" type="radio" name="sound">
+				<label data-message="OP_sound0" for="sound0">None</label>
+				<input id="sound1" style="margin-top: 5px;" type="radio" name="sound">
+				<label data-message="OP_sound1" for="sound1">Sound 1</label>
+				<input id="sound2" style="margin-top: 5px;" type="radio" name="sound">
+				<label data-message="OP_sound2" for="sound2">Sound 2</label>
+				<input id="sound3" style="margin-top: 5px;" type="radio" name="sound">
+				<label data-message="OP_sound3" for="sound3">Sound 3</label>
+			</td>
+		</tr>
+	</table>
+	<div align="right">
+			<span id="status"></span><button data-message="OP_save" id="save">Save</button>
+		</div>
+	<script src="/config.js">
+	</script> 
+	<script src="rpc.js">
+	</script>
+</body>
+</html>

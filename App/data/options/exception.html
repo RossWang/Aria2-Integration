@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Options Page</title>
+</head>
+<body>
+	<style type="text/css">
+	       body {
+	         font-family: "sans-serif;
+	         font-size: 16px;
+	         background: #f9f9fa;
+	       }
+	       p {
+	         margin: 3px;
+	       }
+	       table {
+	         width: 100%;
+			 padding-right: 20px;
+	       }
+	       .note {
+	         font-size: 80%;
+			 color: rgb(127, 127, 127);
+	       }
+	       #save {
+	         position: relative;
+	         width: 80px;
+	         height: 30px;
+	         margin-top: 30px;
+	         font-size: 18px;
+	         text-align: center;
+	         background-image: none;
+	         background-color: rgb(44, 173, 255);
+	         border-style: none;
+	         border-radius: 2px;
+	         text-shadow: rgb(0, 64, 91) 0px 0px 0.5px;
+	         color: rgb(255, 255, 255);
+	      }
+	</style>
+	<table>
+		<tr>
+			<td data-message="OP_fileSizeLimit" style="width: 30%">File Size Limit:</td>
+			<td><input id="fileSizeLimit" style="width: 400px; margin-top: 5px;" type="text"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td data-message="OPN_fileSizeLimit" class="note">Lower limit of the file size in bytes to trigger the download</td>
+		<tr>
+			<td valign="top" data-message="OP_typeFilter">File Type Filter:</td>
+			<td><textarea id="typeFilterA" placeholder="appliction/pdf" rows="2" cols="50"></textarea></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td data-message="OPN_typeFilterA" class="note">Regular Expressions: included file type</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><textarea id="typeFilterB" rows="2" cols="50"></textarea></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td data-message="OPN_typeFilterB" class="note">Regular Expressions: excluded file type</td>
+		</tr>
+		<tr>
+			<td valign="top" data-message="OP_urlFilter">URL Filter:</td>
+			<td><textarea id="urlFilterA" placeholder="addons.mozilla.org/firefox/addon/aria2-integration/" rows="2" cols="50"></textarea></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td data-message="OPN_urlFilterA" class="note">Regular Expressions: included URL</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><textarea id="urlFilterB" rows="2" cols="50"></textarea></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td data-message="OPN_urlFilterB" class="note">Regular Expressions: excluded URL</td>
+		</tr>
+	</table>
+	<div align="right">
+			<span id="status"></span><button data-message="OP_save" id="save">Save</button>
+		</div>
+	<script src="/config.js">
+	</script> 
+	<script src="exception.js">
+	</script>
+</body>
+</html>

@@ -20,6 +20,12 @@ config.command = {
 			chgLog: true,
 			badge: true,
 			cmDownPanel: true,
+			ua: true,
+			minFileSize: 0,
+			typeFilterA: "",
+			urlFilterA: "",
+			typeFilterB: "",
+			urlFilterB: "",
 		};
 	}
 };
