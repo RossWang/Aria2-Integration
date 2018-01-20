@@ -90,7 +90,7 @@
 	
 	"UI_save": {
 		"message": "Save",
-		"description": "for download pannel"
+		"description": "for download panel"
 	},
 	
 	"UI_saveas": {
@@ -100,6 +100,11 @@
 	
 	"UI_open": {
 		"message": "Open",
+		"description": ""
+	},
+	
+	"UI_adv": {
+		"message": "Advanced",
 		"description": ""
 	},
 	

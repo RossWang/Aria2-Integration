@@ -103,6 +103,12 @@
 		"description": ""
 	},
 	
+		
+	"UI_adv": {
+		"message": "高级",
+		"description": ""
+	},
+	
 	"UI_fileName": {
 		"message": "文件名",
 		"description": ""

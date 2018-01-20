@@ -7,7 +7,10 @@ function hashHandler(ev) {
 		document.querySelector('#rpc').className = "";
 		document.querySelector('#exception').className = "";
 		document.querySelector('#about').className = "";
-		document.querySelector(location.hash).className = "active";
+		if (location.hash == "#rpc" || location.hash == "#rpc2" || location.hash == "#rpc3")
+			document.querySelector("#rpc").className = "active";
+		else
+			document.querySelector(location.hash).className = "active";
 	}
 	document.querySelectorAll('[data-message]').forEach(n => {
 		n.textContent = browser.i18n.getMessage(n.dataset.message);

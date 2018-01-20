@@ -20,12 +20,32 @@ config.command = {
 			chgLog: true,
 			badge: true,
 			cmDownPanel: true,
-			ua: true,
+			ua: false,
 			minFileSize: 0,
 			typeFilterA: "",
 			urlFilterA: "",
 			typeFilterB: "",
 			urlFilterB: "",
+		};
+	},
+	get s2() {
+		return {
+			path2: "",
+			protocol2: "ws",
+			host2: "127.0.0.1",
+			port2: "6800",
+			interf2: "jsonrpc",
+			token2: "",
+		};
+	},
+	get s3() {
+		return {
+			path3: "",
+			protocol3: "ws",
+			host3: "127.0.0.1",
+			port3: "6800",
+			interf3: "jsonrpc",
+			token3: "",
 		};
 	}
 };
