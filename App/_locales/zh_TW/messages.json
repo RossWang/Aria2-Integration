@@ -350,6 +350,16 @@
 		"description": ""
 	},
 	
+	"OP_ua": {
+		"message": "傳送 User-Agent 到 Aria2",
+		"description": ""
+	},
+
+	"OPN_ua": {
+		"message": "User-Agent 會和瀏覽器送出的相同",
+		"description": ""
+	},
+	
 	"OP_fileSizeLimit": {
 		"message": "檔案大小限制:",
 		"description": ""

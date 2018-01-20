@@ -350,6 +350,16 @@
 		"description": ""
 	},
 	
+	"OP_ua": {
+		"message": "Send User-Agent To Aria2",
+		"description": ""
+	},
+
+	"OPN_ua": {
+		"message": "User-Agent will be same as the browser send",
+		"description": ""
+	},
+	
 	"OP_fileSizeLimit": {
 		"message": "File Size Limit:",
 		"description": ""

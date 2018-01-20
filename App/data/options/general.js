@@ -3,6 +3,7 @@
 function save() {
 	const zoom = document.getElementById('zoom').value;
 	const menu = document.getElementById('cm').checked;
+	const ua = document.getElementById('ua').checked;
 	const shutdown = document.getElementById('shut').checked;
 	const aggressive = document.getElementById('aggre').checked;
 	const windowLoc = document.getElementById('winLoc').checked;
@@ -19,6 +20,7 @@ function save() {
 	browser.storage.local.set({
 		zoom,
 		menu,
+		ua,
 		shutdown,
 		aggressive,
 		windowLoc,
@@ -45,6 +47,7 @@ function restore() {
 	browser.storage.local.get(Object.assign(config.command.guess), prefs => {
 		document.getElementById('zoom').value = prefs.zoom;
 		document.getElementById('cm').checked = prefs.menu;
+		document.getElementById('ua').checked = prefs.ua;
 		document.getElementById('shut').checked = prefs.shutdown;
 		document.getElementById('aggre').checked = prefs.aggressive;
 		document.getElementById('winLoc').checked = prefs.windowLoc;

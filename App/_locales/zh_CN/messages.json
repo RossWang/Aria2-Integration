@@ -349,7 +349,17 @@
 		"message": "微调下载窗口高度。",
 		"description": ""
 	},
-		
+	
+	"OP_ua": {
+		"message": "传送 User-Agent 到 Aria2",
+		"description": ""
+	},
+
+	"OPN_ua": {
+		"message": "User-Agent 会和浏览器送出的相同",
+		"description": ""
+	},
+	
 	"OP_fileSizeLimit": {
 		"message": "文件大小限制:",
 		"description": ""
