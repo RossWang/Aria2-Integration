@@ -8,6 +8,16 @@
 		"message": "Ersetzt den integrierten Download-Manager. Wenn aktiviert, werden Download-Links erkannt, zu diesem Add-on umgeleiten und an Aria2 gesendet.",
 		"description": "Beschreibung der Erweiterung."
 	},
+			
+	"translator": {
+		"message": "",
+		"description": ""
+	},
+	
+	"translatorMessage": {
+		"message": "",
+		"description": "you can leave it blank if you have nothing to say"
+	},
 	
 	"direction": {
 		"message": "ltr",
