@@ -1,3 +1,22 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/RossWang/Aria2-Integration/compare/0.2.4...0.3.0) (2018-01-22)
+
+
+### Bug Fixes
+
+* RSS will not trigger the download anymore ([ab6ff78](https://github.com/RossWang/Aria2-Integration/commit/ab6ff78)), closes [#15](https://github.com/RossWang/Aria2-Integration/issues/15)
+
+
+### Features
+
+* Exception Support ([01f8902](https://github.com/RossWang/Aria2-Integration/commit/01f8902))
+* Incognito Download Support ([1bc9483](https://github.com/RossWang/Aria2-Integration/commit/1bc9483))
+* Simple Multiple Server Support ([19d4b4f](https://github.com/RossWang/Aria2-Integration/commit/19d4b4f)), closes [#2](https://github.com/RossWang/Aria2-Integration/issues/2)
+* User Agent Support ([bd335a7](https://github.com/RossWang/Aria2-Integration/commit/bd335a7))
+* User-Agent Settings ([2eb03df](https://github.com/RossWang/Aria2-Integration/commit/2eb03df))
+
+
+
 <a name="0.2.4"></a>
 ## [0.2.4](https://github.com/RossWang/Aria2-Integration/compare/0.2.3...0.2.4) (2017-12-13)
 
