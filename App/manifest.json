@@ -1,7 +1,7 @@
 {
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "default_locale": "en",
   "manifest_version": 2,
   "permissions": [
@@ -44,12 +44,13 @@
   },
   "homepage_url": "https://addons.mozilla.org/firefox/addon/aria2-integration",
   "options_ui": {
-    "page": "data/options/index.html",
-    "chrome_style": true
+    "page": "data/options/menu.html",
+	"open_in_tab": true
   },
   "applications": {
     "gecko": {
-      "id": "{e2488817-3d73-4013-850d-b66c5e42d505}"
+      "id": "{e2488817-3d73-4013-850d-b66c5e42d505}",
+	  "strict_min_version": "57.0"
     }
   }
 }
