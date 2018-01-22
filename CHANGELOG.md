@@ -1,3 +1,13 @@
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/RossWang/Aria2-Integration/compare/0.3.0...0.3.1) (2018-01-22)
+
+
+### Bug Fixes
+
+* Fix a problem that prevents the download from Context Menu when "Display Download Panel" in settings turn off. ([2e76e0b](https://github.com/RossWang/Aria2-Integration/commit/2e76e0b))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/RossWang/Aria2-Integration/compare/0.2.4...0.3.0) (2018-01-22)
 
