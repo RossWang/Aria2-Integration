@@ -42,6 +42,7 @@ function sendTo(url, fileName, filePath, header, server) {
 					if (header != "[]")
 						params.header = header;
 					params.out = fileName;
+					params["parameterized-uri"]  = "false";
 					if (filePath != "") {
 						// file path from download panel
 						params.dir = filePath;
