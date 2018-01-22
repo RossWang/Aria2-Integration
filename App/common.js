@@ -763,7 +763,7 @@ function cmCallback (info, tab) {
 					downloadPanel(d);
 				}
 				else {
-					sendTo(url,"","",requestHeaders);
+					sendTo(url,"","",requestHeaders,"1");
 				}
 			});
 			//sendTo(url,"","",requestHeaders);
@@ -785,7 +785,7 @@ function cmCallback (info, tab) {
 					downloadPanel(d);
 				}
 				else {
-					sendTo(url,"","",requestHeaders);
+					sendTo(url,"","",requestHeaders,"1");
 				}
 			});
 			//sendTo(url,"","",requestHeaders);
