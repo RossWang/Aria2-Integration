@@ -100,6 +100,7 @@ function save() {
 	const url = document.getElementById('url').value;
 	const fn = document.getElementById('fn').value;
 	const fp = document.getElementById('fp').value;
+	const head = document.querySelector(".head").value
 	verifyFileName(fn).then((e) => {
 		if (e.length != 0) {
 			document.getElementById('fn').style = "border: 1px solid red;box-shadow: red 0px 0px 4px;";
@@ -131,6 +132,7 @@ function saveas() {
 	const url = document.getElementById('url').value;
 	const fn = document.getElementById('fn').value;
 	const fp = document.getElementById('fp').value;
+	const head = document.querySelector(".head").value
 	verifyFileName(fn).then((e) => {
 		if (e.length != 0) {
 			document.getElementById('fn').style = "border: 1px solid red;box-shadow: red 0px 0px 4px;";
