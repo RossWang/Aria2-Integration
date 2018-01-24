@@ -1,3 +1,14 @@
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/RossWang/Aria2-Integration/compare/0.3.1...0.3.2) (2018-01-24)
+
+
+### Bug Fixes
+
+* Fix "Save" and "Save as" buttons. ([1728fc2](https://github.com/RossWang/Aria2-Integration/commit/1728fc2))
+* parameterized-uri --> false(force) ([ec035d4](https://github.com/RossWang/Aria2-Integration/commit/ec035d4)), closes [#12](https://github.com/RossWang/Aria2-Integration/issues/12)
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/RossWang/Aria2-Integration/compare/0.3.0...0.3.1) (2018-01-22)
 
