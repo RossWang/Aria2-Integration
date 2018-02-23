@@ -20,13 +20,14 @@ function sendTo(url, fileName, filePath, header, server) {
 		else {
 			if (server == "1") {
 				browser.storage.local.get(config.command.guess, function(item) {
-					var secure = false;
-					if (item.protocol.toLowerCase == "https" || item.protocol.toLowerCase == "wss")
-						secure = true;
+					var sec = false;
+					if (item.protocol.toLowerCase() == "https" || item.protocol.toLowerCase() == "wss") {
+						sec = true;
+					}	
 					var options = {
 						host: item.host,
 						port: item.port,
-						secure: secure,
+						secure: sec,
 						secret: item.token,
 						path: "/" + item.interf
 					};
