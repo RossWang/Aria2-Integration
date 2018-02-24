@@ -1,3 +1,18 @@
+<a name="0.3.3"></a>
+## [0.3.3](https://github.com/RossWang/Aria2-Integration/compare/0.3.2...0.3.3) (2018-02-24)
+
+
+### Bug Fixes
+
+* Fix a mistake that make https and wss protocols unusable ([9db649e](https://github.com/RossWang/Aria2-Integration/commit/9db649e)), closes [#20](https://github.com/RossWang/Aria2-Integration/issues/20)
+
+
+### Features
+
+* Context menu now has sub-menu to select the RPC server. ([06687f9](https://github.com/RossWang/Aria2-Integration/commit/06687f9))
+
+
+
 <a name="0.3.2"></a>
 ## [0.3.2](https://github.com/RossWang/Aria2-Integration/compare/0.3.1...0.3.2) (2018-01-24)
 
