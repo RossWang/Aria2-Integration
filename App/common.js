@@ -521,21 +521,25 @@ function getRequestHeaders(id, ua) {
 function isException(d) {
 	// check Exception
 	var id = d.responseHeaders.findIndex(x => x.name.toLowerCase() === "content-length");
-	if(d.responseHeaders[id].value < minFileSize){
-		return true;
+	if(id != -1) {
+		if(d.responseHeaders[id].value < minFileSize){
+			return true;
+		}
 	}
-	id = d.responseHeaders.findIndex(x => x.name.toLowerCase() === 'content-type');
-	if(!RegExp(fileTypeFilterA).test(d.responseHeaders[id].value)){
-		return true;
-	}
-	if(!RegExp(urlFilterA).test(d.url)){
-		return true;
-	}
-	if(fileTypeFilterB != "" && RegExp(fileTypeFilterB).test(d.responseHeaders[id].value)){
-		return true;
-	}
-	if(urlFilterB != "" && RegExp(urlFilterB).test(d.url)){
-		return true;
+	var id2 = d.responseHeaders.findIndex(x => x.name.toLowerCase() === 'content-type');
+	if(id2 != -1) {
+		if(!RegExp(fileTypeFilterA).test(d.responseHeaders[id2].value)){
+			return true;
+		}
+		if(!RegExp(urlFilterA).test(d.url)){
+			return true;
+		}
+		if(fileTypeFilterB != "" && RegExp(fileTypeFilterB).test(d.responseHeaders[id2].value)){
+			return true;
+		}
+		if(urlFilterB != "" && RegExp(urlFilterB).test(d.url)){
+			return true;
+		}
 	}
 	return false;
 }
