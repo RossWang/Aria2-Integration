@@ -1,3 +1,18 @@
+<a name="0.3.4"></a>
+## [0.3.4](https://github.com/RossWang/Aria2-Integration/compare/0.3.3...0.3.4) (2018-03-10)
+
+
+### Bug Fixes
+
+* Fix an issue that prevents triggering the download([#22](https://github.com/RossWang/Aria2-Integration/issues/22)) ([3bedcd2](https://github.com/RossWang/Aria2-Integration/commit/3bedcd2))
+
+
+### Features
+
+* update AriaNg to 0.4.0 ([3fafaf1](https://github.com/RossWang/Aria2-Integration/commit/3fafaf1))
+
+
+
 <a name="0.3.3"></a>
 ## [0.3.3](https://github.com/RossWang/Aria2-Integration/compare/0.3.2...0.3.3) (2018-02-24)
 
