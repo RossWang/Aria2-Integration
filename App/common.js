@@ -131,8 +131,9 @@ function sendTo(url, fileName, filePath, header, server) {
 			else if(server == "2") {
 				browser.storage.local.get(config.command.s2, function(item) {
 					var secure = false;
-					if (item.protocol2.toLowerCase == "https" || item.protocol2.toLowerCase == "wss")
+					if (item.protocol2.toLowerCase() == "https" || item.protocol2.toLowerCase() == "wss") {
 						secure = true;
+					}
 					var options = {
 						host: item.host2,
 						port: item.port2,
@@ -234,8 +235,9 @@ function sendTo(url, fileName, filePath, header, server) {
 			else if(server == "3") {
 				browser.storage.local.get(config.command.s3, function(item) {
 					var secure = false;
-					if (item.protocol3.toLowerCase == "https" || item.protocol3.toLowerCase == "wss")
+					if (item.protocol3.toLowerCase() == "https" || item.protocol3.toLowerCase() == "wss") {
 						secure = true;
+					}
 					var options = {
 						host: item.host3,
 						port: item.port3,
