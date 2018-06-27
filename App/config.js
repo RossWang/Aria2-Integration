@@ -21,7 +21,7 @@ config.command = {
 			badge: true,
 			cmDownPanel: true,
 			ua: false,
-			minFileSize: 0,
+			fileSizeLimit: 0,
 			typeFilterA: "",
 			urlFilterA: "",
 			typeFilterB: "",

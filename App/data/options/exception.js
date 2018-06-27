@@ -26,7 +26,7 @@ function save() {
 
 function restore() {
 	browser.storage.local.get(Object.assign(config.command.guess), prefs => {
-		document.getElementById('fileSizeLimit').value = prefs.minFileSize;
+		document.getElementById('fileSizeLimit').value = prefs.fileSizeLimit;
 		document.getElementById('typeFilterA').value = prefs.typeFilterA;
 		document.getElementById('typeFilterB').value = prefs.typeFilterB
 		document.getElementById('urlFilterA').value = prefs.urlFilterA;

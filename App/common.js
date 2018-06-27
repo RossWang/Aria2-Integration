@@ -3,7 +3,7 @@
 var request = [];
 var globalD = [];
 var aggressive = false;
-var minFileSize = 0;
+var fileSizeLimit = 0;
 var fileTypeFilterA = "";
 var urlFilterA = "";
 var fileTypeFilterB = "";
@@ -131,9 +131,8 @@ function sendTo(url, fileName, filePath, header, server) {
 			else if(server == "2") {
 				browser.storage.local.get(config.command.s2, function(item) {
 					var secure = false;
-					if (item.protocol2.toLowerCase() == "https" || item.protocol2.toLowerCase() == "wss") {
+					if (item.protocol2.toLowerCase == "https" || item.protocol2.toLowerCase == "wss")
 						secure = true;
-					}
 					var options = {
 						host: item.host2,
 						port: item.port2,
@@ -235,9 +234,8 @@ function sendTo(url, fileName, filePath, header, server) {
 			else if(server == "3") {
 				browser.storage.local.get(config.command.s3, function(item) {
 					var secure = false;
-					if (item.protocol3.toLowerCase() == "https" || item.protocol3.toLowerCase() == "wss") {
+					if (item.protocol3.toLowerCase == "https" || item.protocol3.toLowerCase == "wss")
 						secure = true;
-					}
 					var options = {
 						host: item.host3,
 						port: item.port3,
@@ -524,7 +522,7 @@ function isException(d) {
 	// check Exception
 	var id = d.responseHeaders.findIndex(x => x.name.toLowerCase() === "content-length");
 	if(id != -1) {
-		if(d.responseHeaders[id].value < minFileSize){
+		if(d.responseHeaders[id].value < fileSizeLimit){
 			return true;
 		}
 	}
@@ -902,7 +900,7 @@ function loadSettings() {
 	browser.storage.local.get(config.command.guess, (item) => {
 		aggressive = item.aggressive;
 		contextMenus(item.menu, item.cmDownPanel);
-		minFileSize = item.minFileSize;
+		fileSizeLimit = item.fileSizeLimit;
 		fileTypeFilterA = item.typeFilterA;
 		urlFilterA = item.urlFilterA;
 		fileTypeFilterB = item.typeFilterB;
