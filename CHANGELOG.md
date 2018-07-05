@@ -1,3 +1,13 @@
+<a name="0.3.5"></a>
+## [0.3.5](https://github.com/RossWang/Aria2-Integration/compare/0.3.4...0.3.5) (2018-06-27)
+
+
+### Bug Fixes
+
+* filter setting cannot be saved([#31](https://github.com/RossWang/Aria2-Integration/issues/31)) ([1a37956](https://github.com/RossWang/Aria2-Integration/commit/1a37956))
+
+
+
 <a name="0.3.4"></a>
 ## [0.3.4](https://github.com/RossWang/Aria2-Integration/compare/0.3.3...0.3.4) (2018-03-10)
 
