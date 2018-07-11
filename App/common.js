@@ -522,7 +522,7 @@ function isException(d) {
 	// check Exception
 	var id = d.responseHeaders.findIndex(x => x.name.toLowerCase() === "content-length");
 	if(id != -1) {
-		if(d.responseHeaders[id].value < fileSizeLimit){
+		if(Number(d.responseHeaders[id].value) < Number(fileSizeLimit)){
 			return true;
 		}
 	}
