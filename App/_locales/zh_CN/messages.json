@@ -332,7 +332,7 @@
 	},
 	
 	"OPN_downPanel": {
-		"message": "自动启动的下载是否要下载窗口",
+		"message": "自动启动的下载是否要显示下载窗口",
 		"description": ""
 	},
 	
@@ -342,7 +342,7 @@
 	},
 	
 	"OPN_cmDownPanel": {
-		"message": "从右键菜单启动的下载是否要下载窗口",
+		"message": "从右键菜单启动的下载是否要显示下载窗口",
 		"description": ""
 	},
 		
