@@ -570,6 +570,11 @@ async function prepareDownload(d) {
 	details.url = decodeURIComponent(details.url);
 	details.fileName = decodeURIComponent(details.fileName);
 
+	// issue #8
+	try {
+		details.fileName = decodeURI(escape(details.fileName));
+	} catch {}
+
 	// file name cannot have ""
 	details.fileName = details.fileName.replace('\";', '');
 	details.fileName = details.fileName.replace('\"', '');
