@@ -325,8 +325,18 @@
 		"description": ""
 	},
 	
-	"OP_cmDownPanel": {
+	"OP_downPanel": {
 		"message": "Display Download Panel",
+		"description": ""
+	},
+	
+	"OPN_downPanel": {
+		"message": "Whether to display a download panel for the download event trigger from the auto observer",
+		"description": ""
+	},
+	
+	"OP_cmDownPanel": {
+		"message": "Display Download Panel (context menu)",
 		"description": ""
 	},
 	

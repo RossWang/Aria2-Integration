@@ -11,6 +11,7 @@ function save() {
 	const autoSet = document.getElementById('autoSet').checked;
 	const chgLog = document.getElementById('chgLog').checked;
 	const badge = document.getElementById('badge').checked;
+	const downPanel = document.getElementById('downPanel').checked;
 	const cmDownPanel = document.getElementById('cmDownPanel').checked;
 	const dpHeight = document.getElementById('dpHeight').value;
 	const dpWidth = document.getElementById('dpWidth').value;
@@ -28,6 +29,7 @@ function save() {
 		autoSet,
 		chgLog,
 		badge,
+		downPanel,
 		cmDownPanel,
 		dpHeight,
 		dpWidth
@@ -56,6 +58,7 @@ function restore() {
 		document.getElementById('chgLog').checked = prefs.chgLog;
 		document.getElementById('badge').checked = prefs.badge;
 		document.getElementById('cmDownPanel').checked = prefs.cmDownPanel;
+		document.getElementById('downPanel').checked = prefs.downPanel;
 	});
 	browser.storage.local.get(['dpWidth', 'dpHeight'], prefs => {
 		document.getElementById('dpWidth').value = prefs.dpWidth;

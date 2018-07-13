@@ -326,8 +326,18 @@
 		"description": ""
 	},
 	
-	"OP_cmDownPanel": {
+	"OP_downPanel": {
 		"message": "顯示下載視窗",
+		"description": ""
+	},
+	
+	"OPN_downPanel": {
+		"message": "自動啟動的下載是否要下載視窗",
+		"description": ""
+	},
+	
+	"OP_cmDownPanel": {
+		"message": "顯示下載視窗 (右鍵選單)",
 		"description": ""
 	},
 	

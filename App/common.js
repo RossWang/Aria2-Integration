@@ -591,7 +591,14 @@ async function prepareDownload(d) {
 	details.fileSize = getFileSize(d);
 	
 	// create download panel
-	downloadPanel(details);
+	browser.storage.local.get(config.command.guess, item => {
+		if (item.downPanel) {
+			downloadPanel(details);
+		}
+		else {
+			sendTo(details.url,details.fileName,"",details.requestHeaders,"1");
+		}
+	});
 	
 	// avoid blank new tab
 	var getting = browser.tabs.query({

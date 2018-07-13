@@ -20,6 +20,7 @@ config.command = {
 			chgLog: true,
 			badge: true,
 			cmDownPanel: true,
+			downPanel: true,
 			ua: false,
 			fileSizeLimit: 0,
 			typeFilterA: "",

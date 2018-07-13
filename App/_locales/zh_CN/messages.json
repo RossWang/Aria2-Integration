@@ -326,13 +326,23 @@
 		"description": ""
 	},
 	
+	"OP_downPanel": {
+		"message": "显示下载窗口",
+		"description": ""
+	},
+	
+	"OPN_downPanel": {
+		"message": "自动启动的下载是否要下载窗口",
+		"description": ""
+	},
+	
 	"OP_cmDownPanel": {
-		"message": "显示下载视窗",
+		"message": "显示下载窗口 (右键菜单)",
 		"description": ""
 	},
 	
 	"OPN_cmDownPanel": {
-		"message": "从右键选单启动的下载是否要下载视窗",
+		"message": "从右键菜单启动的下载是否要下载窗口",
 		"description": ""
 	},
 		
