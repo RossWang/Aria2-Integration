@@ -3,8 +3,6 @@
 <head>
 	<meta charset="utf-8">
 	<title>Options Page</title>
-</head>
-<body>
 	<style type="text/css">
 	       body {
 	         font-family: "sans-serif;
@@ -19,6 +17,16 @@
 	         margin-left: 30px;
 	       }
 	</style>
+</head>
+<body>
+	<div>
+	<h3>Aria2 Connection Status</h3>
+	<p>Default Server: <i id="server1">...</i></p>
+	<p>Server 2: <i id="server2">...</i></p>
+	<p>Server 3: <i id="server3">...</i></p>
+	</div>
+	<br>
+	<hr>
 	<div>
 		<p>Author: Ross Wang</p>
 		<br>
@@ -58,6 +66,10 @@
 		<a data-message="about_L5" href="https://github.com/RossWang/Aria2-Integration/tree/master/App/_locales" target="_blank">Help Translate</a>
 	</div>
 	
+	<script src="/config.js"></script>
+	<script src="/lib/polygoat.js"></script>
+	<script src="/lib/aria.js"></script>
 	<script src="about.js"></script>
+
 </body>
 </html>
