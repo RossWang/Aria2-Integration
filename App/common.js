@@ -573,7 +573,7 @@ async function prepareDownload(d) {
 	// issue #8
 	try {
 		details.fileName = decodeURI(escape(details.fileName));
-	} catch {}
+	} catch (e){}
 
 	// file name cannot have ""
 	details.fileName = details.fileName.replace('\";', '');

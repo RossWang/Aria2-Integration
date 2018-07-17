@@ -1,3 +1,20 @@
+<a name="0.3.6"></a>
+## [0.3.6](https://github.com/RossWang/Aria2-Integration/compare/0.3.5...0.3.6) (2018-07-17)
+
+
+### Bug Fixes
+
+* filter setting cannot be saved([#31](https://github.com/RossWang/Aria2-Integration/issues/31)) ([6957f35](https://github.com/RossWang/Aria2-Integration/commit/6957f35))
+* Fix a file name encoding issue on baidupcs.com ([#8](https://github.com/RossWang/Aria2-Integration/issues/8)) ([b675908](https://github.com/RossWang/Aria2-Integration/commit/b675908))
+
+
+### Features
+
+* Add Aria2 Status in About Page ([#22](https://github.com/RossWang/Aria2-Integration/issues/22)) ([a253dd9](https://github.com/RossWang/Aria2-Integration/commit/a253dd9))
+* Optionally Skip Confirmation Window ([#30](https://github.com/RossWang/Aria2-Integration/issues/30)) ([b1eaa3e](https://github.com/RossWang/Aria2-Integration/commit/b1eaa3e))
+
+
+
 <a name="0.3.5"></a>
 ## [0.3.5](https://github.com/RossWang/Aria2-Integration/compare/0.3.4...0.3.5) (2018-06-27)
 
