@@ -105,7 +105,6 @@ function save() {
 		if (e.length != 0) {
 			document.getElementById('fn').style = "border: 1px solid red;box-shadow: red 0px 0px 4px;";
 			document.getElementById('fn').onchange = function() {
-				console.log("123");
 				document.getElementById('fn').style = "";
 				document.getElementById('fn').onchange = null;
 			};
@@ -137,7 +136,6 @@ function saveas() {
 		if (e.length != 0) {
 			document.getElementById('fn').style = "border: 1px solid red;box-shadow: red 0px 0px 4px;";
 			document.getElementById('fn').onchange = function() {
-				console.log("123");
 				document.getElementById('fn').style = "";
 				document.getElementById('fn').onchange = null;
 			};
