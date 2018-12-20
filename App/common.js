@@ -57,7 +57,7 @@ function sendTo(url, fileName, filePath, header, server) {
 							function (res) {
 								aria2.addUri([url], params).then(
 									function (res) {
-										monitor(options);
+										monitor(options, res);
 										notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
 										aria2.close();
 									},
@@ -66,7 +66,7 @@ function sendTo(url, fileName, filePath, header, server) {
 										setTimeout( () => {
 											aria2.addUri([url], params).then(
 												function (res) {
-													monitor(options);
+													monitor(options, res);
 													notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
 													aria2.close();
 												},
@@ -86,7 +86,7 @@ function sendTo(url, fileName, filePath, header, server) {
 									aria2.open().then( () => {
 										aria2.addUri([url], params).then(
 											function (res) {
-												monitor(options);
+												monitor(options, res);
 												notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
 												aria2.close();
 											},

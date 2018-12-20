@@ -32,35 +32,35 @@ async function correctFileName(name) {
 	return tmp;
 }
 
-function monitor(options) {
+function monitor(options, gid) {
 	if (mon == undefined) {
 		mon = new Worker("/lib/worker.js");
-	}
-	browser.storage.local.get(config.command.guess, function(item) {
-		mon.postMessage([options]);
 		mon.onmessage = function(e) {
 			console.log(e.data);
-			if (e.data[0] == "complete") {
-				notify(browser.i18n.getMessage("download_complete", e.data[1] ));
-				if (item.sound != "0") {
-					var audio = new Audio('/data/Sound/complete' + item.sound + '.wav');
-					audio.play();
+			browser.storage.local.get(config.command.guess, function(item) {
+				if (e.data[0] == "complete") {
+					notify(browser.i18n.getMessage("download_complete", e.data[1] ));
+					if (item.sound != "0") {
+						var audio = new Audio('/data/Sound/complete' + item.sound + '.wav');
+						audio.play();
+					}
 				}
-			}	
-			else if (e.data[0] == "badge" && item.badge){
-				if(e.data[1] == 0){
-					browser.browserAction.setBadgeText({text: ""});
-					mon = null;
+				else if (e.data[0] == "badge" && item.badge){
+					if(e.data[1] == 0){
+						browser.browserAction.setBadgeText({text: ""});
+						mon = null;
+					}
+					else {
+						browser.browserAction.setBadgeText({text: e.data[1].toString()});
+					}
 				}
-				else {
-					browser.browserAction.setBadgeText({text: e.data[1].toString()});
+				else if (e.data[0] == "error"){
+					notify(browser.i18n.getMessage("download_error", e.data[1] ));
 				}
-			}
-			else if (e.data[0] == "error"){
-				notify(browser.i18n.getMessage("download_error", e.data[1] ));
-			}
+			});
 		}
-	});
+	}
+	mon.postMessage([options, gid]);
 }
 
 function notify(message) {

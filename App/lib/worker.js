@@ -4,8 +4,10 @@ postMessage("init");
 importScripts("aria.js");
 importScripts("polygoat.js");
 var aria2;
+var gids = [];
 
 onmessage = function(e) {
+	gids.push(e.data[1]);
 	if (aria2 == undefined){
 		connect(e.data[0]);
 		postMessage("connect");
@@ -36,9 +38,12 @@ function connect(options) {
 		});
 	};
 	aria2.onDownloadComplete = function(d) {
-		aria2.getFiles(d.gid).then((info) => {
-			postMessage(["complete", info[0].path]);
-		});
+		if (gids.includes(d.gid)) {
+			aria2.getFiles(d.gid).then((info) => {
+				postMessage(["complete", info[0].path]);
+			});
+			gids = gids.filter(gid => gid != d.gid);
+		}
 		aria2.tellActive(["gid"]).then((info) => {
 			postMessage(["badge", info.length]);
 			if(info.length == 0) {
