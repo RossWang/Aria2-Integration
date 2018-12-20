@@ -7,7 +7,7 @@ function handleResponse(message) {
 		case "all":
 			document.getElementById('url').value = message.url;
 			document.getElementById('fs').textContent = message.fileSize;
-			document.getElementById('fn').value = message.fileName;
+			document.getElementById('fn').value = decodeFn(message.fileName);
 			document.querySelector(".head").value = message.header;
 			document.getElementById('db').focus();
 			break;
@@ -182,6 +182,20 @@ function adv() {
 		document.querySelector(".s1").style = "display:none";
 		advl = false;
 	}
+}
+
+function decodeFn(fn) {
+	var res = jschardet.detect(fn).encoding;
+	var decoder = new TextDecoder(res);
+	var charcode = [];
+	for(var i = 0, length = fn.length; i < length; i++) {
+		var code = fn.charCodeAt(i);
+		charcode.push(code);
+	}
+	var charcodeUint = new Uint8Array();
+	charcodeUint = Uint8Array.from(charcode);
+	var out = decoder.decode(charcodeUint);
+	return out;
 }
 
 document.addEventListener('DOMContentLoaded', init);
