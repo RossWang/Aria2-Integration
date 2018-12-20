@@ -481,14 +481,14 @@ function getFileName(d) {
 
 function getFileNameURL(url) {
 	var fileName = "";
-	id = url.lastIndexOf("/");
+	var id = url.lastIndexOf("/");
 	if (id >= 0) {
-		id1 = d.url.lastIndexOf("?");
+		var id1 = url.lastIndexOf("?");
 		if (id1 == -1) {
-			fileName = d.url.slice(id + 1);	
+			fileName = url.slice(id + 1);
 		}
 		else {
-			fileName = d.url.slice(id + 1, id1);
+			fileName = url.slice(id + 1, id1);
 		}
 	}
 	return fileName;
@@ -629,7 +629,7 @@ function observeResponse(d) {
 		if (d.responseHeaders.find(x => x.name.toLowerCase() === 'content-disposition') != undefined) {
 			var contentDisposition = d.responseHeaders.find(x => x.name.toLowerCase() ===
 				'content-disposition').value.toLowerCase();
-			if (contentDisposition.slice(0, 10) == "attachment") {
+			if (contentDisposition.slice(0, 10) == "attachment" || aggressive) {
 				//console.log(contentDisposition);
 				if (isException(d))
 					return {cancel: false};
@@ -637,7 +637,7 @@ function observeResponse(d) {
 				return {cancel: true};
 			}
 		}
-		else if (d.responseHeaders.find(x => x.name.toLowerCase() === 'content-type') != undefined) {
+		if (d.responseHeaders.find(x => x.name.toLowerCase() === 'content-type') != undefined) {
 			var contentType = d.responseHeaders.find(x => x.name.toLowerCase() === 'content-type').value
 				.toLowerCase();
 			if (contentType.slice(0, 11) == "application" 
