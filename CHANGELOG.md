@@ -1,3 +1,23 @@
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/RossWang/Aria2-Integration/compare/0.3.6...0.4.0) (2018-12-20)
+
+
+### Bug Fixes
+
+* automatically close browser action popup ([#47](https://github.com/RossWang/Aria2-Integration/issues/47)) ([2a7a4cd](https://github.com/RossWang/Aria2-Integration/commit/2a7a4cd))
+* Download url not urlencoding parentheses ([a8fbdf3](https://github.com/RossWang/Aria2-Integration/commit/a8fbdf3)), closes [#36](https://github.com/RossWang/Aria2-Integration/issues/36)
+* Fix a file name encoding issue ([989912b](https://github.com/RossWang/Aria2-Integration/commit/989912b)), closes [#8](https://github.com/RossWang/Aria2-Integration/issues/8)
+* Fix link in about page ([311701f](https://github.com/RossWang/Aria2-Integration/commit/311701f)), closes [#38](https://github.com/RossWang/Aria2-Integration/issues/38)
+* It will no longer trigger notification from other sources ([cf9660e](https://github.com/RossWang/Aria2-Integration/commit/cf9660e)), closes [#42](https://github.com/RossWang/Aria2-Integration/issues/42)
+
+
+### Features
+
+* Downloads trigger from context menu can now display the file name ([#45](https://github.com/RossWang/Aria2-Integration/issues/45)) ([383280e](https://github.com/RossWang/Aria2-Integration/commit/383280e))
+* update AriaNg to 1.0.0 ([ccb10aa](https://github.com/RossWang/Aria2-Integration/commit/ccb10aa))
+
+
+
 <a name="0.3.6"></a>
 ## [0.3.6](https://github.com/RossWang/Aria2-Integration/compare/0.3.5...0.3.6) (2018-07-17)
 
