@@ -474,15 +474,21 @@ function getFileName(d) {
 		}
 	}
 	else {
-		id = d.url.lastIndexOf("/");
-		if (id >= 0) {
-			id1 = d.url.lastIndexOf("?");
-			if (id1 == -1) {
-				fileName = d.url.slice(id + 1);	
-			}
-			else {
-				fileName = d.url.slice(id + 1, id1);
-			}
+		fileName = getFileNameURL(d.url);
+	}
+	return fileName;
+}
+
+function getFileNameURL(url) {
+	var fileName = "";
+	id = url.lastIndexOf("/");
+	if (id >= 0) {
+		id1 = d.url.lastIndexOf("?");
+		if (id1 == -1) {
+			fileName = d.url.slice(id + 1);	
+		}
+		else {
+			fileName = d.url.slice(id + 1, id1);
 		}
 	}
 	return fileName;
@@ -772,7 +778,7 @@ function cmCallback (info, tab) {
 			}
 			var d = {
 				url: url,
-				fileName: "",
+				fileName: getFileNameURL(url),
 				fileSize: "",
 				requestHeaders: requestHeaders
 			}
@@ -784,8 +790,6 @@ function cmCallback (info, tab) {
 					sendTo(url,"","",requestHeaders,server);
 				}
 			});
-			//sendTo(url,"","",requestHeaders);
-			//downloadPanel(d);
 			console.log(info);
 		}, (e) => {
 			console.log("Error", e);
@@ -794,7 +798,7 @@ function cmCallback (info, tab) {
 			requestHeaders += "]";
 			var d = {
 				url: url,
-				fileName: "",
+				fileName: getFileNameURL(url),
 				fileSize: "",
 				requestHeaders: requestHeaders
 			}
@@ -806,8 +810,6 @@ function cmCallback (info, tab) {
 					sendTo(url,"","",requestHeaders,server);
 				}
 			});
-			//sendTo(url,"","",requestHeaders);
-			//downloadPanel(d);
 			console.log(info);
 		} );;
 	}
