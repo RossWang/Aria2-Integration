@@ -567,7 +567,6 @@ async function prepareDownload(d) {
 	details.fileName = getFileName(d);
 	
 	// decode URI Component
-	details.url = decodeURIComponent(details.url);
 	details.fileName = decodeURIComponent(details.fileName);
 
 	// issue #8
