@@ -45,6 +45,7 @@ function detail() {
 				browser.tabs.create({
 					url: ariangUrl
 				});
+				window.close();
 			});
 		}
 	});
