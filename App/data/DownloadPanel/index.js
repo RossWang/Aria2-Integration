@@ -186,15 +186,20 @@ function adv() {
 
 function decodeFn(fn) {
 	var res = jschardet.detect(fn).encoding;
-	var decoder = new TextDecoder(res);
-	var charcode = [];
-	for(var i = 0, length = fn.length; i < length; i++) {
-		var code = fn.charCodeAt(i);
-		charcode.push(code);
+	if (res != "ascii") {
+		var decoder = new TextDecoder(res);
+		var charcode = [];
+		for(var i = 0, length = fn.length; i < length; i++) {
+			var code = fn.charCodeAt(i);
+			charcode.push(code);
+		}
+		var charcodeUint = new Uint8Array();
+		charcodeUint = Uint8Array.from(charcode);
+		var out = decoder.decode(charcodeUint);
 	}
-	var charcodeUint = new Uint8Array();
-	charcodeUint = Uint8Array.from(charcode);
-	var out = decoder.decode(charcodeUint);
+	else {
+		var out = fn;
+	}
 	return out;
 }
 
