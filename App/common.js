@@ -504,7 +504,7 @@ function getFileSize(d){
 	return fileSize;
 }
 
-function getRequestHeaders(id, ua) {
+function getRequestHeaders(d, ua) {
 	// create header
 	var id1;
 	var requestHeaders = [];
@@ -515,10 +515,10 @@ function getRequestHeaders(id, ua) {
 		var getheader = ['Referer', 'Cookie', 'Cookie2', 'Authorization'];
 	}
 	for (var i = 0; i < getheader.length; i++) {
-		id1 = request[id].requestHeaders.findIndex(x => x.name === getheader[i]);
+		id1 = d.requestHeaders.findIndex(x => x.name === getheader[i]);
 		if (id1 >= 0) {
-			requestHeaders[i] = request[id].requestHeaders[id1].name + ": " +
-				request[id].requestHeaders[id1].value;
+			requestHeaders[i] = d.requestHeaders[id1].name + ": " +
+				d.requestHeaders[id1].value;
 		}
 	}
 	return requestHeaders;
@@ -556,11 +556,12 @@ async function prepareDownload(d) {
 	
 	// get request item
 	var id = request.findIndex(x => x.requestId === d.requestId);
+	const reqFound = { ...request[id] };
 	if (id >= 0) {
 		// create header
 		var get = browser.storage.local.get(config.command.guess);
 		await get.then(item => {
-			details.requestHeaders = getRequestHeaders(id, item.ua);
+			details.requestHeaders = getRequestHeaders(reqFound, item.ua);
 		});
 		// delete request item
 		request.splice(id, 1);
