@@ -1,4 +1,18 @@
-<a name="0.4.1"></a>
+## [0.4.2](https://github.com/RossWang/Aria2-Integration/compare/0.4.1...0.4.2) (2019-03-19)
+
+
+### Bug Fixes
+
+* Fix a display issue ([4398338](https://github.com/RossWang/Aria2-Integration/commit/4398338))
+
+
+### Features
+
+* Update AriaNg to Version 1.0.1 ([9d42f8e](https://github.com/RossWang/Aria2-Integration/commit/9d42f8e))
+* Update jschardet to Version 2.1.0 ([9370b78](https://github.com/RossWang/Aria2-Integration/commit/9370b78))
+
+
+
 ## [0.4.1](https://github.com/RossWang/Aria2-Integration/compare/0.4.0...0.4.1) (2018-12-22)
 
 
@@ -8,7 +22,6 @@
 
 
 
-<a name="0.4.0"></a>
 # [0.4.0](https://github.com/RossWang/Aria2-Integration/compare/0.3.6...0.4.0) (2018-12-20)
 
 
@@ -28,7 +41,6 @@
 
 
 
-<a name="0.3.6"></a>
 ## [0.3.6](https://github.com/RossWang/Aria2-Integration/compare/0.3.5...0.3.6) (2018-07-17)
 
 
@@ -45,7 +57,6 @@
 
 
 
-<a name="0.3.5"></a>
 ## [0.3.5](https://github.com/RossWang/Aria2-Integration/compare/0.3.4...0.3.5) (2018-06-27)
 
 
@@ -55,7 +66,6 @@
 
 
 
-<a name="0.3.4"></a>
 ## [0.3.4](https://github.com/RossWang/Aria2-Integration/compare/0.3.3...0.3.4) (2018-03-10)
 
 
@@ -70,7 +80,6 @@
 
 
 
-<a name="0.3.3"></a>
 ## [0.3.3](https://github.com/RossWang/Aria2-Integration/compare/0.3.2...0.3.3) (2018-02-24)
 
 
@@ -85,7 +94,6 @@
 
 
 
-<a name="0.3.2"></a>
 ## [0.3.2](https://github.com/RossWang/Aria2-Integration/compare/0.3.1...0.3.2) (2018-01-24)
 
 
@@ -96,7 +104,6 @@
 
 
 
-<a name="0.3.1"></a>
 ## [0.3.1](https://github.com/RossWang/Aria2-Integration/compare/0.3.0...0.3.1) (2018-01-22)
 
 
@@ -106,7 +113,6 @@
 
 
 
-<a name="0.3.0"></a>
 # [0.3.0](https://github.com/RossWang/Aria2-Integration/compare/0.2.4...0.3.0) (2018-01-22)
 
 
@@ -125,7 +131,6 @@
 
 
 
-<a name="0.2.4"></a>
 ## [0.2.4](https://github.com/RossWang/Aria2-Integration/compare/0.2.3...0.2.4) (2017-12-13)
 
 
@@ -136,7 +141,6 @@
 
 
 
-<a name="0.2.3"></a>
 ## [0.2.3](https://github.com/RossWang/Aria2-Integration/compare/0.2.2...0.2.3) (2017-12-02)
 
 
@@ -146,7 +150,6 @@
 
 
 
-<a name="0.2.2"></a>
 ## [0.2.2](https://github.com/RossWang/Aria2-Integration/compare/0.2.1...0.2.2) (2017-11-22)
 
 
@@ -165,7 +168,6 @@
 
 
 
-<a name="0.2.1"></a>
 ## [0.2.1](https://github.com/RossWang/Aria2-Integration/compare/0.2.0...0.2.1) (2017-11-17)
 
 
@@ -181,7 +183,6 @@
 
 
 
-<a name="0.2.0"></a>
 # [0.2.0](https://github.com/RossWang/Aria2-Integration/compare/426de63...0.2.0) (2017-11-01)
 
 
