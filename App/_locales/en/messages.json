@@ -385,33 +385,33 @@
 		"description": ""
 	},
 	
-	"OP_typeFilter": {
-		"message": "File Type Filter:",
+	"OP_typeFilterA": {
+		"message": "Include File Type:",
 		"description": ""
 	},
 
-	"OPN_typeFilterA": {
-		"message": "Regular Expressions: included file type",
+	"OP_typeFilterB": {
+		"message": "Exclude File Type:",
 		"description": ""
 	},
 	
-	"OPN_typeFilterB": {
-		"message": "Regular Expressions: excluded file type",
+	"OPN_typeFilter": {
+		"message": "Regular Expressions: Matches MIME type",
 		"description": ""
 	},
 	
-	"OP_urlFilter": {
-		"message": "URL Filter:",
+	"OP_urlFilterA": {
+		"message": "Include URL:",
 		"description": ""
 	},
 
-	"OPN_urlFilterA": {
-		"message": "Regular Expressions: included URL",
+	"OP_urlFilterB": {
+		"message": "Exclude URL:",
 		"description": ""
 	},
 	
-	"OPN_urlFilterB": {
-		"message": "Regular Expressions: excluded URL",
+	"OPN_urlFilter": {
+		"message": "Regular Expressions: Matches URL",
 		"description": ""
 	},
 	

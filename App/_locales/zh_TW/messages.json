@@ -386,33 +386,33 @@
 		"description": ""
 	},
 	
-	"OP_typeFilter": {
-		"message": "檔案格式過濾:",
+	"OP_typeFilterA": {
+		"message": "包含的檔案格式:",
 		"description": ""
 	},
 
-	"OPN_typeFilterA": {
-		"message": "正規表達式: 包含的檔案格式",
+	"OP_typeFilterB": {
+		"message": "排除的檔案格式:",
 		"description": ""
 	},
 	
-	"OPN_typeFilterB": {
-		"message": "正規表達式: 除外的檔案格式",
+	"OPN_typeFilter": {
+		"message": "正規表達式: 匹配 MIME 類型",
 		"description": ""
 	},
 	
-	"OP_urlFilter": {
-		"message": "網址過濾:",
+	"OP_urlFilterA": {
+		"message": "包含的網址:",
 		"description": ""
 	},
 
-	"OPN_urlFilterA": {
-		"message": "正規表達式: 包含的 URL",
+	"OP_urlFilterB": {
+		"message": "排除的網址:",
 		"description": ""
 	},
 	
-	"OPN_urlFilterB": {
-		"message": "正規表達式: 除外的 URL",
+	"OPN_urlFilter": {
+		"message": "正規表達式: 匹配 URL",
 		"description": ""
 	},
 	
