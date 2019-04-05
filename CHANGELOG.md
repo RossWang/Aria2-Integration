@@ -1,3 +1,7 @@
+## [0.4.4](https://github.com/RossWang/Aria2-Integration/compare/0.4.3...0.4.4) (2019-04-05)
+
+
+
 ## [0.4.3](https://github.com/RossWang/Aria2-Integration/compare/0.4.2...0.4.3) (2019-04-05)
 
 
