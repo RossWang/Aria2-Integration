@@ -449,29 +449,42 @@ function getFileName(d) {
 	// get file name
 	var fileName = "";
 	var id = 0;
-	var id1 = 0;
 	id = d.responseHeaders.findIndex(x => x.name.toLowerCase() === "content-disposition");
 	if (id >= 0) {
-		id1 = d.responseHeaders[id].value.lastIndexOf("\'");
-		if (id1 >= 0) {
-			fileName = d.responseHeaders[id].value.slice(id1 + 1);
+		var PARAM_REGEXP = /;[\x09\x20]*([!#$%&'*+.0-9A-Z^_`a-z|~-]+)[\x09\x20]*=[\x09\x20]*("(?:[\x20!\x23-\x5b\x5d-\x7e\x80-\xff]|\\[\x20-\x7e])*"|[!#$%&'*+.0-9A-Z^_`a-z|~-]+)[\x09\x20]*/g;
+		var EXT_VALUE_REGEXP = /^([A-Za-z0-9!#$%&+\-^_`{}~]+)'(?:[A-Za-z]{2,3}(?:-[A-Za-z]{3}){0,3}|[A-Za-z]{4,8}|)'((?:%[0-9A-Fa-f]{2}|[A-Za-z0-9!#$&+.^_`|~-])+)$/;
+
+		var string = d.responseHeaders[id].value;
+
+		var key;
+		var value;
+
+		var match = PARAM_REGEXP.exec(string);
+		if (!match) {
+			fileName = getFileNameURL(d.url);
+			return fileName;
 		}
-		else {
-			id1 = d.responseHeaders[id].value.lastIndexOf("=");
-			if (id1 >= 0) {
-				fileName = d.responseHeaders[id].value.slice(id1 + 1);
+
+		key = match[1].toLowerCase();
+		value = match[2];
+
+		if (key.indexOf('*') + 1 === key.length) {
+			var match = EXT_VALUE_REGEXP.exec(value)
+			if (!match) {
+				fileName = getFileNameURL(d.url);
+				return fileName;
 			}
 			else {
-				id = d.url.lastIndexOf("/");
-				if (id >= 0) {
-					id1 = d.url.lastIndexOf("?");
-					if (id1 == -1) {
-						fileName = d.url.slice(id + 1);
-						
-					}
-				}
+				value = match[2];
 			}
 		}
+
+		if (value[0] === '"') {
+			// remove quotes and escapes
+			value = value.substr(1, value.length - 2).replace(QESC_REGEXP, '$1');
+		}
+		fileName = value;
+
 	}
 	else {
 		fileName = getFileNameURL(d.url);
