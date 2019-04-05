@@ -1,3 +1,12 @@
+## [0.4.3](https://github.com/RossWang/Aria2-Integration/compare/0.4.2...0.4.3) (2019-04-05)
+
+
+### Bug Fixes
+
+* Fix a file name parsing issue ([098091f](https://github.com/RossWang/Aria2-Integration/commit/098091f)), closes [#53](https://github.com/RossWang/Aria2-Integration/issues/53)
+
+
+
 ## [0.4.2](https://github.com/RossWang/Aria2-Integration/compare/0.4.1...0.4.2) (2019-03-19)
 
 
