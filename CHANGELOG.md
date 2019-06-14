@@ -1,3 +1,17 @@
+## [0.4.5](https://github.com/RossWang/Aria2-Integration/compare/0.4.4...0.4.5) (2019-06-14)
+
+
+### Bug Fixes
+
+* fix a issue with Aggressive Mode ([8cc77c1](https://github.com/RossWang/Aria2-Integration/commit/8cc77c1))
+
+
+### Features
+
+* update AriaNg to 1.1.1 ([15451d1](https://github.com/RossWang/Aria2-Integration/commit/15451d1))
+
+
+
 ## [0.4.4](https://github.com/RossWang/Aria2-Integration/compare/0.4.3...0.4.4) (2019-04-05)
 
 
