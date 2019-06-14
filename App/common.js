@@ -683,14 +683,14 @@ function observeResponse(d) {
 					prepareDownload(d);
 					return {cancel: true};
 				} 
-				else if (contentType.slice(0, 4) == "video") {
+				else if (contentType.slice(0, 5) == "video") {
 					//console.log(contentType);
 					if (isException(d))
 						return {cancel: false};
 					prepareDownload(d);
 					return {cancel: true};
 				}
-				else if (contentType.slice(0, 4) == "audio") {
+				else if (contentType.slice(0, 5) == "audio") {
 					//console.log(contentType);
 					if (isException(d))
 						return {cancel: false};
