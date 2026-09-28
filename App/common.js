@@ -802,16 +802,17 @@ function cmCallback (info, tab) {
 		notify(browser.i18n.getMessage("error_notSupported"))
 	}
 	else {
-		browser.cookies.getAll({url:url}).then((cookies) => {
+		browser.cookies.getAll({url:url, storeId:tab.cookieStoreId}).then((cookies) => {
 			var requestHeaders = [];
-			requestHeaders[0] = ("Referer: " + info.pageUrl + "\"");
-			requestHeaders[1] = ("Cookie: ");
-			var cookie = {};
-			for (cookie of cookies) {
-				requestHeaders[1] += cookie.name;
-				requestHeaders[1] += "="
-				requestHeaders[1] += cookie.value;
-				requestHeaders[1] += "; "
+			requestHeaders[0] = ("Referer: " + info.pageUrl);
+			if (cookies.length > 0) {
+				requestHeaders[1] = ("Cookie: ");
+				for (const cookie of cookies) {
+					requestHeaders[1] += cookie.name;
+					requestHeaders[1] += "="
+					requestHeaders[1] += cookie.value;
+					requestHeaders[1] += "; "
+				}
 			}
 			var d = {
 				url: url,
@@ -831,7 +832,7 @@ function cmCallback (info, tab) {
 		}, (e) => {
 			console.log("Error", e);
 			var requestHeaders = "[";
-			requestHeaders += ("\"Referer: " + info.pageUrl + "\"");
+			requestHeaders += ("Referer: " + info.pageUrl);
 			requestHeaders += "]";
 			var d = {
 				url: url,
