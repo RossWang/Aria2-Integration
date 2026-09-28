@@ -339,10 +339,21 @@ function sendTo(url, fileName, filePath, header, server) {
 }
 
 function save(url, fileName, filePath, header, as, wid, incog) {
+	const hObjs = [];
+	for (const h of header) {
+		if (h !== "") {
+			const tmp = h.split(": ");
+			const getheader = ['Referer', 'Authorization'];
+			if (tmp[0] in getheader) {
+				hObjs.push({name: tmp[0], value: tmp[1]});
+			}
+		}
+	}
 	if (fileName != "") {
 		var downloading = browser.downloads.download({
 			//conflictAction: "prompt",  //not work
 			filename: fileName,
+			headers: hObjs, // referer only availiable above 70
 			incognito: incog,  //not work under 57
 			saveAs: as,
 			url: url,
@@ -351,6 +362,7 @@ function save(url, fileName, filePath, header, as, wid, incog) {
 	else {
 		var downloading = browser.downloads.download({
 			//conflictAction: "prompt",  //not work
+			headers: hObjs, // referer only availiable above 70
 			incognito: incog,  //not work under 57
 			saveAs: as,
 			url: url,
@@ -369,9 +381,19 @@ function save(url, fileName, filePath, header, as, wid, incog) {
 }
 
 function tmpopen(url, fileName, header) {
+	const hObjs = [];
+	for (const h of header) {
+		if (h !== "") {
+			const tmp = h.split(": ");
+			const getheader = ['Referer', 'Authorization'];
+			if (tmp[0] in getheader) {
+				hObjs.push({name: tmp[0], value: tmp[1]});
+			}
+		}
+	}
 	var downloading = browser.downloads.download({
 		filename: "%temp%",
-		//headers: header,
+		headers: hObjs, // referer only availiable above 70
 		url: url
 	});
 	downloading.then(id => {
@@ -531,8 +553,8 @@ function getRequestHeaders(d, ua) {
 	for (var i = 0; i < getheader.length; i++) {
 		id1 = d.requestHeaders.findIndex(x => x.name === getheader[i]);
 		if (id1 >= 0) {
-			requestHeaders[i] = d.requestHeaders[id1].name + ": " +
-				d.requestHeaders[id1].value;
+			requestHeaders.push(d.requestHeaders[id1].name + ": " +
+				d.requestHeaders[id1].value);
 		}
 	}
 	return requestHeaders;
