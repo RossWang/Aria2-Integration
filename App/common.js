@@ -640,7 +640,7 @@ function observeRequest(d) {
 function observeResponse(d) {
 	//console.log(d.responseHeaders);
 	// bug0001: goo.gl
-	if (d.statusCode == 200 || aggressive) {
+	if (d.statusCode == 200 && d.method == "GET" || aggressive) {
 		if (d.responseHeaders.find(x => x.name.toLowerCase() === 'content-disposition') != undefined) {
 			var contentDisposition = d.responseHeaders.find(x => x.name.toLowerCase() ===
 				'content-disposition').value.toLowerCase();
