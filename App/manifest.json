@@ -35,6 +35,18 @@
 	  "256": "data/icons/disabled/256.png"
     }
   },
+  "sidebar_action": {
+    "default_icon": {
+      "16": "data/icons/16.png",
+      "32": "data/icons/32.png",
+      "64": "data/icons/64.png",
+      "128": "data/icons/128.png",
+      "256": "data/icons/256.png"
+    },
+    "default_title": "AriaNg",
+    "default_panel": "data/ariang/index.html",
+    "open_at_install": false
+  },
   "icons": {
      "16": "data/icons/16.png",
      "32": "data/icons/32.png",
