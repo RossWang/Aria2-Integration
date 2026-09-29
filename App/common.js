@@ -560,32 +560,6 @@ function getRequestHeaders(d, ua) {
 	return requestHeaders;
 }
 
-function isException(d) {
-	// check Exception
-	var id = d.responseHeaders.findIndex(x => x.name.toLowerCase() === "content-length");
-	if(id != -1) {
-		if(Number(d.responseHeaders[id].value) < Number(fileSizeLimit)){
-			return true;
-		}
-	}
-	var id2 = d.responseHeaders.findIndex(x => x.name.toLowerCase() === 'content-type');
-	if(id2 != -1) {
-		if(!RegExp(fileTypeFilterA).test(d.responseHeaders[id2].value)){
-			return true;
-		}
-		if(!RegExp(urlFilterA).test(d.url)){
-			return true;
-		}
-		if(fileTypeFilterB != "" && RegExp(fileTypeFilterB).test(d.responseHeaders[id2].value)){
-			return true;
-		}
-		if(urlFilterB != "" && RegExp(urlFilterB).test(d.url)){
-			return true;
-		}
-	}
-	return false;
-}
-
 async function prepareDownload(d, requestDetails) {
 	var details = {};
 	details.url = d.url;
@@ -665,12 +639,28 @@ function observeResponse(d) {
 	if (d.statusCode == 200 && d.method == "GET" || aggressive) {
 		const cd = d.responseHeaders.find(x => x.name.toLowerCase() === 'content-disposition');
 		const ct = d.responseHeaders.find(x => x.name.toLowerCase() === 'content-type');
+		const cl = d.responseHeaders.find(x => x.name.toLowerCase() === "content-length");
+		// custom size limit
+		if (cl && Number(cl.value) < Number(fileSizeLimit)) {
+			return {cancel: false};
+		}
+		// custom exclude filter
+		if ((ct && fileTypeFilterB !== "" && RegExp(fileTypeFilterB).test(ct.value)) ||
+			(d.url && urlFilterB !== "" && RegExp(urlFilterB).test(d.url))) {
+			return {cancel: false};
+		}
+		// custom include filter
+		if ((ct && fileTypeFilterA !== "" && RegExp(fileTypeFilterA).test(ct.value)) ||
+			(d.url && urlFilterA !== "" && RegExp(urlFilterA).test(d.url))) {
+			//console.log(d.url, ct);
+			prepareDownload(d, requestDetails);
+			return {cancel: true};
+		}
+		// default filter
 		if (cd !== undefined) {
 			const contentDisposition = cd.value.toLowerCase();
 			if (contentDisposition.slice(0, 10) == "attachment" || aggressive) {
 				//console.log(contentDisposition);
-				if (isException(d))
-					return {cancel: false};
 				prepareDownload(d, requestDetails);
 				return {cancel: true};
 			}
@@ -685,37 +675,27 @@ function observeResponse(d) {
 				&& contentType.slice(12, 15) != "rss"
 				&& contentType.slice(12, 16) != "json" ) {
 				//console.log(contentType);
-				if (isException(d))
-					return {cancel: false};
 				prepareDownload(d, requestDetails);
 				return {cancel: true};
 			}
 			else if (aggressive) {
 				if (contentType.slice(0, 5) == "image" ) {
 					//console.log(contentType);
-					if (isException(d))
-						return {cancel: false};
 					prepareDownload(d, requestDetails);
 					return {cancel: true};
 				}
 				else if (contentType.slice(0, 4) == "text" && contentType.slice(5, 9) != "html") {
 					//console.log(contentType);
-					if (isException(d))
-						return {cancel: false};
 					prepareDownload(d, requestDetails);
 					return {cancel: true};
 				} 
 				else if (contentType.slice(0, 5) == "video") {
 					//console.log(contentType);
-					if (isException(d))
-						return {cancel: false};
 					prepareDownload(d, requestDetails);
 					return {cancel: true};
 				}
 				else if (contentType.slice(0, 5) == "audio") {
 					//console.log(contentType);
-					if (isException(d))
-						return {cancel: false};
 					prepareDownload(d, requestDetails);
 					return {cancel: true};
 				}
