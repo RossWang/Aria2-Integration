@@ -1,6 +1,6 @@
 
 'use strict';
-var request = [];
+var requests = new Map();
 var globalD = [];
 var aggressive = false;
 var fileSizeLimit = 0;
@@ -586,26 +586,22 @@ function isException(d) {
 	return false;
 }
 
-async function prepareDownload(d) {
+async function prepareDownload(d, requestDetails) {
 	var details = {};
 	details.url = d.url;
-	
+
 	// get request item
-	var id = request.findIndex(x => x.requestId === d.requestId);
-	const reqFound = { ...request[id] };
-	if (id >= 0) {
+	if (requestDetails !== undefined) {
 		// create header
 		var get = browser.storage.local.get(config.command.guess);
 		await get.then(item => {
-			details.requestHeaders = getRequestHeaders(reqFound, item.ua);
+			details.requestHeaders = getRequestHeaders(requestDetails, item.ua);
 		});
-		// delete request item
-		request.splice(id, 1);
 	}
 	else {
 		details.requestHeaders = ""
 	}
-	
+
 	// process file name
 	details.fileName = getFileName(d);
 	
@@ -621,17 +617,17 @@ async function prepareDownload(d) {
 	details.fileName = details.fileName.replace('\";', '');
 	details.fileName = details.fileName.replace('\"', '');
 	details.fileName = details.fileName.replace('\"', '');
-	
+
 	// correct File Name
 	var getting = correctFileName(details.fileName);
 	await getting.then ((name) => {
 		details.fileName = name;
 		}
 	);
-	
+
 	// get file size
 	details.fileSize = getFileSize(d);
-	
+
 	// create download panel
 	browser.storage.local.get(config.command.guess, item => {
 		if (item.downPanel) {
@@ -641,7 +637,7 @@ async function prepareDownload(d) {
 			sendTo(details.url,details.fileName,"",details.requestHeaders,"1");
 		}
 	});
-	
+
 	// avoid blank new tab
 	var getting = browser.tabs.query({
 		active: true,
@@ -656,27 +652,31 @@ async function prepareDownload(d) {
 }
 
 function observeRequest(d) {
-	request.push(d);
+	requests.set(d.requestId, d);
+	//console.log("Request Map Size:", requests.size);
+	return;
 }
 
 function observeResponse(d) {
-	//console.log(d.responseHeaders);
-	// bug0001: goo.gl
+	//console.log(d);
+	const requestDetails = requests.get(d.requestId);
+	requests.delete(d.requestId);
+	// goo.gl, google spreadsheet
 	if (d.statusCode == 200 && d.method == "GET" || aggressive) {
-		if (d.responseHeaders.find(x => x.name.toLowerCase() === 'content-disposition') != undefined) {
-			var contentDisposition = d.responseHeaders.find(x => x.name.toLowerCase() ===
-				'content-disposition').value.toLowerCase();
+		const cd = d.responseHeaders.find(x => x.name.toLowerCase() === 'content-disposition');
+		const ct = d.responseHeaders.find(x => x.name.toLowerCase() === 'content-type');
+		if (cd !== undefined) {
+			const contentDisposition = cd.value.toLowerCase();
 			if (contentDisposition.slice(0, 10) == "attachment" || aggressive) {
 				//console.log(contentDisposition);
 				if (isException(d))
 					return {cancel: false};
-				prepareDownload(d);
+				prepareDownload(d, requestDetails);
 				return {cancel: true};
 			}
 		}
-		if (d.responseHeaders.find(x => x.name.toLowerCase() === 'content-type') != undefined) {
-			var contentType = d.responseHeaders.find(x => x.name.toLowerCase() === 'content-type').value
-				.toLowerCase();
+		if (ct !== undefined) {
+			const contentType = ct.value.toLowerCase();
 			if (contentType.slice(0, 11) == "application" 
 				&& contentType.slice(12, 15) != "pdf" 
 				&& contentType.slice(12, 17) != "xhtml" 
@@ -687,7 +687,7 @@ function observeResponse(d) {
 				//console.log(contentType);
 				if (isException(d))
 					return {cancel: false};
-				prepareDownload(d);
+				prepareDownload(d, requestDetails);
 				return {cancel: true};
 			}
 			else if (aggressive) {
@@ -695,58 +695,39 @@ function observeResponse(d) {
 					//console.log(contentType);
 					if (isException(d))
 						return {cancel: false};
-					prepareDownload(d);
+					prepareDownload(d, requestDetails);
 					return {cancel: true};
 				}
 				else if (contentType.slice(0, 4) == "text" && contentType.slice(5, 9) != "html") {
 					//console.log(contentType);
 					if (isException(d))
 						return {cancel: false};
-					prepareDownload(d);
+					prepareDownload(d, requestDetails);
 					return {cancel: true};
 				} 
 				else if (contentType.slice(0, 5) == "video") {
 					//console.log(contentType);
 					if (isException(d))
 						return {cancel: false};
-					prepareDownload(d);
+					prepareDownload(d, requestDetails);
 					return {cancel: true};
 				}
 				else if (contentType.slice(0, 5) == "audio") {
 					//console.log(contentType);
 					if (isException(d))
 						return {cancel: false};
-					prepareDownload(d);
+					prepareDownload(d, requestDetails);
 					return {cancel: true};
 				}
-			}	
+			}
 		}
 	}
-	// get request item and delete
-	var id = request.findIndex(x => x.requestId === d.requestId);
-	if (id >= 0) {
-		request.splice(id, 1);
-	}
-	return false;
+	return {cancel: false};
 }
 
 function requestError (d) {
-	var id = request.findIndex(x => x.requestId === d.requestId);
-	if (id >= 0) {
-		request.splice(id, 1);
-	}
+	requests.delete(d.requestId);
 	//console.log(d.error);
-	return;
-}
-
-function tabRemoved (tabId, removeInfo) {
-	var id = request.findIndex(x => x.tabId === tabId);
-	while (id >= 0) {
-		request.splice(id, 1);
-		id = request.findIndex(x => x.tabId === tabId);
-		//console.log("removed");
-	}
-	//console.log(tabId);
 	return;
 }
 
@@ -765,7 +746,6 @@ function changeState(enabled) {
 			urls: ["<all_urls>"],
 			types: types
 		});
-		browser.tabs.onRemoved.addListener(tabRemoved);
 		browser.storage.local.set({
 			enabled: true
 		});
@@ -775,8 +755,7 @@ function changeState(enabled) {
 		browser.webRequest.onHeadersReceived.removeListener(observeResponse);
 		browser.webRequest.onSendHeaders.removeListener(observeRequest);
 		browser.webRequest.onErrorOccurred.removeListener(requestError);
-		browser.tabs.onRemoved.removeListener(tabRemoved);
-		request.splice(0, request.length);
+		requests.clear();
 		browser.storage.local.set({
 			enabled: false
 		});
