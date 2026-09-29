@@ -1,3 +1,19 @@
+## [0.5.0](https://github.com/RossWang/Aria2-Integration/compare/0.4.5...0.5.0) (2026-09-29)
+
+### Features
+
+* add header support for internal downloader ([dd84984](https://github.com/RossWang/Aria2-Integration/commit/dd849846fd300ea4416a4bb100d0b8aeb2a5c0d3))
+* Allow opening AriaNg in the sidebar ([4f6af2e](https://github.com/RossWang/Aria2-Integration/commit/4f6af2e55e2951596888bb3191f90ed9ee930b48)), closes [#95](https://github.com/RossWang/Aria2-Integration/issues/95)
+* dark mode ([3b52fb8](https://github.com/RossWang/Aria2-Integration/commit/3b52fb8ae12b80be08d3339302fdad2f20a93f44))
+* Expand the scope of custom rules ([06014ac](https://github.com/RossWang/Aria2-Integration/commit/06014ac0d62b96c8cf9c482b38e17ce737ea4129)), closes [#82](https://github.com/RossWang/Aria2-Integration/issues/82)
+* update AriaNg to 1.3.14 ([503e5b0](https://github.com/RossWang/Aria2-Integration/commit/503e5b07aea97b7842f504214a457dd20ee7b531)), closes [#102](https://github.com/RossWang/Aria2-Integration/issues/102) [#92](https://github.com/RossWang/Aria2-Integration/issues/92) [#75](https://github.com/RossWang/Aria2-Integration/issues/75)
+
+### Bug Fixes
+
+* Fix http headers for download initiated by context menu ([047689f](https://github.com/RossWang/Aria2-Integration/commit/047689f1318ff5e3025d1daed9719239a67ebd5f))
+* Fix potential memory leak ([59a464e](https://github.com/RossWang/Aria2-Integration/commit/59a464e2f9537008a7925a71a4de17cea133d312))
+* intercept HTTP GET only ([473ef42](https://github.com/RossWang/Aria2-Integration/commit/473ef4244120d656af5d821c3fada35c655cab12))
+
 ## [0.4.5](https://github.com/RossWang/Aria2-Integration/compare/0.4.4...0.4.5) (2019-06-14)
 
 
