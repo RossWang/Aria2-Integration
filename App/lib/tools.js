@@ -9,7 +9,7 @@ async function verifyFileName(name) {
 		if (e.os == "win") {
 			if (name.search(/^(con|prn|aux|nul|com[0-9]|lpt[0-9])$/i) != -1)
 				tmp = tmp.concat(name);
-			if (name[name.length - 1] == ' ' || name[name.length - 1] == '.')
+			if (name.match(/[ .]+$/g) != null)
 				tmp = tmp.concat("Filenames cannot end in a space or dot.");
 		}
 	});
@@ -22,10 +22,9 @@ async function correctFileName(name) {
 	await browser.runtime.getPlatformInfo().then( (e) => {
 		tmp = tmp.replace(/[<>:"\/\\|?*\x00-\x1F]/g, '_');
 		if (e.os == "win") {
+			tmp = tmp.replace(/[ .]+$/g, '_');
 			if (tmp.search(/^(con|prn|aux|nul|com[0-9]|lpt[0-9])$/i) != -1)
 				tmp = '_' + tmp;
-			if (tmp[tmp.length - 1] == ' ' || tmp[tmp.length - 1] == '.')
-				tmp = tmp.slice(0, tmp.length - 1);
 		}
 	});
 	console.log(tmp);
