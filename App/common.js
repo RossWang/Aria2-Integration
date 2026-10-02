@@ -666,39 +666,27 @@ function observeResponse(d) {
 			}
 		}
 		if (ct !== undefined) {
-			const contentType = ct.value.toLowerCase();
-			if (contentType.slice(0, 11) == "application" 
-				&& contentType.slice(12, 15) != "pdf" 
-				&& contentType.slice(12, 17) != "xhtml" 
-				&& contentType.slice(12, 23) != "x-xpinstall"
-				&& contentType.slice(12, 29) != "x-shockwave-flash" 
-				&& contentType.slice(12, 15) != "rss"
-				&& contentType.slice(12, 16) != "json" ) {
+			const contentType = ct.value.toLowerCase().match(/^([^;\/ ]+)\/([^;\/ ]+);?.*$/);
+			if (aggressive && !(contentType[1] === "text" && contentType[2] === "html")) {
 				//console.log(contentType);
 				prepareDownload(d, requestDetails);
 				return {cancel: true};
 			}
-			else if (aggressive) {
-				if (contentType.slice(0, 5) == "image" ) {
-					//console.log(contentType);
-					prepareDownload(d, requestDetails);
-					return {cancel: true};
-				}
-				else if (contentType.slice(0, 4) == "text" && contentType.slice(5, 9) != "html") {
-					//console.log(contentType);
-					prepareDownload(d, requestDetails);
-					return {cancel: true};
-				} 
-				else if (contentType.slice(0, 5) == "video") {
-					//console.log(contentType);
-					prepareDownload(d, requestDetails);
-					return {cancel: true};
-				}
-				else if (contentType.slice(0, 5) == "audio") {
-					//console.log(contentType);
-					prepareDownload(d, requestDetails);
-					return {cancel: true};
-				}
+			if (contentType[1] === "application"
+				&& contentType[2] !== "pdf"
+				&& contentType[2] !== "xhtml"
+				&& contentType[2] !== "x-xpinstall"
+				&& contentType[2] !== "x-shockwave-flash"
+				&& contentType[2] !== "rss"
+				&& contentType[2] !== "json") {
+				//console.log(contentType);
+				prepareDownload(d, requestDetails);
+				return {cancel: true};
+			}
+			// s3
+			if (contentType[1] === "binary" && contentType[2] === "octet-stream") {
+				prepareDownload(d, requestDetails);
+				return {cancel: true};
 			}
 		}
 	}
