@@ -1,5 +1,17 @@
 
 'use strict';
+async function retryPromise(fn, retries = 3, delay = 1000) {
+	try {
+		return await fn();
+	} catch (error) {
+		if (retries <= 0) {
+			throw error;
+		}
+		await new Promise((resolve) => setTimeout(resolve, delay));
+		return retryPromise(fn, retries - 1, delay);
+	}
+}
+
 async function verifyFileName(name) {
 	var tmp = [];
 	await browser.runtime.getPlatformInfo().then( (e) => {
@@ -76,27 +88,28 @@ function notify(message) {
 }
 
 function humanFileSize(bytes, si) {
-    var thresh = si ? 1000 : 1024;
-    if(Math.abs(bytes) < thresh) {
-        return bytes + ' B';
-    }
-    var units = si
-        ? ['kB','MB','GB','TB','PB','EB','ZB','YB']
-        : ['KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB'];
-    var u = -1;
-    do {
-        bytes /= thresh;
-        ++u;
-    } while(Math.abs(bytes) >= thresh && u < units.length - 1);
-    return bytes.toFixed(1)+' '+units[u];
+	var thresh = si ? 1000 : 1024;
+	if(Math.abs(bytes) < thresh) {
+		return bytes + ' B';
+	}
+	var units = si
+		? ['kB','MB','GB','TB','PB','EB','ZB','YB']
+		: ['KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB'];
+	var u = -1;
+	do {
+		bytes /= thresh;
+		++u;
+	} while(Math.abs(bytes) >= thresh && u < units.length - 1);
+	return bytes.toFixed(1)+' '+units[u];
 }
 
-function isRunning(item, aria2) {
+function isRunning(item, options) {
 	//check whether aria2 is runnning
 	var xhttp = new XMLHttpRequest();
 	var url = "aria2://"
 	if (item.shutdown)
 		url += "stop-with-process";
+	const aria2 = new Aria2(options);
 	if (item.protocol.toLowerCase() == "ws" || item.protocol.toLowerCase() == "wss") {
 		aria2.open().then(
 			function (res) {

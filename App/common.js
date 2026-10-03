@@ -10,7 +10,7 @@ var fileTypeFilterB = "";
 var urlFilterB = "";
 var mon;
 
-function sendTo(url, fileName, filePath, header, server) {
+function sendTo(url, fileName, filePath, advanced, server) {
 	// check whether config is set
 	browser.storage.local.get("initialize", item => {
 		if (!item.initialize || (item.initialize == undefined)) {
@@ -18,12 +18,48 @@ function sendTo(url, fileName, filePath, header, server) {
 			notify(browser.i18n.getMessage("error_setConfig"));
 		}
 		else {
+			let params = {...advanced};
+			if (fileName !== "") {
+				params.out = fileName;
+			}
+			if (filePath !== "") {
+				// file path from download panel
+				params.dir = filePath.replace(/\\/g, '\\\\');
+			}
+
+			function aria2add(ws, params, options) {
+				const aria2 = new Aria2(options);
+				if (ws) {
+					retryPromise(() => aria2.open()).then((res) => {
+						retryPromise(() => aria2.addUri([url], params)).then((res) => {
+							monitor(options, res);
+							notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
+							aria2.close();
+						}).catch((err) => {
+							console.log('Error', err);
+							notify(browser.i18n.getMessage("error_connect"));
+							aria2.close();
+						});
+					}).catch((err) => {
+						console.log('Error', err);
+						notify(browser.i18n.getMessage("error_connect"));
+					});
+				}
+				else {
+					retryPromise(() => aria2.addUri([url], params)).then((res) => {
+						notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
+					}).catch((err) => {
+						console.log('Error', err);
+						notify(browser.i18n.getMessage("error_connect"));
+					});
+				}
+			}
 			if (server == "1") {
 				browser.storage.local.get(config.command.guess, function(item) {
 					var sec = false;
 					if (item.protocol.toLowerCase() == "https" || item.protocol.toLowerCase() == "wss") {
 						sec = true;
-					}	
+					}
 					var options = {
 						host: item.host,
 						port: item.port,
@@ -31,306 +67,62 @@ function sendTo(url, fileName, filePath, header, server) {
 						secret: item.token,
 						path: "/" + item.interf
 					};
-					
-					var aria2 = new Aria2(options);
+
 					// check whether aria2 is runnning
-					isRunning(item, aria2);
-					
+					isRunning(item, options);
+
 					// Send TO Aria2
-					filePath = filePath.replace(/\\/g, '\\\\');
-					item.path = item.path.replace(/\\/g, '\\\\');
-					var params = {};
-					if (header != "[]")
-						params.header = header;
-					params.out = fileName;
-					params["parameterized-uri"]  = "false";
-					if (filePath != "") {
-						// file path from download panel
-						params.dir = filePath;
-					}
-					else if (item.path != "") {
+					if (!params.dir && item.path !== "") {
 						// file path from setting
-						params.dir = item.path;
+						params.dir = item.path.replace(/\\/g, '\\\\');
 					}
-					if (item.protocol.toLowerCase() == "ws" || item.protocol.toLowerCase() == "wss") {
-						aria2.open().then(
-							function (res) {
-								aria2.addUri([url], params).then(
-									function (res) {
-										monitor(options, res);
-										notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-										aria2.close();
-									},
-									function (err) {
-										// retry again after 3 seconds
-										setTimeout( () => {
-											aria2.addUri([url], params).then(
-												function (res) {
-													monitor(options, res);
-													notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-													aria2.close();
-												},
-												function (err) {
-													console.log('Error', err);
-													notify(browser.i18n.getMessage("error_connect"));
-													aria2.close();
-												}
-											);
-										}, 3000);
-									}
-								);
-							},
-							function (err) {
-								// retry again after 3 seconds
-								setTimeout( () => {
-									aria2.open().then( () => {
-										aria2.addUri([url], params).then(
-											function (res) {
-												monitor(options, res);
-												notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-												aria2.close();
-											},
-											function (err) {
-												console.log('Error', err);
-												notify(browser.i18n.getMessage("error_connect"));
-												aria2.close();
-											}
-										);
-									}, (err) => {
-										console.log('Error', err);
-										notify(browser.i18n.getMessage("error_connect"));
-									});
-								}, 3000);
-							}
-						);
-					}
-					else {
-						aria2.addUri([url], params).then(
-							function (res) {
-								notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-							},
-							function (err) {
-								// retry again after 3 seconds
-								setTimeout( () => {
-									aria2.addUri([url], params).then(
-										function (res) {
-											notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-										},
-										function (err) {
-											console.log('Error', err);
-											notify(browser.i18n.getMessage("error_connect"));
-										}
-									);
-								}, 3000);
-							}
-						);
-					}
+					const ws = item.protocol.toLowerCase() === "ws" || item.protocol.toLowerCase() === "wss";
+					aria2add(ws, params, options);
 					console.log("default", url, params);
 				});
 			}
-			else if(server == "2") {
+			else if (server == "2") {
 				browser.storage.local.get(config.command.s2, function(item) {
-					var secure = false;
+					var sec = false;
 					if (item.protocol2.toLowerCase() == "https" || item.protocol2.toLowerCase() == "wss")
-						secure = true;
+						sec = true;
 					var options = {
 						host: item.host2,
 						port: item.port2,
-						secure: secure,
+						secure: sec,
 						secret: item.token2,
 						path: "/" + item.interf2
 					};
-					
-					var aria2 = new Aria2(options);
-					
+
 					// Send TO Aria2
-					filePath = filePath.replace(/\\/g, '\\\\');
-					item.path2 = item.path2.replace(/\\/g, '\\\\');
-					var params = {};
-					if (header != "[]")
-						params.header = header;
-					params.out = fileName;
-					if (filePath != "") {
-						// file path from download panel
-						params.dir = filePath;
-					}
-					else if (item.path2 != "") {
+					if (!params.dir && item.path2 !== "") {
 						// file path from setting
-						params.dir = item.path2;
+						params.dir = item.path2.replace(/\\/g, '\\\\');
 					}
-					if (item.protocol2.toLowerCase() == "ws" || item.protocol2.toLowerCase() == "wss") {
-						aria2.open().then(
-							function (res) {
-								aria2.addUri([url], params).then(
-									function (res) {
-										notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-										aria2.close();
-									},
-									function (err) {
-										// retry again after 3 seconds
-										setTimeout( () => {
-											aria2.addUri([url], params).then(
-												function (res) {
-													notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-													aria2.close();
-												},
-												function (err) {
-													console.log('Error', err);
-													notify(browser.i18n.getMessage("error_connect"));
-													aria2.close();
-												}
-											);
-										}, 3000);
-									}
-								);
-							},
-							function (err) {
-								// retry again after 3 seconds
-								setTimeout( () => {
-									aria2.open().then( () => {
-										aria2.addUri([url], params).then(
-											function (res) {
-												notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-												aria2.close();
-											},
-											function (err) {
-												console.log('Error', err);
-												notify(browser.i18n.getMessage("error_connect"));
-												aria2.close();
-											}
-										);
-									}, (err) => {
-										console.log('Error', err);
-										notify(browser.i18n.getMessage("error_connect"));
-									});
-								}, 3000);
-							}
-						);
-					}
-					else {
-						aria2.addUri([url], params).then(
-							function (res) {
-								notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-							},
-							function (err) {
-								// retry again after 3 seconds
-								setTimeout( () => {
-									aria2.addUri([url], params).then(
-										function (res) {
-											notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-										},
-										function (err) {
-											console.log('Error', err);
-											notify(browser.i18n.getMessage("error_connect"));
-										}
-									);
-								}, 3000);
-							}
-						);
-					}
+					const ws = item.protocol2.toLowerCase() === "ws" || item.protocol2.toLowerCase() === "wss";
+					aria2add(ws, params, options);
 					console.log("rpc2", url, params);
 				});
 			}
-			else if(server == "3") {
+			else if (server == "3") {
 				browser.storage.local.get(config.command.s3, function(item) {
-					var secure = false;
+					var sec = false;
 					if (item.protocol3.toLowerCase() == "https" || item.protocol3.toLowerCase() == "wss")
-						secure = true;
+						sec = true;
 					var options = {
 						host: item.host3,
 						port: item.port3,
-						secure: secure,
+						secure: sec,
 						secret: item.token3,
 						path: "/" + item.interf3
 					};
-					
-					var aria2 = new Aria2(options);
-					
 					// Send TO Aria2
-					filePath = filePath.replace(/\\/g, '\\\\');
-					item.path3 = item.path3.replace(/\\/g, '\\\\');
-					var params = {};
-					if (header != "[]")
-						params.header = header;
-					params.out = fileName;
-					if (filePath != "") {
-						// file path from download panel
-						params.dir = filePath;
-					}
-					else if (item.path3 != "") {
+					if (!params.dir && item.path3 !== "") {
 						// file path from setting
-						params.dir = item.path3;
+						params.dir = item.path3.replace(/\\/g, '\\\\');
 					}
-					if (item.protocol3.toLowerCase() == "ws" || item.protocol3.toLowerCase() == "wss") {
-						aria2.open().then(
-							function (res) {
-								aria2.addUri([url], params).then(
-									function (res) {
-										notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-										aria2.close();
-									},
-									function (err) {
-										// retry again after 3 seconds
-										setTimeout( () => {
-											aria2.addUri([url], params).then(
-												function (res) {
-													notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-													aria2.close();
-												},
-												function (err) {
-													console.log('Error', err);
-													notify(browser.i18n.getMessage("error_connect"));
-													aria2.close();
-												}
-											);
-										}, 3000);
-									}
-								);
-							},
-							function (err) {
-								// retry again after 3 seconds
-								setTimeout( () => {
-									aria2.open().then( () => {
-										aria2.addUri([url], params).then(
-											function (res) {
-												notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-												aria2.close();
-											},
-											function (err) {
-												console.log('Error', err);
-												notify(browser.i18n.getMessage("error_connect"));
-												aria2.close();
-											}
-										);
-									}, (err) => {
-										console.log('Error', err);
-										notify(browser.i18n.getMessage("error_connect"));
-									});
-								}, 3000);
-							}
-						);
-					}
-					else {
-						aria2.addUri([url], params).then(
-							function (res) {
-								notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-							},
-							function (err) {
-								// retry again after 3 seconds
-								setTimeout( () => {
-									aria2.addUri([url], params).then(
-										function (res) {
-											notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
-										},
-										function (err) {
-											console.log('Error', err);
-											notify(browser.i18n.getMessage("error_connect"));
-										}
-									);
-								}, 3000);
-							}
-						);
-					}
+					const ws = item.protocol3.toLowerCase() === "ws" || item.protocol3.toLowerCase() === "wss";
+					aria2add(ws, params, options);
 					console.log("rpc3", url, params);
 				});
 			}
@@ -418,11 +210,11 @@ function handleMessage(request, sender, sendResponse) {
 				fileName: d.fileName,
 				fileSize: d.fileSize,
 				//fileType: tmp,
-				header: d.requestHeaders,
+				advanced: d.advanced,
 			});
 			break;
 		case "download":
-			sendTo(request.url, request.fileName, request.filePath, request.header, request.server);
+			sendTo(request.url, request.fileName, request.filePath, request.advanced, request.server);
 			sendResponse({
 				response: "send success"
 			});
@@ -442,7 +234,7 @@ function handleMessage(request, sender, sendResponse) {
 			});
 			break;
 		case "tmpopen":
-			tmpopen(request.url, request.fileName, request.header);
+			tmpopen(request.url, request.fileName, request.advanced);
 			sendResponse({
 				response: "send success"
 			});
@@ -545,7 +337,7 @@ function getRequestHeaders(d, ua) {
 	var id1;
 	var requestHeaders = [];
 	if (ua){
-		var getheader = ['Referer', 'Cookie', 'Cookie2', 'Authorization', 'User-Agent'];
+		var getheader = ['User-Agent', 'Referer', 'Cookie', 'Cookie2', 'Authorization'];
 	}
 	else {
 		var getheader = ['Referer', 'Cookie', 'Cookie2', 'Authorization'];
@@ -560,20 +352,49 @@ function getRequestHeaders(d, ua) {
 	return requestHeaders;
 }
 
+function getRequestProxy(d) {
+	let r = "";
+	const p = d.proxyInfo;
+	if (p && (p.type === "http" || p.type === "https")) {
+		const pa = d.requestHeaders.find(x => x.name === "Proxy-Authorization");
+		r += `${p.type}://`;
+		if (pa) {
+			const m = pa.value.match(/^Basic (.*)$/i);
+			if (m) {
+				r += `${atob(m[1])}@`;
+			}
+		}
+		r += `${p.host}:${p.port}`;
+		console.log(r);
+	}
+	return r;
+}
+
 async function prepareDownload(d, requestDetails) {
-	var details = {};
+	let details = {};
 	details.url = d.url;
 
 	// get request item
+	let header = [];
+	let proxy = "";
 	if (requestDetails !== undefined) {
 		// create header
-		var get = browser.storage.local.get(config.command.guess);
+		const get = browser.storage.local.get(config.command.guess);
 		await get.then(item => {
-			details.requestHeaders = getRequestHeaders(requestDetails, item.ua);
+			header = getRequestHeaders(requestDetails, item.ua);
 		});
+		proxy = getRequestProxy(requestDetails);
 	}
-	else {
-		details.requestHeaders = ""
+
+	details.advanced = {};
+	details.advanced["parameterized-uri"] = false;
+
+	if (header !== []) {
+		details.advanced.header = header;
+	}
+	if (proxy !== "") {
+		details.advanced["all-proxy"] = proxy;
+		details.advanced["proxy-method"] = "tunnel";
 	}
 
 	// process file name
@@ -608,7 +429,7 @@ async function prepareDownload(d, requestDetails) {
 			downloadPanel(details);
 		}
 		else {
-			sendTo(details.url,details.fileName,"",details.requestHeaders,"1");
+			sendTo(details.url, details.fileName, "", details.advanced, "1");
 		}
 	});
 
@@ -628,6 +449,7 @@ async function prepareDownload(d, requestDetails) {
 function observeRequest(d) {
 	requests.set(d.requestId, d);
 	//console.log("Request Map Size:", requests.size);
+	//console.log(d);
 	return;
 }
 
@@ -750,49 +572,51 @@ function cmCallback (info, tab) {
 	}
 	else {
 		browser.cookies.getAll({url:url, storeId:tab.cookieStoreId}).then((cookies) => {
-			var requestHeaders = [];
-			requestHeaders[0] = ("Referer: " + info.pageUrl);
-			if (cookies.length > 0) {
-				requestHeaders[1] = ("Cookie: ");
-				for (const cookie of cookies) {
-					requestHeaders[1] += cookie.name;
-					requestHeaders[1] += "="
-					requestHeaders[1] += cookie.value;
-					requestHeaders[1] += "; "
-				}
-			}
-			var d = {
+			let d = {
 				url: url,
 				fileName: getFileNameURL(url),
 				fileSize: "",
-				requestHeaders: requestHeaders
+			}
+			d.advanced = {};
+			d.advanced["parameterized-uri"] = false;
+			d.advanced.header = [];
+			d.advanced.header[0] = "Referer: " + info.pageUrl;
+			if (cookies.length > 0) {
+				d.advanced.header[1] = "Cookie: ";
+				for (const cookie of cookies) {
+					d.advanced.header[1] += cookie.name;
+					d.advanced.header[1] += "="
+					d.advanced.header[1] += cookie.value;
+					d.advanced.header[1] += "; "
+				}
+				d.advanced.header[1] = d.advanced.header[1].slice(0, -2);
 			}
 			browser.storage.local.get(config.command.guess, item => {
 				if (item.cmDownPanel) {
 					downloadPanel(d);
 				}
 				else {
-					sendTo(url,"","",requestHeaders,server);
+					sendTo(url, "", "", d.advanced, server);
 				}
 			});
 			console.log(info);
 		}, (e) => {
 			console.log("Error", e);
-			var requestHeaders = "[";
-			requestHeaders += ("Referer: " + info.pageUrl);
-			requestHeaders += "]";
-			var d = {
+			let d = {
 				url: url,
 				fileName: getFileNameURL(url),
 				fileSize: "",
-				requestHeaders: requestHeaders
 			}
+			d.advanced = {};
+			d.advanced["parameterized-uri"] = false;
+			d.advanced.header = [];
+			d.advanced.header[0] = "Referer: " + info.pageUrl;
 			browser.storage.local.get(config.command.guess, item => {
 				if (item.cmDownPanel) {
 					downloadPanel(d);
 				}
 				else {
-					sendTo(url,"","",requestHeaders,server);
+					sendTo(url, "", "", d.advanced, server);
 				}
 			});
 			console.log(info);

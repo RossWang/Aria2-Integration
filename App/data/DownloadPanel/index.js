@@ -8,7 +8,7 @@ function handleResponse(message) {
 			document.getElementById('url').value = message.url;
 			document.getElementById('fs').textContent = message.fileSize;
 			document.getElementById('fn').value = decodeFn(message.fileName);
-			document.querySelector(".head").value = message.header;
+			document.getElementById('advs').value = JSON.stringify(message.advanced);
 			document.getElementById('db').focus();
 			break;
 		case "send success":
@@ -71,7 +71,7 @@ function download() {
 	const url = document.getElementById('url').value;
 	const fn = document.getElementById('fn').value;
 	const fp = document.getElementById('fp').value;
-	const head = document.querySelector(".head").value
+	const advs = document.getElementById('advs').value;
 	const rpc = document.querySelector(".s1").value
 	verifyFileName(fn).then((e) => {
 		if (e.length != 0) {
@@ -87,7 +87,7 @@ function download() {
 				url: url,
 				fileName: fn,
 				filePath: fp,
-				header: head.split(","),
+				advanced: JSON.parse(advs),
 				server: rpc,
 			});
 			sending.then(handleResponse, handleError);
@@ -100,7 +100,7 @@ function save() {
 	const url = document.getElementById('url').value;
 	const fn = document.getElementById('fn').value;
 	const fp = document.getElementById('fp').value;
-	const head = document.querySelector(".head").value
+	const advs = document.getElementById('advs').value;
 	verifyFileName(fn).then((e) => {
 		if (e.length != 0) {
 			document.getElementById('fn').style = "border: 1px solid red;box-shadow: red 0px 0px 4px;";
@@ -117,7 +117,7 @@ function save() {
 					url: url,
 					fileName: fn,
 					filePath: fp,
-					header: head.split(","),
+					header: JSON.parse(advs).header,
 					incognito: windowInfo.incognito,
 				});
 				sending.then(handleResponse, handleError);
@@ -131,7 +131,7 @@ function saveas() {
 	const url = document.getElementById('url').value;
 	const fn = document.getElementById('fn').value;
 	const fp = document.getElementById('fp').value;
-	const head = document.querySelector(".head").value
+	const advs = document.getElementById('advs').value;
 	verifyFileName(fn).then((e) => {
 		if (e.length != 0) {
 			document.getElementById('fn').style = "border: 1px solid red;box-shadow: red 0px 0px 4px;";
@@ -148,7 +148,7 @@ function saveas() {
 					url: url,
 					fileName: fn,
 					filePath: fp,
-					header: head.split(","),
+					header: JSON.parse(advs).header,
 					wid: windowInfo.id,
 					incognito: windowInfo.incognito,
 				});
@@ -167,7 +167,7 @@ function adv() {
 				height: windowInfo.height + 95,
 			});
 		});
-		document.querySelector(".head").style = "display:block";
+		document.querySelector("#advs").style = "display:block";
 		document.querySelector(".s1").style = "display:block";
 		advl = true;
 	}
@@ -178,7 +178,7 @@ function adv() {
 				height: windowInfo.height - 95,
 			});
 		});
-		document.querySelector(".head").style = "display:none";
+		document.querySelector("#advs").style = "display:none";
 		document.querySelector(".s1").style = "display:none";
 		advl = false;
 	}
