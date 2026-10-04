@@ -4,9 +4,6 @@
 <head>
 	<meta charset="utf-8">
 	<title>Options Page</title>
-</head>
-
-<body>
 	<style type="text/css">
 		body {
 			font-family: sans-serif;
@@ -46,6 +43,13 @@
 			border-radius: 2px;
 			text-shadow: rgb(0, 64, 91) 0px 0px 0.5px;
 			color: rgb(255, 255, 255);
+			cursor: pointer;
+		}
+		#save:hover {
+			filter: brightness(0.96);
+		}
+		#save:active {
+			filter: brightness(0.92);
 		}
 
 		.slider {
@@ -54,6 +58,11 @@
 
 		}
 	</style>
+	<script src="/config.js"></script>
+	<script src="general.js"></script>
+</head>
+
+<body>
 	<table>
 		<tr>
 			<td><Label data-message="OP_zoom">Zoom Level:</Label>
@@ -190,8 +199,6 @@
 		<span id="status"></span>
 		<button data-message="OP_save" id="save">Save</button>
 	</div>
-	<script src="/config.js"></script>
-	<script src="general.js"></script>
 </body>
 
 </html>

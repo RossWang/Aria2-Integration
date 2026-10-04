@@ -45,7 +45,7 @@ function save() {
 	});
 }
 
-function restore() {
+function init() {
 	browser.storage.local.get(Object.assign(config.command.guess), prefs => {
 		document.getElementById('zoom').value = prefs.zoom;
 		document.getElementById('cm').checked = prefs.menu;
@@ -70,6 +70,11 @@ function restore() {
 		n.textContent = browser.i18n.getMessage(n.dataset.message);
 	});
 	document.body.style = "direction: " + browser.i18n.getMessage("direction");
+	document.getElementById('save').addEventListener('click', save);
+	document.getElementById('dpHeight').onchange = dpHChange;
+	document.getElementById('dpHeightN').onchange = dpHChange;
+	document.getElementById('dpWidth').onchange = dpWChange;
+	document.getElementById('dpWidthN').onchange = dpWChange;
 }
 
 function dpHChange(e) {
@@ -95,9 +100,4 @@ function dpWChange(e) {
 	document.getElementById('dpWidthN').value = e.target.value;
 }
 
-document.addEventListener('DOMContentLoaded', restore);
-document.getElementById('save').addEventListener('click', save);
-document.getElementById('dpHeight').onchange = dpHChange;
-document.getElementById('dpHeightN').onchange = dpHChange;
-document.getElementById('dpWidth').onchange = dpWChange;
-document.getElementById('dpWidthN').onchange = dpWChange;
+document.addEventListener('DOMContentLoaded', init);

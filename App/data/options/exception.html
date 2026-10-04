@@ -3,40 +3,49 @@
 <head>
 	<meta charset="utf-8">
 	<title>Options Page</title>
+	<style type="text/css">
+		body {
+			font-family: "sans-serif;
+			font-size: 16px;
+			background: #f9f9fa;
+		}
+		p {
+			margin: 3px;
+		}
+		table {
+			width: 100%;
+			padding-right: 20px;
+		}
+		.note {
+		font-size: 80%;
+			color: rgb(127, 127, 127);
+		}
+		#save {
+			position: relative;
+			width: 80px;
+			height: 30px;
+			margin-top: 30px;
+			font-size: 18px;
+			text-align: center;
+			background-image: none;
+			background-color: rgb(44, 173, 255);
+			border-style: none;
+			border-radius: 2px;
+			text-shadow: rgb(0, 64, 91) 0px 0px 0.5px;
+			color: rgb(255, 255, 255);
+			cursor: pointer;
+		}
+		#save:hover {
+			filter: brightness(0.96);
+		}
+		#save:active {
+			filter: brightness(0.92);
+		}
+	</style>
+	<script src="/config.js"></script>
+	<script src="exception.js"></script>
 </head>
 <body>
-	<style type="text/css">
-	       body {
-	         font-family: "sans-serif;
-	         font-size: 16px;
-	         background: #f9f9fa;
-	       }
-	       p {
-	         margin: 3px;
-	       }
-	       table {
-	         width: 100%;
-			 padding-right: 20px;
-	       }
-	       .note {
-	         font-size: 80%;
-			 color: rgb(127, 127, 127);
-	       }
-	       #save {
-	         position: relative;
-	         width: 80px;
-	         height: 30px;
-	         margin-top: 30px;
-	         font-size: 18px;
-	         text-align: center;
-	         background-image: none;
-	         background-color: rgb(44, 173, 255);
-	         border-style: none;
-	         border-radius: 2px;
-	         text-shadow: rgb(0, 64, 91) 0px 0px 0.5px;
-	         color: rgb(255, 255, 255);
-	      }
-	</style>
 	<table>
 		<tr>
 			<td data-message="OP_fileSizeLimit" style="width: 30%">File Size Limit:</td>
@@ -79,12 +88,8 @@
 		</tr>
 	</table>
 	<div align="right">
-			<span id="status"></span>
-			<button data-message="OP_save" id="save">Save</button>
-		</div>
-	<script src="/config.js">
-	</script> 
-	<script src="exception.js">
-	</script>
+		<span id="status"></span>
+		<button data-message="OP_save" id="save">Save</button>
+	</div>
 </body>
 </html>

@@ -28,7 +28,7 @@ function restore() {
 			},
 			function (err) {
 				console.log(err);
-				document.getElementById("server1").textContent = err;
+				document.getElementById("server1").textContent = err.message || err;
 			}
 		);
 	});
@@ -53,7 +53,7 @@ function restore() {
 			},
 			function (err) {
 				console.log(err);
-				document.getElementById("server2").textContent = err;
+				document.getElementById("server2").textContent = err.message || err;
 			}
 		);
 	});
@@ -78,7 +78,7 @@ function restore() {
 			},
 			function (err) {
 				console.log(err);
-				document.getElementById("server3").textContent = err;
+				document.getElementById("server3").textContent = err.message || err;
 			}
 		);
 	});
