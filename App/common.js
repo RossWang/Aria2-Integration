@@ -141,38 +141,29 @@ function save(url, fileName, filePath, header, as, wid, incog) {
 			}
 		}
 	}
-	if (fileName != "") {
-		var downloading = browser.downloads.download({
-			//conflictAction: "prompt",  //not work
-			filename: fileName,
-			headers: hObjs, // referer only availiable above 70
-			incognito: incog,  //not work under 57
-			saveAs: as,
-			url: url,
-		});
-	} 
-	else {
-		var downloading = browser.downloads.download({
-			//conflictAction: "prompt",  //not work
-			headers: hObjs, // referer only availiable above 70
-			incognito: incog,  //not work under 57
-			saveAs: as,
-			url: url,
-		});
+	const options = {
+		//conflictAction: "prompt",  //not work
+		headers: hObjs, // referer only availiable above 70
+		incognito: incog,  //not work under 57
+		saveAs: as,
+		url: url,
 	}
-	
+	if (fileName !== "") {
+		options.filename = filePath + fileName;
+	}
+
+	const downloading = browser.downloads.download(options);
 	// close download panel
-	if (wid != 0) downloading.then(id => {
-		browser.windows.remove(wid)
+	downloading.then(id => {
+		if (wid !== 0) {
+			browser.windows.remove(wid);
+		}
 	}, (e) => {
-		notify(e)
-	});
-	else downloading.then(() => {}, (e) => {
-		notify(e)
+		notify(e);
 	});
 }
 
-function tmpopen(url, fileName, header) {
+function tmpopen(url, header) {
 	const hObjs = [];
 	for (const h of header) {
 		if (h !== "") {
@@ -183,18 +174,20 @@ function tmpopen(url, fileName, header) {
 			}
 		}
 	}
-	var downloading = browser.downloads.download({
+	const downloading = browser.downloads.download({
 		filename: "%temp%",
 		headers: hObjs, // referer only availiable above 70
+		saveAs: false,
+		incognito: true,
 		url: url
 	});
 	downloading.then(id => {
-		var opening = browser.downloads.open(id);
+		const opening = browser.downloads.open(id);
 		opening.then(() => {}, (e) => {
-			console.log(e)
+			console.log(e);
 		})
 	}, (e) => {
-		console.log(e)
+		console.log(e);
 	});
 }
 
@@ -234,7 +227,7 @@ function handleMessage(request, sender, sendResponse) {
 			});
 			break;
 		case "tmpopen":
-			tmpopen(request.url, request.fileName, request.advanced);
+			tmpopen(request.url, request.header);
 			sendResponse({
 				response: "send success"
 			});

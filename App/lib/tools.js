@@ -163,8 +163,8 @@ function downloadPanel(d) {
 				left: item1.dpLeft,
 				url: "data/DownloadPanel/index.html",
 				type: "popup",
-				width: 412 + parseInt((screen.width / 5000) * parseInt(item1.dpWidth || 0)),
-				height: 200 + parseInt(33 * window.devicePixelRatio + (screen.height / 5000) * parseInt(item1.dpHeight || 0)) ,
+				width: 410 + parseInt((screen.width / 5000) * parseInt(item1.dpWidth || 0)),
+				height: 216 + parseInt(33 * window.devicePixelRatio + (screen.height / 5000) * parseInt(item1.dpHeight || 0)) ,
 				incognito: windowInfo.incognito,
 				//titlePreface: "Aria2",
 				//state: "fullscreen",
@@ -177,9 +177,9 @@ function downloadPanel(d) {
 								focused: true,
 								top: item1.dpTop,
 								left: item1.dpLeft,
-								width: parseInt(412 * zoomChangeInfo.newZoomFactor * item.zoom 
+								width: parseInt(410 * zoomChangeInfo.newZoomFactor * item.zoom
 													+ (screen.width / 5000) * parseInt(item1.dpWidth || 0)),
-								height: parseInt(200 * zoomChangeInfo.newZoomFactor * item.zoom
+								height: parseInt(216 * zoomChangeInfo.newZoomFactor * item.zoom
 													+ 33 * window.devicePixelRatio 
 													+ (screen.height / 5000) * parseInt(item1.dpHeight || 0)),
 							});
