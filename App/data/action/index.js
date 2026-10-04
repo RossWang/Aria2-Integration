@@ -59,7 +59,8 @@ function launch() {
 	});
 	browser.storage.local.get("enabled", function(item) {
 		document.getElementById('switch').checked = item.enabled;
+		document.querySelector('.gwd-page-content').style = "display: block";
 	});
 }
-//document.addEventListener('WebComponentsReady', launch, false);
+
 document.addEventListener('DOMContentLoaded', launch);
