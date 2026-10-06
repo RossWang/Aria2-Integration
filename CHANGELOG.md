@@ -1,3 +1,17 @@
+## [0.6.0](https://github.com/RossWang/Aria2-Integration/compare/0.4.5...0.6.0) (2026-10-06)
+
+### Features
+
+* Add proxy support ([dc052f6](https://github.com/RossWang/Aria2-Integration/commit/dc052f6411abec29df3dce78016bf1960ece27e3)), closes [#99](https://github.com/RossWang/Aria2-Integration/issues/99) [#54](https://github.com/RossWang/Aria2-Integration/issues/54)
+* Expand content-type filter ([c11611c](https://github.com/RossWang/Aria2-Integration/commit/c11611c0d3dd945a083769b5558956680139d2c0)), closes [#66](https://github.com/RossWang/Aria2-Integration/issues/66)
+* Improve action panel ([24f5d36](https://github.com/RossWang/Aria2-Integration/commit/24f5d3692f6c2296f53c7a50204410b8e1337fef))
+* Improve and cleanup download panel ([6f151e3](https://github.com/RossWang/Aria2-Integration/commit/6f151e3435da7d13d85459e0d9625044181939b7))
+* Improve options page ([d37ceda](https://github.com/RossWang/Aria2-Integration/commit/d37ceda45cec34f9be5a462f5079c897480ba005))
+
+### Bug Fixes
+
+* Fix filename checker ([d200bd5](https://github.com/RossWang/Aria2-Integration/commit/d200bd5872710e62952ea66dd1a6495b0e3ca15d))
+
 ## [0.5.0](https://github.com/RossWang/Aria2-Integration/compare/0.4.5...0.5.0) (2026-09-29)
 
 ### Features
