@@ -24,7 +24,7 @@ function save() {
 	});
 }
 
-function restore() {
+function init() {
 	browser.storage.local.get(Object.assign(config.command.guess), prefs => {
 		document.getElementById('fileSizeLimit').value = prefs.fileSizeLimit;
 		document.getElementById('typeFilterA').value = prefs.typeFilterA;
@@ -36,7 +36,7 @@ function restore() {
 		n.textContent = browser.i18n.getMessage(n.dataset.message);
 	});
 	document.body.style = "direction: " + browser.i18n.getMessage("direction");
+	document.getElementById('save').addEventListener('click', save);
 }
 
-document.addEventListener('DOMContentLoaded', restore);
-document.getElementById('save').addEventListener('click', save);
+document.addEventListener('DOMContentLoaded', init);
