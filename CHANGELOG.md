@@ -1,4 +1,4 @@
-## [0.6.0](https://github.com/RossWang/Aria2-Integration/compare/0.4.5...0.6.0) (2026-10-06)
+## [0.6.1](https://github.com/RossWang/Aria2-Integration/compare/0.5.0...0.6.1) (2026-10-06)
 
 ### Features
 
