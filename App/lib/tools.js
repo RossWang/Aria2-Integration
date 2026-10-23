@@ -105,10 +105,7 @@ function humanFileSize(bytes, si) {
 
 function isRunning(item, options) {
 	//check whether aria2 is runnning
-	var xhttp = new XMLHttpRequest();
-	var url = "aria2://"
-	if (item.shutdown)
-		url += "stop-with-process";
+	const param = item.shutdown ? "start-with-process" : "start-detached"
 	const aria2 = new Aria2(options);
 	if (item.protocol.toLowerCase() == "ws" || item.protocol.toLowerCase() == "wss") {
 		aria2.open().then(
@@ -117,15 +114,9 @@ function isRunning(item, options) {
 			},
 			function (err) {
 				if (item.auto) {
-					var creating = browser.windows.create({
-						url: url,
-						type: "popup",
-						width: 50,
-						height: 50,
-					});
-					creating.then(windowInfo => {
-						browser.windows.remove(windowInfo.id);
-					}, () => {});
+					const port = browser.runtime.connectNative("aria2int");
+					const msg = {aria2c: param};
+					port.postMessage(msg);
 				}
 			}
 		);
@@ -137,15 +128,9 @@ function isRunning(item, options) {
 			},
 			function (err) {
 				if (item.auto) {
-					var creating = browser.windows.create({
-						url: url,
-						type: "popup",
-						width: 50,
-						height: 50,
-					});
-					creating.then(windowInfo => {
-						browser.windows.remove(windowInfo.id);
-					}, () => {});
+					const port = browser.runtime.connectNative("aria2int");
+					const msg = {aria2c: param};
+					port.postMessage(msg);
 				}
 			}
 		);

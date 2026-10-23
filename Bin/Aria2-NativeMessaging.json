@@ -1,0 +1,7 @@
+{
+  "name": "aria2int",
+  "description": "Aria2 Integration",
+  "path": "Aria2-NativeMessaging.bat",
+  "type": "stdio",
+  "allowed_extensions": [ "{e2488817-3d73-4013-850d-b66c5e42d505}" ]
+}
