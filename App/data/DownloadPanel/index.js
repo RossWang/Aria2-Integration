@@ -201,7 +201,7 @@ function adv() {
 
 function decodeFn(fn) {
 	var res = jschardet.detect(fn).encoding;
-	if (res != "ascii") {
+	if (res && res !== "ascii") {
 		var decoder = new TextDecoder(res);
 		var charcode = [];
 		for(var i = 0, length = fn.length; i < length; i++) {
