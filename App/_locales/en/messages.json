@@ -52,27 +52,27 @@
 		"message": "Downloading $NAME$",
 		"description": "If the request to Aria2 success, notify the user",
 		"placeholders": {
-		  "name" : {
+			"name" : {
 				"content" : "$1"
 			}
 		}
 	},
 	
 	"download_complete": {
-		"message": "Download Completed \n\n $NAME$",
+		"message": "Download Completed \n\n$NAME$",
 		"description": "notify the user when download completed",
 		"placeholders": {
-		  "name" : {
+			"name" : {
 				"content" : "$1"
 			}
 		}
 	},
 	
 	"download_error": {
-		"message": "Download Faild \n\n $NAME$",
+		"message": "Download Faild $NAME$",
 		"description": "notify the user when download failed",
 		"placeholders": {
-		  "name" : {
+			"name" : {
 				"content" : "$1"
 			}
 		}

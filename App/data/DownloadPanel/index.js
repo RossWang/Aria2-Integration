@@ -47,7 +47,7 @@ function init() {
 	document.getElementById('sb').addEventListener('click', save);
 	document.getElementById('sab').addEventListener('click', saveas);
 	document.getElementById('advb').addEventListener('click', adv);
-	//document.getElementById('opb').addEventListener('click', tmpopen);
+	document.getElementById('opb').addEventListener('click', tmpopen);
 	document.querySelectorAll('[data-message]').forEach(n => {
 		n.textContent = browser.i18n.getMessage(n.dataset.message);
 	});
@@ -163,20 +163,10 @@ function saveas() {
 function tmpopen() {
 	const url = document.getElementById('url').value;
 	const advs = document.getElementById('advs').value;
-	const hObjs = [];
-	for (const h of JSON.parse(advs).header) {
-		if (h !== "") {
-			const tmp = h.split(": ");
-			const getheader = ['Referer', 'Authorization'];
-			if (tmp[0] in getheader) {
-				hObjs.push({name: tmp[0], value: tmp[1]});
-			}
-		}
-	}
 	const sending = browser.runtime.sendMessage({
 		get: "tmpopen",
 		url: url,
-		header: JSON.parse(advs).header,
+		advanced: JSON.parse(advs),
 	});
 	sending.then(handleResponse, handleError);
 	saveWinLoc();

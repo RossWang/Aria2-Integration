@@ -52,27 +52,27 @@
 		"message": "Lädt $NAME$ herunter",
 		"description": "Benachrichtige den Benutzer, wenn die Anfrage an Aria2 erfolgreich ist.",
 		"placeholders": {
-		  "name" : {
+			"name" : {
 				"content" : "$1"
 			}
 		}
 	},
 	
 	"download_complete": {
-		"message": "Download abgeschlossen \n\n $NAME$",
+		"message": "Download abgeschlossen \n\n$NAME$",
 		"description": "Benachrichtige den Benutzer, wenn der Download abgeschlossen ist.",
 		"placeholders": {
-		  "name" : {
+			"name" : {
 				"content" : "$1"
 			}
 		}
 	},
 	
 	"download_error": {
-		"message": "Download fehlgeschlagen \n\n $NAME$",
+		"message": "Download fehlgeschlagen $NAME$",
 		"description": "Benachrichtige den Benutzer, wenn der Download fehlschlägt.",
 		"placeholders": {
-		  "name" : {
+			"name" : {
 				"content" : "$1"
 			}
 		}

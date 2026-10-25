@@ -52,27 +52,27 @@
 		"message": "正在下载 $NAME$",
 		"description": "当请求成功时，告知用户",
 		"placeholders": {
-		  "name" : {
+			"name" : {
 				"content" : "$1"
 			}
 		}
 	},
 	
 	"download_complete": {
-		"message": "下载完成 \n\n $NAME$",
+		"message": "下载完成 \n\n$NAME$",
 		"description": "当下载完成时，告知使用者",
 		"placeholders": {
-		  "name" : {
+			"name" : {
 				"content" : "$1"
 			}
 		}
 	},
 	
 	"download_error": {
-		"message": "下载失败 \n\n $NAME$",
+		"message": "下载失败 $NAME$",
 		"description": "当下载失败时，告知使用者",
 		"placeholders": {
-		  "name" : {
+			"name" : {
 				"content" : "$1"
 			}
 		}

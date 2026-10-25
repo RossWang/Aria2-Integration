@@ -1,89 +1,75 @@
 'use strict'
 
-postMessage("init");
+postMessage({msg: "init"});
 importScripts("aria.js");
 importScripts("polygoat.js");
 var aria2;
-var gids = [];
+var gids = new Map();
 
 onmessage = function(e) {
-	gids.push(e.data[1]);
-	if (aria2 == undefined){
-		connect(e.data[0]);
-		postMessage("connect");
-	};
-	/*aria2.tellActive(["gid"]).then((info) => {
-		postMessage(["badge", info.length]);
+	gids.set(e.data.gid, e.data.invoke);
+	if (aria2 === undefined) {
+		connect(e.data.options);
+		postMessage({msg: "connect"});
+	}
+}
+
+function cleanup() {
+	gids.clear();
+	postMessage({msg: "close"});
+	close();
+}
+
+function updateBadge() {
+	aria2.tellActive(["gid"]).then((info) => {
+		postMessage({
+			type: "badge",
+			count: info.length
+		});
 		if(info.length == 0) {
 			aria2.close();
-			close();
+			cleanup();
 		}
-	});*/
-	
+	});
 }
 
 function connect(options) {
 	aria2 = new Aria2(options);
 	aria2.onclose = function () {
-		aria2 = null;
+		aria2 = undefined;
+		cleanup();
 	}
 	aria2.onDownloadStart = function(d) {
-		aria2.tellActive(["gid"]).then((info) => {
-			postMessage(["badge", info.length]);
-			if(info.length == 0) {
-				aria2.close();
-				postMessage("close");
-				close();
-			}
-		});
+		updateBadge();
 	};
 	aria2.onDownloadComplete = function(d) {
-		if (gids.includes(d.gid)) {
+		const invoke = gids.get(d.gid);
+		if (invoke !== undefined) {
 			aria2.getFiles(d.gid).then((info) => {
-				postMessage(["complete", info[0].path]);
+				postMessage({
+					type:"complete",
+					path: info[0].path,
+					invoke: invoke
+				});
 			});
-			gids = gids.filter(gid => gid != d.gid);
+			gids.delete(d.gid);
 		}
-		aria2.tellActive(["gid"]).then((info) => {
-			postMessage(["badge", info.length]);
-			if(info.length == 0) {
-				aria2.close();
-				postMessage("close");
-				close();
-			}
-		});
+		updateBadge();
 	};
 	aria2.onDownloadPause = aria2.onDownloadStop = function(d) {
-		aria2.tellActive(["gid"]).then((info) => {
-			postMessage(["badge", info.length]);
-			if(info.length == 0) {
-				aria2.close();
-				postMessage("close");
-				close();
-			}
-		});
+		updateBadge();
 	};
 	aria2.onDownloadError = function(d) {
-		aria2.getUris(d.gid).then((info) => {
-			postMessage(["error", info[0].uri]);
+		aria2.tellStatus(d.gid).then((info) => {
+			postMessage({
+				type: "error",
+				msg: info.errorMessage,
+				url: info.files[0].uris[0].uri
+			});
 		});
-		aria2.tellActive(["gid"]).then((info) => {
-			postMessage(["badge", info.length]);
-			if(info.length == 0) {
-				aria2.close();
-				postMessage("close");
-				close();
-			}
-		});
+		updateBadge();
 	};
 	aria2.open().then(() => {
-		aria2.tellActive(["gid"]).then((info) => {
-			postMessage(["badge", info.length]);
-			if(info.length == 0) {
-				aria2.close();
-				postMessage("close");
-				close();
-			}
-		});
+		updateBadge();
 	});
 }

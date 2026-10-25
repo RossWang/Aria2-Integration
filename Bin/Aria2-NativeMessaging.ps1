@@ -15,3 +15,8 @@ if ($mobj.aria2c -eq "start-with-process") {
 } elseif ($mobj.aria2c -eq "start-detached") {
 	Start-Process -FilePath "aria2c" -WindowStyle Hidden -ArgumentList "-D", "--conf-path=aria2.conf"
 }
+
+if ($mobj.invoke -ne $null) {
+	Invoke-Item $mobj.invoke
+	#"Target is $mobj.invoke" >> debug.log
+}

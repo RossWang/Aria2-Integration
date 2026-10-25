@@ -43,48 +43,58 @@ async function correctFileName(name) {
 	return tmp;
 }
 
-function monitor(options, gid) {
-	if (mon == undefined) {
+function monitor(options, gid, invoke) {
+	if (mon === undefined) {
 		mon = new Worker("/lib/worker.js");
 		mon.onmessage = function(e) {
 			console.log(e.data);
 			browser.storage.local.get(config.command.guess, function(item) {
-				if (e.data[0] == "complete") {
-					notify(browser.i18n.getMessage("download_complete", e.data[1] ));
-					if (item.sound != "0") {
-						var audio = new Audio('/data/Sound/complete' + item.sound + '.wav');
-						audio.play();
-					}
-				}
-				else if (e.data[0] == "badge" && item.badge){
-					if(e.data[1] == 0){
-						browser.browserAction.setBadgeText({text: ""});
-						mon = null;
+				if (e.data.type === "complete") {
+					if (e.data.invoke) {
+						const port = browser.runtime.connectNative("aria2int");
+						const msg = {invoke: e.data.path};
+						port.postMessage(msg);
 					}
 					else {
-						browser.browserAction.setBadgeText({text: e.data[1].toString()});
+						notify(browser.i18n.getMessage("download_complete", e.data.path));
+						if (item.sound !== "0") {
+							var audio = new Audio('/data/Sound/complete' + item.sound + '.wav');
+							audio.play();
+						}
 					}
 				}
-				else if (e.data[0] == "error"){
-					notify(browser.i18n.getMessage("download_error", e.data[1] ));
+				else if (e.data.type === "badge" && item.badge){
+					if(e.data.count === 0){
+						browser.browserAction.setBadgeText({text: ""});
+						mon.terminate();
+						mon = undefined;
+					}
+					else {
+						browser.browserAction.setBadgeText({text: e.data.count.toString()});
+					}
+				}
+				else if (e.data.type === "error"){
+					notify(browser.i18n.getMessage("download_error", `"${e.data.msg}"`) + "\n\n" + e.data.url);
 				}
 			});
 		}
 	}
-	mon.postMessage([options, gid]);
+	mon.postMessage({options, gid, invoke});
 }
 
 function notify(message) {
+	//console.log(message);
 	browser.notifications.create({
 		type: 'basic',
 		iconUrl: '/data/icons/48.png',
 		title: browser.i18n.getMessage("extensionName"),
-		message: message.message || message
+		message: message
 	}).then((id) => { 
-		setTimeout(() => {
-			browser.notifications.clear(id.toString());
-		}, 2000);
-	});
+		// bad on newer Firefox (alerts.useSystemBackend)
+		/*setTimeout(() => {
+			browser.notifications.clear(id);
+		}, 2000);*/
+	}).catch();
 }
 
 function humanFileSize(bytes, si) {

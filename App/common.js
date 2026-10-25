@@ -10,7 +10,7 @@ var fileTypeFilterB = "";
 var urlFilterB = "";
 var mon;
 
-function sendTo(url, fileName, filePath, advanced, server) {
+function sendTo(url, fileName, filePath, advanced, server, invoke) {
 	// check whether config is set
 	browser.storage.local.get("initialize", item => {
 		if (!item.initialize || (item.initialize == undefined)) {
@@ -31,8 +31,8 @@ function sendTo(url, fileName, filePath, advanced, server) {
 				const aria2 = new Aria2(options);
 				if (ws) {
 					retryPromise(() => aria2.open()).then((res) => {
-						retryPromise(() => aria2.addUri([url], params)).then((res) => {
-							monitor(options, res);
+						retryPromise(() => aria2.addUri([url], params)).then((gid) => {
+							monitor(options, gid, invoke);
 							notify(browser.i18n.getMessage("success_connect", fileName) + "\n\n" + url);
 							aria2.close();
 						}).catch((err) => {
@@ -159,7 +159,7 @@ function save(url, fileName, filePath, header, as, wid, incog) {
 			browser.windows.remove(wid);
 		}
 	}, (e) => {
-		notify(e);
+		//notify(e.message);
 	});
 }
 
@@ -207,7 +207,7 @@ function handleMessage(request, sender, sendResponse) {
 			});
 			break;
 		case "download":
-			sendTo(request.url, request.fileName, request.filePath, request.advanced, request.server);
+			sendTo(request.url, request.fileName, request.filePath, request.advanced, request.server, false);
 			sendResponse({
 				response: "send success"
 			});
@@ -221,13 +221,13 @@ function handleMessage(request, sender, sendResponse) {
 			break;
 		case "saveas":
 			save(request.url, request.fileName, request.filePath, request.header, true,
-				request.wid, request.incognito)
+				request.wid, request.incognito);
 			sendResponse({
 				response: "saveas create"
 			});
 			break;
 		case "tmpopen":
-			tmpopen(request.url, request.header);
+			sendTo(request.url, "", "temp", request.advanced, 1, true);
 			sendResponse({
 				response: "send success"
 			});
