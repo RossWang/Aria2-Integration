@@ -1,21 +1,24 @@
 ;(function (global) {
   'use strict'
 
-  /*var WebSocket
-  var fetch
-  var polygoat
-
-  var isNode = typeof module !== 'undefined' && module.exports
-
-  if (isNode) {
-    WebSocket = require('ws')
-    fetch = require('node-fetch')
-    polygoat = require('polygoat')
-  } else {
-    WebSocket = global.WebSocket
-    fetch = global.fetch
-    polygoat = global.polygoat
-  }*/
+   function polygoat (fn, cb, Promise) {
+    if (cb) {
+      fn(function (err, res) {
+        cb(err, res)
+      })
+    } else {
+      var P = Promise || global.Promise
+      return new P(function (resolve, reject) {
+        fn(function (err, res) {
+          if (err !== null && err !== undefined) {
+            reject(err)
+          } else {
+            resolve(res)
+          }
+        })
+      })
+    }
+  }
 
   var Aria2 = function (opts) {
     this.callbacks = Object.create(null)
@@ -126,6 +129,7 @@
   Aria2.prototype.open = function (fn) {
     var url = 'ws' + (this.secure ? 's' : '') + '://' + this.host + ':' + this.port + this.path
     var socket = new WebSocket(url)
+    this.socket = socket;
     var that = this
     var called = false
 

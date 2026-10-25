@@ -2,7 +2,6 @@
 
 postMessage({msg: "init"});
 importScripts("aria.js");
-importScripts("polygoat.js");
 var aria2;
 var gids = new Map();
 

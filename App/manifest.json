@@ -22,8 +22,7 @@
       "config.js",
       "common.js",
       "/lib/aria.js",
-      "/lib/tools.js",
-      "/lib/polygoat.js"
+      "/lib/tools.js"
     ]
   },
   "browser_action": {
