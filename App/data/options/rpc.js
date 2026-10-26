@@ -53,7 +53,7 @@ function init() {
 			document.getElementById('sound3').checked = true;
 	});
 	document.querySelectorAll('[data-message]').forEach(n => {
-		n.textContent = browser.i18n.getMessage(n.dataset.message);
+		n.textContent = browser.i18n.getMessage(n.dataset.message) || n.textContent;
 	});
 	document.body.style = "direction: " + browser.i18n.getMessage("direction");
 	document.getElementById('save').addEventListener('click', save);

@@ -55,7 +55,7 @@ function launch() {
 	document.getElementById('switch').addEventListener('change', sw);
 	document.getElementById('detail').addEventListener('click', detail);
 	document.querySelectorAll('[data-message]').forEach(n => {
-		n.textContent = browser.i18n.getMessage(n.dataset.message);
+		n.textContent = browser.i18n.getMessage(n.dataset.message) || n.textContent;
 	});
 	browser.storage.local.get("enabled", function(item) {
 		document.getElementById('switch').checked = item.enabled;
