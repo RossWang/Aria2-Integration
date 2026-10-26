@@ -376,12 +376,22 @@
 	},
 
 	"OP_ua": {
-		"message": "Send User-Agent To Aria2",
+		"message": "Send User-Agent to Aria2",
 		"description": ""
 	},
 
 	"OPN_ua": {
-		"message": "User-Agent will be same as the browser send",
+		"message": "User-Agent will be the same as the browser send",
+		"description": ""
+	},
+
+	"OP_autoProxy": {
+		"message": "Send Proxy Settings to Aria2",
+		"description": ""
+	},
+
+	"OPN_autoProxy": {
+		"message": "Proxy settings will be the same as the request.",
 		"description": ""
 	},
 

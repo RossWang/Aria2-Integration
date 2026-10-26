@@ -4,6 +4,7 @@ function save() {
 	const zoom = document.getElementById('zoom').value;
 	const menu = document.getElementById('cm').checked;
 	const ua = document.getElementById('ua').checked;
+	const autoProxy = document.getElementById('autoProxy').checked;
 	const shutdown = document.getElementById('shut').checked;
 	const magnet = document.getElementById('magnet').checked;
 	const aggressive = document.getElementById('aggre').checked;
@@ -23,6 +24,7 @@ function save() {
 		zoom,
 		menu,
 		ua,
+		autoProxy,
 		shutdown,
 		magnet,
 		aggressive,
@@ -52,6 +54,7 @@ function init() {
 		document.getElementById('zoom').value = prefs.zoom;
 		document.getElementById('cm').checked = prefs.menu;
 		document.getElementById('ua').checked = prefs.ua;
+		document.getElementById('autoProxy').checked = prefs.autoProxy;
 		document.getElementById('shut').checked = prefs.shutdown;
 		document.getElementById('magnet').checked = prefs.magnet;
 		document.getElementById('aggre').checked = prefs.aggressive;

@@ -23,6 +23,7 @@ config.command = {
 			cmDownPanel: true,
 			downPanel: true,
 			ua: false,
+			autoProxy: true,
 			fileSizeLimit: 0,
 			typeFilterA: "",
 			urlFilterA: "",

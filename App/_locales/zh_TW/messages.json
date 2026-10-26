@@ -386,6 +386,16 @@
 		"description": ""
 	},
 
+	"OP_autoProxy": {
+		"message": "傳送 Proxy 設定到 Aria2",
+		"description": ""
+	},
+
+	"OPN_autoProxy": {
+		"message": "Proxy 設定會和請求相同",
+		"description": ""
+	},
+
 	"OP_fileSizeLimit": {
 		"message": "檔案大小限制：",
 		"description": ""

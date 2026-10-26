@@ -375,8 +375,10 @@ async function prepareDownload(d, requestDetails) {
 		const get = browser.storage.local.get(config.command.guess);
 		await get.then(item => {
 			header = getRequestHeaders(requestDetails, item.ua);
+			if (item.autoProxy) {
+				proxy = getRequestProxy(requestDetails);
+			}
 		});
-		proxy = getRequestProxy(requestDetails);
 	}
 
 	details.advanced = {};
