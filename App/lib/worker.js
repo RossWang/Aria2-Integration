@@ -44,10 +44,31 @@ function connect(options) {
 	aria2.onDownloadComplete = function(d) {
 		const invoke = gids.get(d.gid);
 		if (invoke !== undefined) {
-			aria2.getFiles(d.gid).then((info) => {
+			aria2.tellStatus(d.gid).then((info) => {
+				if (info.followedBy) {
+					for (let i = 0; i < info.followedBy.length; i++) {
+						gids.set(info.followedBy[i], false);
+					}
+				}
+				else {
+					postMessage({
+						type:"complete",
+						path: info.files[0].path,
+						invoke: invoke
+					});
+				}
+			});
+			gids.delete(d.gid);
+		}
+		updateBadge();
+	};
+	aria2.onBtDownloadComplete = function(d) {
+		const invoke = gids.get(d.gid);
+		if (invoke !== undefined) {
+			aria2.tellStatus(d.gid).then((info) => {
 				postMessage({
 					type:"complete",
-					path: info[0].path,
+					path: info.files[0].path,
 					invoke: invoke
 				});
 			});
