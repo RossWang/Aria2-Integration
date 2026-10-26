@@ -10,7 +10,7 @@
     "notifications",
     "downloads",
     "downloads.open",
-    "contextMenus",
+    "menus",
     "webRequest",
     "webRequestBlocking",
     "cookies",

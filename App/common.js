@@ -651,64 +651,62 @@ function cmCallback (info, tab) {
 	}
 }
 function contextMenus (enabled, cmDownPanel){
-	browser.contextMenus.removeAll();
-	browser.contextMenus.onClicked.removeListener(cmCallback);
-	var cmTitle = browser.i18n.getMessage("CM_title");
-	var seD = browser.i18n.getMessage("OP_rpcDefault");
-	var se2 = browser.i18n.getMessage("OP_rpc2");
-	var se3 = browser.i18n.getMessage("OP_rpc3");
-	if (enabled){
-		browser.contextMenus.create({
+	browser.menus.removeAll();
+	browser.menus.onClicked.removeListener(cmCallback);
+	if (enabled) {
+		var cmTitle = browser.i18n.getMessage("CM_title");
+		var seD = browser.i18n.getMessage("OP_rpcDefault");
+		var se2 = browser.i18n.getMessage("OP_rpc2");
+		var se3 = browser.i18n.getMessage("OP_rpc3");
+		browser.menus.create({
 			id: 'open-link',
 			title: cmTitle,
 			contexts: ['link'],
 			documentUrlPatterns: ['*://*/*']
 		});
-		
-		browser.contextMenus.create({
+		browser.menus.create({
 			id: 'open-video',
 			title: cmTitle,
 			contexts: ['video', 'audio'],
 			documentUrlPatterns: ['*://*/*']
 		});
-		
-		if (!cmDownPanel){
-			browser.contextMenus.create({
+		if (!cmDownPanel) {
+			browser.menus.create({
 				id: 'A1',
 				title: seD,
 				contexts: ['link'],
 				parentId: 'open-link',
 				documentUrlPatterns: ['*://*/*']
 			});
-			browser.contextMenus.create({
+			browser.menus.create({
 				id: 'A2',
 				title: se2,
 				contexts: ['link'],
 				parentId: 'open-link',
 				documentUrlPatterns: ['*://*/*']
 			});
-			browser.contextMenus.create({
+			browser.menus.create({
 				id: 'A3',
 				title: se3,
 				contexts: ['link'],
 				parentId: 'open-link',
 				documentUrlPatterns: ['*://*/*']
 			});
-			browser.contextMenus.create({
+			browser.menus.create({
 				id: 'B1',
 				title: seD,
 				contexts: ['video', 'audio'],
 				parentId: 'open-video',
 				documentUrlPatterns: ['*://*/*']
 			});
-			browser.contextMenus.create({
+			browser.menus.create({
 				id: 'B2',
 				title: se2,
 				contexts: ['video', 'audio'],
 				parentId: 'open-video',
 				documentUrlPatterns: ['*://*/*']
 			});
-			browser.contextMenus.create({
+			browser.menus.create({
 				id: 'B3',
 				title: se3,
 				contexts: ['video', 'audio'],
@@ -716,7 +714,7 @@ function contextMenus (enabled, cmDownPanel){
 				documentUrlPatterns: ['*://*/*']
 			});
 		}
-		browser.contextMenus.onClicked.addListener(cmCallback);
+		browser.menus.onClicked.addListener(cmCallback);
 	}
 }
 
