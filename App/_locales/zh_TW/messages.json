@@ -5,7 +5,7 @@
 	},
 
 	"extensionDescription": {
-		"message": "取代內建的下載器。當開啟時偵測下載連結，導引到本擴充套件並傳送到Aria2",
+		"message": "取代內建的下載器。當開啟時偵測下載連結，導引到本擴充套件並傳送到 Aria2",
 		"description": "擴充套件的簡介"
 	},
 
@@ -39,8 +39,8 @@
 	},
 
 	"error_connect": {
-		"message": "出錯啦! 你可以檢查輸入、設定或Aria2的狀態然後再試一次",
-		"description": "當對Aria2的請求超時或回覆不成功時，告知使用者"
+		"message": "出錯啦! 你可以檢查輸入、設定或 Aria2 的狀態然後再試一次",
+		"description": "當對 Aria2 的請求超時或回覆不成功時，告知使用者"
 	},
 
 	"error_notSupported": {
@@ -125,12 +125,12 @@
 	},
 
 	"OP_message1": {
-		"message": "你需要自行下載Aria2，完成以下的選項(協議、地址、連接埠、接口)並儲存才能開始使用",
+		"message": "你需要自行下載 Aria2，完成以下的選項(協議、地址、連接埠、接口)並儲存才能開始使用",
 		"description": ""
 	},
 
 	"OP_message2": {
-		"message": "如果你不想要手動啟動Aria2, 你可以自己寫一個在背景啟動Aria2的程式並註冊到系統中的 'autostart' 或 'uri scheme'",
+		"message": "如果你不想要手動啟動 Aria2，你可以自己寫一個在背景啟動Aria2的程式並註冊到系統中的 'autostart' 或 'uri scheme'",
 		"description": ""
 	},
 
@@ -147,7 +147,7 @@
 
 
 	"OPN_defaultPath": {
-		"message": "只適用於Aria2，可不填。",
+		"message": "只適用於 Aria2，可不填。",
 		"description": ""
 	},
 
@@ -157,7 +157,7 @@
 	},
 
 	"OPN_protocol": {
-		"message": "Aria2的RPC通訊協定。可使用ws,wss,http,https，使用WebSocket時功能較多",
+		"message": "Aria2 的 RPC 通訊協定。可使用 ws、wss、http、https，使用 WebSocket 時功能較多",
 		"description": ""
 	},
 
@@ -167,7 +167,7 @@
 	},
 
 	"OPN_host": {
-		"message": "Aria2的RPC地址。你可以使用ip或域名。",
+		"message": "Aria2 的 RPC 地址。你可以使用 ip 或域名。",
 		"description": ""
 	},
 
@@ -177,7 +177,7 @@
 	},
 
 	"OPN_port": {
-		"message": "Aria2的RPC連接埠。",
+		"message": "Aria2 的 RPC 連接埠。",
 		"description": ""
 	},
 
@@ -187,7 +187,7 @@
 	},
 
 	"OPN_interface": {
-		"message": "Aria2的RPC接口. 預設值是 'jsonrpc'。",
+		"message": "Aria2 的 RPC 接口，預設值是 'jsonrpc'。",
 		"description": ""
 	},
 
@@ -197,7 +197,7 @@
 	},
 
 	"OPN_token": {
-		"message": "Aria2的RPC金鑰, 可不填。",
+		"message": "Aria2 的 RPC 金鑰，可不填。",
 		"description": ""
 	},
 
@@ -207,7 +207,7 @@
 	},
 
 	"OPN_zoom": {
-		"message": "用於下載視窗的縮放倍數. 預設值是 1。",
+		"message": "用於下載視窗的縮放倍數，預設值是 1。",
 		"description": ""
 	},
 
@@ -237,7 +237,7 @@
 	},
 
 	"OPN_sound": {
-		"message": "[Websocket]選擇一個下載完成音效",
+		"message": "[Websocket] 選擇一個下載完成音效",
 		"description": ""
 	},
 
@@ -292,7 +292,7 @@
 	},
 
 	"OPN_winLoc": {
-		"message": "下載視窗的位置會被記錄 (但是Firefox有問題，無法在指定位置產生視窗)。",
+		"message": "下載視窗的位置會被記錄 (但是 Firefox 有問題，無法在指定位置產生視窗)。",
 		"description": ""
 	},
 
@@ -332,7 +332,7 @@
 	},
 
 	"OPN_badge": {
-		"message": "[Websocket]在圖標上顯示目前正在下載的數量",
+		"message": "[Websocket] 在圖標上顯示目前正在下載的數量",
 		"description": ""
 	},
 
@@ -387,42 +387,42 @@
 	},
 
 	"OP_fileSizeLimit": {
-		"message": "檔案大小限制:",
+		"message": "檔案大小限制：",
 		"description": ""
 	},
 
 	"OPN_fileSizeLimit": {
-		"message": "可以觸發下載的最小檔案大小(bytes)",
+		"message": "可以觸發下載的最小檔案大小 (bytes)",
 		"description": ""
 	},
 
 	"OP_typeFilterA": {
-		"message": "包含的檔案格式:",
+		"message": "包含的檔案格式：",
 		"description": ""
 	},
 
 	"OP_typeFilterB": {
-		"message": "排除的檔案格式:",
+		"message": "排除的檔案格式：",
 		"description": ""
 	},
 
 	"OPN_typeFilter": {
-		"message": "正規表達式: 匹配 MIME 類型",
+		"message": "正規表達式：匹配 MIME 類型",
 		"description": ""
 	},
 
 	"OP_urlFilterA": {
-		"message": "包含的網址:",
+		"message": "包含的網址：",
 		"description": ""
 	},
 
 	"OP_urlFilterB": {
-		"message": "排除的網址:",
+		"message": "排除的網址：",
 		"description": ""
 	},
 
 	"OPN_urlFilter": {
-		"message": "正規表達式: 匹配 URL",
+		"message": "正規表達式：匹配 URL",
 		"description": ""
 	},
 
@@ -487,7 +487,7 @@
 	},
 
 	"about_M2": {
-		"message": "本附加元件使用 Mayswind 的 AriaNg.",
+		"message": "本附加元件使用 Mayswind 的 AriaNg。",
 		"description": ""
 	},
 
