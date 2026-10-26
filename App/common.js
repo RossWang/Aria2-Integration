@@ -508,10 +508,44 @@ function observeResponse(d) {
 	return {cancel: false};
 }
 
-function requestError (d) {
+function requestError(d) {
 	requests.delete(d.requestId);
 	//console.log(d.error);
 	return;
+}
+
+function observeNavigate(d) {
+	//console.log(d.url);
+	browser.tabs.get(d.tabId).then((a) => {
+		//console.log(a.url);
+		if (a.url === "about:blank") {
+			browser.tabs.remove(d.tabId);
+		}
+		else {
+			browser.tabs.update(d.tabId, {url: "about:blank"}).then(() => {
+				function handleUpdated(tabId, changeInfo, tabInfo) {
+					if (changeInfo.status == "complete") {
+						browser.tabs.goBack(d.tabId);
+						browser.tabs.onUpdated.removeListener(handleUpdated);
+					}
+				}
+				browser.tabs.onUpdated.addListener(handleUpdated, {tabId: d.tabId, properties: ["status"]});
+			});
+		}
+	});
+	downloadPanel({url: d.url, fileName: "", advanced: {}});
+	return;
+}
+
+function magnetConfig(enabled) {
+	if (enabled) {
+		browser.webNavigation.onBeforeNavigate.addListener(observeNavigate, {
+			url: [{schemes: ["magnet"]}]
+		});
+	}
+	else {
+		browser.webNavigation.onBeforeNavigate.removeListener(observeNavigate);
+	}
 }
 
 function changeState(enabled) {
@@ -589,7 +623,7 @@ function cmCallback (info, tab) {
 					downloadPanel(d);
 				}
 				else {
-					sendTo(url, "", "", d.advanced, server);
+					sendTo(url, "", "", d.advanced, server, false);
 				}
 			});
 			console.log(info);
@@ -609,7 +643,7 @@ function cmCallback (info, tab) {
 					downloadPanel(d);
 				}
 				else {
-					sendTo(url, "", "", d.advanced, server);
+					sendTo(url, "", "", d.advanced, server, false);
 				}
 			});
 			console.log(info);
@@ -713,6 +747,7 @@ function contextMenus (enabled, cmDownPanel){
 
 function loadSettings() {
 	browser.storage.local.get(config.command.guess, (item) => {
+		magnetConfig(item.magnet);
 		aggressive = item.aggressive;
 		contextMenus(item.menu, item.cmDownPanel);
 		fileSizeLimit = item.fileSizeLimit;
@@ -724,11 +759,11 @@ function loadSettings() {
 }
 
 (function() {
+	loadSettings();
 	browser.storage.local.get("enabled", function(item) {
 		changeState(item.enabled);
 	});
 	browser.browserAction.setBadgeBackgroundColor({color: [0,0,0,100]});
-	loadSettings();
 	browser.runtime.onMessage.addListener(handleMessage);
 })();
 

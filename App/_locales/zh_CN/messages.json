@@ -266,6 +266,16 @@
 		"description": ""
 	},
 	
+	"OP_magnet": {
+		"message": "侦测 magnet 连结",
+		"description": ""
+	},
+	
+	"OPN_magnet": {
+		"message": "当导航时侦测 magnet 连结。可能会短暂出现空白页面。",
+		"description": ""
+	},
+	
 	"OP_aggressive": {
 		"message": "偏执模式",
 		"description": ""

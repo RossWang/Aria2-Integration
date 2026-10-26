@@ -265,6 +265,16 @@
 		"description": ""
 	},
 	
+	"OP_magnet": {
+		"message": "Detect Magnet Links",
+		"description": ""
+	},
+	
+	"OPN_magnet": {
+		"message": "Detect magnet links when navigating. A blank page may appear shortly.",
+		"description": ""
+	},
+	
 	"OP_aggressive": {
 		"message": "Aggressive Mode",
 		"description": ""

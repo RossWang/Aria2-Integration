@@ -5,6 +5,7 @@ function save() {
 	const menu = document.getElementById('cm').checked;
 	const ua = document.getElementById('ua').checked;
 	const shutdown = document.getElementById('shut').checked;
+	const magnet = document.getElementById('magnet').checked;
 	const aggressive = document.getElementById('aggre').checked;
 	const windowLoc = document.getElementById('winLoc').checked;
 	const auto = document.getElementById('auto').checked;
@@ -23,6 +24,7 @@ function save() {
 		menu,
 		ua,
 		shutdown,
+		magnet,
 		aggressive,
 		windowLoc,
 		auto,
@@ -51,6 +53,7 @@ function init() {
 		document.getElementById('cm').checked = prefs.menu;
 		document.getElementById('ua').checked = prefs.ua;
 		document.getElementById('shut').checked = prefs.shutdown;
+		document.getElementById('magnet').checked = prefs.magnet;
 		document.getElementById('aggre').checked = prefs.aggressive;
 		document.getElementById('winLoc').checked = prefs.windowLoc;
 		document.getElementById('auto').checked = prefs.auto;
@@ -67,7 +70,7 @@ function init() {
 		document.getElementById('dpHeightN').value = prefs.dpHeight || 0;
 	});
 	document.querySelectorAll('[data-message]').forEach(n => {
-		n.textContent = browser.i18n.getMessage(n.dataset.message);
+		n.textContent = browser.i18n.getMessage(n.dataset.message) || n.textContent;
 	});
 	document.body.style = "direction: " + browser.i18n.getMessage("direction");
 	document.getElementById('save').addEventListener('click', save);

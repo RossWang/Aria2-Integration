@@ -266,6 +266,16 @@
 		"description": ""
 	},
 	
+	"OP_magnet": {
+		"message": "偵測 magnet 連結",
+		"description": ""
+	},
+	
+	"OPN_magnet": {
+		"message": "當導覽時偵測 magnet 連結。可能會短暫出現空白頁面。",
+		"description": ""
+	},
+	
 	"OP_aggressive": {
 		"message": "偏執模式",
 		"description": ""

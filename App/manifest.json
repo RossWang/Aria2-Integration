@@ -15,6 +15,7 @@
     "webRequestBlocking",
     "cookies",
     "nativeMessaging",
+    "webNavigation",
     "<all_urls>"
   ],
   "background": {
