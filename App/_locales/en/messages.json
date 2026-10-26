@@ -8,46 +8,46 @@
 		"message": "Replace built-in download manager. When activated, detects the download links to direct links to this add-on and send to Aria2",
 		"description": "Description of the extension."
 	},
-	
+
 	"translator": {
 		"message": "Translator: Ross Wang",
 		"description": ""
 	},
-	
+
 	"translatorMessage": {
 		"message": "English is not my native language, so there may have something wrong in the translation. Please help me correct the mistakes.",
 		"description": "you can leave it blank if you have nothing to say"
 	},
-	
+
 	"direction": {
 		"message": "ltr",
 		"description": "Language direction"
 	},
-	
+
 	"enabled": {
 		"message": "ENABLED",
 		"description": ""
 	},
-	
+
 	"disabled": {
 		"message": "DISABLED",
 		"description": ""
 	},
-  
+
 	"error_setConfig": {
 		"message": "You need to set the config first"
 	},
-	
+
 	"error_connect": {
 		"message": "Something went wrong. Check the input, options or the state of Aria2 and retry.",
 		"description": "If the request to Aria2 timeout or if it doesn't response success message, notify the user"
 	},
-	
+
 	"error_notSupported": {
 		"message": "Not Supported",
 		"description": ""
 	},
-	
+
 	"success_connect": {
 		"message": "Downloading $NAME$",
 		"description": "If the request to Aria2 success, notify the user",
@@ -57,7 +57,7 @@
 			}
 		}
 	},
-	
+
 	"download_complete": {
 		"message": "Download Completed \n\n$NAME$",
 		"description": "notify the user when download completed",
@@ -67,7 +67,7 @@
 			}
 		}
 	},
-	
+
 	"download_error": {
 		"message": "Download Faild $NAME$",
 		"description": "notify the user when download failed",
@@ -77,214 +77,214 @@
 			}
 		}
 	},
-	
+
 	"UI_detail": {
 		"message": "Details",
 		"description": ""
 	},
-	
+
 	"UI_download": {
 		"message": "Download",
 		"description": ""
 	},
-	
+
 	"UI_save": {
 		"message": "Save",
 		"description": "for download panel"
 	},
-	
+
 	"UI_saveas": {
 		"message": "Save As",
 		"description": ""
 	},
-	
+
 	"UI_open": {
 		"message": "Open",
 		"description": ""
 	},
-	
+
 	"UI_adv": {
 		"message": "Advanced",
 		"description": ""
 	},
-	
+
 	"UI_fileName": {
 		"message": "File Name",
 		"description": ""
 	},
-	
+
 	"UI_filePath": {
 		"message": "File Path",
 		"description": ""
 	},
-	
+
 	"UI_from": {
 		"message": "From",
 		"description": ""
 	},
-	
+
 	"OP_message1": {
 		"message": "You need to download and start Aria2 by yourself, complete at least 'Protocol,' 'Host,' 'Port' and 'Interface' below and then click the 'Save' button.",
 		"description": ""
 	},
-	
+
 	"OP_message2": {
 		"message": "If you don't want to start Aria2 manually, just write a program to start Aria2 in the background and register it to the system's 'autostart' or 'uri scheme.'",
 		"description": ""
 	},
-	
-	
+
+
 	"OP_message3": {
 		"message": "You can find the sample files here.",
 		"description": ""
 	},
-	
+
 	"OP_defaultPath": {
 		"message": "Default Download Path:",
 		"description": ""
 	},
-	
-	
+
+
 	"OPN_defaultPath": {
 		"message": "Download path of Aria2(only), optional",
 		"description": ""
 	},
-	
+
 	"OP_protocol": {
 		"message": "Protocol:",
 		"description": ""
 	},
-	
+
 	"OPN_protocol": {
 		"message": "RPC connection protocol of Aria2. Support ws, wss, http and https. Using Websocket will have more function.",
 		"description": ""
 	},
-	
+
 	"OP_host": {
 		"message": "Host:",
 		"description": ""
 	},
-	
+
 	"OPN_host": {
 		"message": "RPC host of Aria2. You can use ip or domain name.",
 		"description": ""
 	},
-	
+
 	"OP_port": {
 		"message": "Port:",
 		"description": ""
 	},
-	
+
 	"OPN_port": {
 		"message": "Aria2 RPC port",
 		"description": ""
 	},
-	
+
 	"OP_interface": {
 		"message": "Interface:",
 		"description": ""
 	},
-	
+
 	"OPN_interface": {
 		"message": "Aria2 RPC address. Default value is 'jsonrpc'",
 		"description": ""
 	},
-	
+
 	"OP_token": {
 		"message": "Token:",
 		"description": ""
 	},
-	
+
 	"OPN_token": {
 		"message": "Aria2 RPC secret, optional.",
 		"description": ""
 	},
-	
+
 	"OP_zoom": {
 		"message": "Zoom Level:",
 		"description": ""
 	},
-	
+
 	"OPN_zoom": {
 		"message": "Zoom Level of Download Panel. Default value is 1.",
 		"description": ""
 	},
-	
+
 	"OP_sound": {
 		"message": "Downlod Complete Sound:",
 		"description": ""
 	},
-	
+
 	"OP_sound0": {
 		"message": "None",
 		"description": ""
 	},
-	
+
 	"OP_sound1": {
 		"message": "Sound 1",
 		"description": ""
 	},
-	
+
 	"OP_sound2": {
 		"message": "Sound 2",
 		"description": ""
 	},
-	
+
 	"OP_sound3": {
 		"message": "Sound 3",
 		"description": ""
 	},
-	
+
 	"OPN_sound": {
 		"message": "[Websocket]Select a sound for download compete",
 		"description": ""
 	},
-	
+
 	"OP_advanced": {
 		"message": "Advanced:",
 		"description": ""
 	},
-	
+
 	"OP_contextMenu": {
 		"message": "Add Context Menus",
 		"description": ""
 	},
-	
+
 	"OPN_contextMenu": {
 		"message": "Add Context Menus to links, videos and audios ",
 		"description": ""
 	},
-	
+
 	"OP_shutdown": {
 		"message": "Shutdown Aria2c when the browser closed",
 		"description": ""
 	},
-	
+
 	"OPN_shutdown": {
 		"message": "Send '--stop-with-process=<PID>' command to aria2c",
 		"description": ""
 	},
-	
+
 	"OP_magnet": {
 		"message": "Detect Magnet Links",
 		"description": ""
 	},
-	
+
 	"OPN_magnet": {
 		"message": "Detect magnet links when navigating. A blank page may appear shortly.",
 		"description": ""
 	},
-	
+
 	"OP_aggressive": {
 		"message": "Aggressive Mode",
 		"description": ""
 	},
-	
+
 	"OPN_aggressive": {
 		"message": "Detect download links aggressively. May cause some problems.",
 		"description": ""
 	},
-	
+
 	"OP_winLoc": {
 		"message": "Remember window location",
 		"description": ""
@@ -294,67 +294,67 @@
 		"message": "The location of Download Panel will be saved (but firefox has bug. It cannot create window in the specific place)",
 		"description": ""
 	},
-	
+
 	"OP_auto": {
 		"message": "Aria2 Auto Start",
 		"description": ""
 	},
-	
+
 	"OPN_auto": {
 		"message": "Start Aria2 automatically when the download start",
 		"description": ""
 	},
-	
+
 	"OP_autoSet": {
 		"message": "AriaNg Auto Set",
 		"description": ""
 	},
-	
+
 	"OPN_autoSet": {
 		"message": "Set AriaNg automatically when the user click 'details'",
 		"description": ""
 	},
-	
+
 	"OP_chgLog": {
 		"message": "Display Changelog",
 		"description": ""
 	},
-	
+
 	"OPN_chgLog": {
 		"message": "Display Changelog After Update",
 		"description": ""
 	},
-	
+
 	"OP_badge": {
 		"message": "Display Current Active Download Count",
 		"description": ""
 	},
-	
+
 	"OPN_badge": {
 		"message": "[Websocket]Display current active download count on top of the icon",
 		"description": ""
 	},
-	
+
 	"OP_downPanel": {
 		"message": "Display Download Panel",
 		"description": ""
 	},
-	
+
 	"OPN_downPanel": {
 		"message": "Whether to display a download panel for the download event trigger from the auto observer",
 		"description": ""
 	},
-	
+
 	"OP_cmDownPanel": {
 		"message": "Display Download Panel (context menu)",
 		"description": ""
 	},
-	
+
 	"OPN_cmDownPanel": {
 		"message": "Whether to display a download panel for the download event trigger from the context menu",
 		"description": ""
 	},
-	
+
 	"OP_winWidth": {
 		"message": "Download Panel width offset",
 		"description": ""
@@ -364,7 +364,7 @@
 		"message": "Fine Tune Download Window width",
 		"description": ""
 	},
-	
+
 	"OP_winHeight": {
 		"message": "Download Panel height offset",
 		"description": ""
@@ -374,7 +374,7 @@
 		"message": "Fine Tune Download Window height",
 		"description": ""
 	},
-	
+
 	"OP_ua": {
 		"message": "Send User-Agent To Aria2",
 		"description": ""
@@ -384,7 +384,7 @@
 		"message": "User-Agent will be same as the browser send",
 		"description": ""
 	},
-	
+
 	"OP_fileSizeLimit": {
 		"message": "File Size Limit:",
 		"description": ""
@@ -394,7 +394,7 @@
 		"message": "Lower limit of the file size in bytes to trigger the download",
 		"description": ""
 	},
-	
+
 	"OP_typeFilterA": {
 		"message": "Include File Type:",
 		"description": ""
@@ -404,12 +404,12 @@
 		"message": "Exclude File Type:",
 		"description": ""
 	},
-	
+
 	"OPN_typeFilter": {
 		"message": "Regular Expressions: Matches MIME type",
 		"description": ""
 	},
-	
+
 	"OP_urlFilterA": {
 		"message": "Include URL:",
 		"description": ""
@@ -419,97 +419,97 @@
 		"message": "Exclude URL:",
 		"description": ""
 	},
-	
+
 	"OPN_urlFilter": {
 		"message": "Regular Expressions: Matches URL",
 		"description": ""
 	},
-	
+
 	"OP_title": {
 		"message": "Aria2 Download Manager Integration Options",
 		"description": ""
 	},
-	
+
 	"OP_general": {
 		"message": "General",
 		"description": ""
 	},
-	
+
 	"OP_rpcServer": {
 		"message": "RPC Servers",
 		"description": ""
 	},
-	
+
 	"OP_rpcDefault": {
 		"message": "Default Server",
 		"description": ""
 	},
-	
+
 	"OP_rpc2": {
 		"message": "RPC Server 2",
 		"description": ""
 	},
-	
+
 	"OP_rpc3": {
 		"message": "RPC Server 3",
 		"description": ""
 	},
-	
+
 	"OP_exception": {
 		"message": "Exceptions",
 		"description": ""
 	},
-	
+
 	"OP_about": {
 		"message": "About",
 		"description": ""
 	},
-	
+
 	"OP_save": {
 		"message": "Save",
 		"description": "save button"
 	},
-	
+
 	"OP_saveComplete": {
 		"message": "Options saved",
 		"description": ""
 	},
-	
+
 	"CM_title": {
 		"message": "Download with Aria2",
 		"description": "Context Menu"
 	},
-	
+
 	"about_M1": {
 		"message": "What is Aria2?",
 		"description": ""
 	},
-	
+
 	"about_M2": {
 		"message": "This add-on uses Mayswind's AriaNg.",
 		"description": ""
 	},
-	
+
 	"about_L1": {
 		"message": "Add-on home page",
 		"description": ""
 	},
-	
+
 	"about_L2": {
 		"message": "Aria2 Settings Samples",
 		"description": ""
 	},
-	
+
 	"about_L3": {
 		"message": "Submit a Bug or Feedback",
 		"description": ""
 	},
-	
+
 	"about_L4": {
 		"message": "Release Notes",
 		"description": ""
 	},
-	
+
 	"about_L5": {
 		"message": "Help Translate",
 		"description": ""
