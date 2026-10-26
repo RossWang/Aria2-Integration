@@ -17,6 +17,8 @@ if ($mobj.aria2c -eq "start-with-process") {
 }
 
 if ($mobj.invoke -ne $null) {
-	Invoke-Item $mobj.invoke
+	if ($mobj.invoke.StartsWith("temp/")) {
+		Invoke-Item $mobj.invoke
+	}
 	#"Target is $mobj.invoke" >> debug.log
 }
