@@ -130,7 +130,7 @@
 	},
 
 	"OP_message2": {
-		"message": "如果你不想要手动启动Aria2, 你可以自己写一个在后台启动Aria2的程序并注册到系统中的 'autostart' 或 'uri scheme'",
+		"message": "如果你不想要手动启动Aria2, 你可以自己写一个在后台启动Aria2的程序并注册到系统的AutoStart或瀏覽器的NativeMessagingHosts",
 		"description": ""
 	},
 

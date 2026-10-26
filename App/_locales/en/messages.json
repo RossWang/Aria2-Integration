@@ -129,7 +129,7 @@
 	},
 
 	"OP_message2": {
-		"message": "If you don't want to start Aria2 manually, just write a program to start Aria2 in the background and register it to the system's 'autostart' or 'uri scheme.'",
+		"message": "If you don't want to start Aria2 manually, just write a program to start Aria2 in the background and register it to system's AutoStart or browser's NativeMessagingHosts",
 		"description": ""
 	},
 

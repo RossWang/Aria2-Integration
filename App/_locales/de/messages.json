@@ -124,7 +124,7 @@
 	},
 
 	"OP_message2": {
-		"message": "Wenn du Aria2 nicht manuell starten möchtest, kannst du ein Programm schreiben, dass Aria2 im Hintergrund startet und sich im System unter 'Autostart' oder als 'Uri-Schema' registriert.",
+		"message": "Wenn du Aria2 nicht manuell starten möchtest, kannst du ein Programm schreiben, dass Aria2 im Hintergrund startet und sich im System unter 'Autostart' oder als 'NativeMessagingHosts' registriert.",
 		"description": ""
 	},
 
