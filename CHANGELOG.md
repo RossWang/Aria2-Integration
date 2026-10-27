@@ -1,3 +1,19 @@
+## [1.0.0](https://github.com/RossWang/Aria2-Integration/compare/0.6.1...1.0.0) (2026-10-27)
+
+### Features
+
+* Add an option to treat POST as GET ([4c4110f](https://github.com/RossWang/Aria2-Integration/commit/4c4110f7dafca7210b4fcab4944525b04cf49a17)), closes [#103](https://github.com/RossWang/Aria2-Integration/issues/103)
+* Add option for auto proxy ([73fffe1](https://github.com/RossWang/Aria2-Integration/commit/73fffe1128beafb599321c7b0721fe2e0b3f9010))
+* Enable "Open" button ([9915520](https://github.com/RossWang/Aria2-Integration/commit/991552043d2cb6b5577cea5fdfddc81202ac5904))
+* Support download status report from BT ([8e90ad7](https://github.com/RossWang/Aria2-Integration/commit/8e90ad76ba17772ff69ced4bfade3cf4ec19ca91))
+* Support magnet links ([207336b](https://github.com/RossWang/Aria2-Integration/commit/207336b680f6bf79c6a6ec0820f68d4136f7fbcc)), closes [#62](https://github.com/RossWang/Aria2-Integration/issues/62)
+* Use native messaging for auto-start ([fe73323](https://github.com/RossWang/Aria2-Integration/commit/fe733239de387db4d211cc57f5c1d492e036acff))
+
+### Bug Fixes
+
+* Aria2 websocket connection issues ([63ba218](https://github.com/RossWang/Aria2-Integration/commit/63ba21844c759ad7a148ad38db231fb083e30a12))
+* Blank file name (magnet) ([e3fb708](https://github.com/RossWang/Aria2-Integration/commit/e3fb708156c2bfd8b1333fa95ae3f14da3e647a9))
+
 ## [0.6.1](https://github.com/RossWang/Aria2-Integration/compare/0.5.0...0.6.1) (2026-10-06)
 
 ### Features
