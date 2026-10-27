@@ -266,6 +266,16 @@
 		"description": ""
 	},
 
+	"OP_postAsGet": {
+		"message": "将 POST 视为 GET",
+		"description": ""
+	},
+
+	"OPN_postAsGet": {
+		"message": "Aria2 不支持 HTTP POST 请求，这个扩展也不支持。默认情况下，它仅拦截 GET 请求。然而，一些网站接受 GET 请求作为备用，尽管功能可能会减少。启用此选项将使它将 POST 请求视为 GET 请求，省略 POST 请求体。",
+		"description": ""
+	},
+
 	"OP_magnet": {
 		"message": "侦测 magnet 连结",
 		"description": ""

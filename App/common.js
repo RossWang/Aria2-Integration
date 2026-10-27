@@ -2,6 +2,7 @@
 'use strict';
 var requests = new Map();
 var globalD = [];
+var postAsGet = false;
 var aggressive = false;
 var fileSizeLimit = 0;
 var fileTypeFilterA = "";
@@ -453,7 +454,7 @@ function observeResponse(d) {
 	const requestDetails = requests.get(d.requestId);
 	requests.delete(d.requestId);
 	// goo.gl, google spreadsheet
-	if (d.statusCode == 200 && d.method == "GET" || aggressive) {
+	if (d.statusCode === 200 && (d.method === "GET" || postAsGet) || aggressive) {
 		const cd = d.responseHeaders.find(x => x.name.toLowerCase() === 'content-disposition');
 		const ct = d.responseHeaders.find(x => x.name.toLowerCase() === 'content-type');
 		const cl = d.responseHeaders.find(x => x.name.toLowerCase() === "content-length");
@@ -748,6 +749,7 @@ function contextMenus (enabled, cmDownPanel){
 function loadSettings() {
 	browser.storage.local.get(config.command.guess, (item) => {
 		magnetConfig(item.magnet);
+		postAsGet = item.postAsGet;
 		aggressive = item.aggressive;
 		contextMenus(item.menu, item.cmDownPanel);
 		fileSizeLimit = item.fileSizeLimit;

@@ -265,6 +265,16 @@
 		"description": ""
 	},
 
+	"OP_postAsGet": {
+		"message": "Treat POST as GET",
+		"description": ""
+	},
+
+	"OPN_postAsGet": {
+		"message": "Aria2 does not support HTTP POST requests, and this extension does not support them either. By default, it only intercepts GET requests. However, some websites accept GET requests as a fallback, although functionality may be reduced. Enabling this will make it treat POST requests as the GET requests, ommiting the POST body.",
+		"description": ""
+	},
+
 	"OP_magnet": {
 		"message": "Detect Magnet Links",
 		"description": ""

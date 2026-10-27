@@ -266,6 +266,16 @@
 		"description": ""
 	},
 
+	"OP_postAsGet": {
+		"message": "將 POST 視為 GET",
+		"description": ""
+	},
+
+	"OPN_postAsGet": {
+		"message": "Aria2 不支援 HTTP POST 請求，這個元件也不支援，因此預設情況下只會攔截 GET 請求。然而，有一些網站雖然功能可能會受限，也會接受 GET 請求作為後備方案。啟動此選項將使其把 POST 當作 GET 請求處理，省略 POST 主體。",
+		"description": ""
+	},
+
 	"OP_magnet": {
 		"message": "偵測 magnet 連結",
 		"description": ""

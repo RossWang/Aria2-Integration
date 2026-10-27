@@ -6,6 +6,7 @@ function save() {
 	const ua = document.getElementById('ua').checked;
 	const autoProxy = document.getElementById('autoProxy').checked;
 	const shutdown = document.getElementById('shut').checked;
+	const postAsGet = document.getElementById('postAsGet').checked;
 	const magnet = document.getElementById('magnet').checked;
 	const aggressive = document.getElementById('aggre').checked;
 	const windowLoc = document.getElementById('winLoc').checked;
@@ -26,6 +27,7 @@ function save() {
 		ua,
 		autoProxy,
 		shutdown,
+		postAsGet,
 		magnet,
 		aggressive,
 		windowLoc,
@@ -56,6 +58,7 @@ function init() {
 		document.getElementById('ua').checked = prefs.ua;
 		document.getElementById('autoProxy').checked = prefs.autoProxy;
 		document.getElementById('shut').checked = prefs.shutdown;
+		document.getElementById('postAsGet').checked = prefs.postAsGet;
 		document.getElementById('magnet').checked = prefs.magnet;
 		document.getElementById('aggre').checked = prefs.aggressive;
 		document.getElementById('winLoc').checked = prefs.windowLoc;

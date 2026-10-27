@@ -13,6 +13,7 @@ config.command = {
 			sound: "3",
 			menu: false,
 			shutdown: false,
+			postAsGet: false,
 			magnet: false,
 			aggressive: false,
 			windowLoc: false,
